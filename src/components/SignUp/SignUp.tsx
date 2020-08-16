@@ -29,6 +29,9 @@ const DivSignUpContent = styled.div`
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   padding: 50px 85px;
+  @media only screen and (max-width: 480px) {
+    padding: 50px 25px;
+  }
 `;
 const H2SignUp = styled.h2`
   line-height: 1.66;
@@ -59,8 +62,30 @@ const InputFormSignUp = styled.input`
   font-size: 14px;
   font-weight: 500;
   color: #222;
+  &:focus {
+    outline: none;
+    border: 1px solid transparent;
+    -webkit-border-image-source: -webkit-linear-gradient(
+      to right,
+      #9face6,
+      #74ebd5
+    );
+    -moz-border-image-source: -moz-linear-gradient(to right, #9face6, #74ebd5);
+    -o-border-image-source: -o-linear-gradient(to right, #9face6, #74ebd5);
+    border-image-source: linear-gradient(to right, #9face6, #74ebd5);
+    -webkit-border-image-slice: 1;
+    border-image-slice: 1;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    background-origin: border-box;
+  }
 `;
 const InputSubmitSignUp = styled.input`
+  outline: none;
+  cursor: pointer;
   width: 100%;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -97,55 +122,51 @@ export class SignUp extends Component {
     return (
       <BodySignUp>
         <DivBackground>
-          <div className="main-signup">
-            <section className="signup">
-              <Container maxWidth="sm">
-                <DivSignUpContent>
-                  <form id="signup-form" className="signup-form">
-                    <H2SignUp>Create account</H2SignUp>
+          <Container maxWidth="sm">
+            <DivSignUpContent>
+              <form id="signup-form" className="signup-form">
+                <H2SignUp>Create account</H2SignUp>
 
-                    <DivFormGroup>
-                      <InputFormSignUp type="text" placeholder="Your Email" />
-                    </DivFormGroup>
+                <DivFormGroup>
+                  <InputFormSignUp type="text" placeholder="Your Email" />
+                </DivFormGroup>
 
-                    <DivFormGroup>
-                      <InputFormSignUp type="text" placeholder="Account" />
-                    </DivFormGroup>
-                    <DivFormGroup>
-                      <InputFormSignUp type="password" placeholder="Password" />
-                    </DivFormGroup>
+                <DivFormGroup>
+                  <InputFormSignUp type="text" placeholder="Account" />
+                </DivFormGroup>
+                <DivFormGroup>
+                  <InputFormSignUp type="password" placeholder="Password" />
+                </DivFormGroup>
 
-                    <DivFormGroup>
-                      <InputFormSignUp type="text" placeholder="Your Name" />
-                    </DivFormGroup>
-                    <DivFormGroup>
-                      <InputFormSignUp type="text" placeholder="Phone Number" />
-                    </DivFormGroup>
+                <DivFormGroup>
+                  <InputFormSignUp type="text" placeholder="Your Name" />
+                </DivFormGroup>
+                <DivFormGroup>
+                  <InputFormSignUp type="text" placeholder="Phone Number" />
+                </DivFormGroup>
 
-                    <DivFormGroup>
-                      <InputFormSignUp type="text" placeholder="Code Group" />
-                    </DivFormGroup>
-                    <DivFormGroup>
-                      <InputSubmitSignUp
-                        type="submit"
-                        placeholder="Code Group"
-                        value="Sign up"
-                      />
-                    </DivFormGroup>
-                  </form>
-                  <ElementpLoginHere>
-                    Have already an account ?
-                    <a
-                      href="https://colorlib.com/etc/regform/colorlib-regform-8/?fbclid=IwAR3sh3S6Rfd_czJxJLv9uGOox4tGVIPs8_T9yyF85Hwrl__IC0sW4QxEH24#"
-                      className="loginhere-link"
-                    >
-                      <ElementaLoginHere> Login here</ElementaLoginHere>
-                    </a>
-                  </ElementpLoginHere>
-                </DivSignUpContent>
-              </Container>
-            </section>
-          </div>
+                <DivFormGroup>
+                  <InputFormSignUp type="text" placeholder="Code Group" />
+                </DivFormGroup>
+                <DivFormGroup>
+                  <InputSubmitSignUp
+                    type="submit"
+                    placeholder="Code Group"
+                    value="Sign up"
+                  />
+                </DivFormGroup>
+              </form>
+              <ElementpLoginHere>
+                Have already an account ?
+                <a
+                  href="https://colorlib.com/etc/regform/colorlib-regform-8/?fbclid=IwAR3sh3S6Rfd_czJxJLv9uGOox4tGVIPs8_T9yyF85Hwrl__IC0sW4QxEH24#"
+                  className="loginhere-link"
+                >
+                  <ElementaLoginHere> Login here</ElementaLoginHere>
+                </a>
+              </ElementpLoginHere>
+            </DivSignUpContent>
+          </Container>
         </DivBackground>
       </BodySignUp>
     );
