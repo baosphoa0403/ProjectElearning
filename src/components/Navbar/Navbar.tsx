@@ -4,26 +4,26 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import Logo from "../../images/logo.png"
-import Switch from "../Toggle/Toogle"
+import Logo from "../../images/logo.png";
+import Switch from "../Toggle/Toogle";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(2),
     },
     title: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     backgroundLight: {
       backgroundColor: "#fff",
-      padding: "20px 20px"
+      padding: "20px 20px",
     },
     backgroundDark: {
       backgroundColor: "#212121",
-      padding: "20px 20px"
+      padding: "20px 20px",
     },
     button: {
       backgroundColor: "#009e7f",
@@ -31,37 +31,45 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "0 15px",
       height: "45px",
       fontWeight: "bold",
-      [theme.breakpoints.between('xs', 'sm')]: {
-        fontSize: "10px"
+      [theme.breakpoints.between("xs", "sm")]: {
+        fontSize: "10px",
       },
       "&:hover": {
-        backgroundColor: "#009e7f"
-      } 
-    }
+        backgroundColor: "#009e7f",
+      },
+    },
   })
 );
 interface Props {
-  setBackground: (value: boolean) => void 
+  setBackground: (value: boolean) => void;
 }
-
 
 export default function Navbar(props: Props) {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
-       setThemeNavbar(value)
-  }
+    console.log(value);
+
+    setThemeNavbar(value);
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar className={themeNavbar ? classes.backgroundDark : classes.backgroundLight}>
-             <img src={Logo}/>
-          <Box p={1} flexGrow={1} ></Box>
-          <Switch setBackground={props.setBackground} setBackgroundNavbar={setBackgroundNavbar}/>
+        <Toolbar
+          className={
+            themeNavbar ? classes.backgroundDark : classes.backgroundLight
+          }
+        >
+          <img src={Logo} />
+          <Box p={1} flexGrow={1}></Box>
+          <Switch
+            setBackground={props.setBackground}
+            setBackgroundNavbar={setBackgroundNavbar}
+          />
           <Box p={1}>
             <Button className={classes.button}>Sign In</Button>
           </Box>
-          <Box p={1} >
+          <Box p={1}>
             <Button className={classes.button}>Sign up</Button>
           </Box>
         </Toolbar>
