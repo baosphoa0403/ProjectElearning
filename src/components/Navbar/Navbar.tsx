@@ -2,12 +2,10 @@ import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png"
+import Switch from "../Toggle/Toogle"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -19,8 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1
     },
-    background: {
+    backgroundLight: {
       backgroundColor: "#fff",
+      padding: "20px 20px"
+    },
+    backgroundDark: {
+      backgroundColor: "#212121",
       padding: "20px 20px"
     },
     button: {
@@ -38,21 +40,29 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-export default function Navbar() {
-  const classes = useStyles();
-  // var Toggle = require("react-toggle");
+interface Props {
+  setBackground: (value: boolean) => void 
+}
 
+
+export default function Navbar(props: Props) {
+  const classes = useStyles();
+  const [themeNavbar, setThemeNavbar] = React.useState(false);
+  const setBackgroundNavbar = (value: boolean) => {
+       setThemeNavbar(value)
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar className={classes.background}>
+        <Toolbar className={themeNavbar ? classes.backgroundDark : classes.backgroundLight}>
              <img src={Logo}/>
           <Box p={1} flexGrow={1} ></Box>
+          <Switch setBackground={props.setBackground} setBackgroundNavbar={setBackgroundNavbar}/>
           <Box p={1}>
-            <Button className={classes.button}>Đăng Nhập</Button>
+            <Button className={classes.button}>Sign In</Button>
           </Box>
           <Box p={1} >
-            <Button className={classes.button}>Đăng Ký</Button>
+            <Button className={classes.button}>Sign up</Button>
           </Box>
         </Toolbar>
       </AppBar>
