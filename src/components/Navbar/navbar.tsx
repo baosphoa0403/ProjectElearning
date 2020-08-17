@@ -4,23 +4,23 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+// import IconButton from "@material-ui/core/IconButton";
+// import MenuIcon from "@material-ui/icons/Menu";
 import Box from "@material-ui/core/Box";
-import Toggle from "react-toggle";
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
+// import Toggle from "react-toggle";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(2),
     },
     title: {
-      flexGrow: 1
-    }
+      flexGrow: 1,
+    },
   })
 );
 export default function Navbar() {
@@ -39,7 +39,7 @@ export default function Navbar() {
               Elearning
             </Typography>
           </Box>
-           <WbSunnyIcon />
+          <WbSunnyIcon />
 
           <Box p={1}>
             <Button color="inherit">Login</Button>

@@ -1,13 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
-// import Navbar from "../src/components/Navbar/index"
-// import Carousel from './components/carousel';
-import SignUp from "./components/SignUp/SignUp";
+import Navbar from "./components/Navbar/navbar";
+import Carousel from "./components/carousel/carousel";
+
+// import SignUp from "./components/SignUp/SignUp";
 function App() {
   return (
     <div className="App">
-      <SignUp />
+      <Navbar />
+
+      <Carousel />
     </div>
   );
 }
