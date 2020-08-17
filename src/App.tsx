@@ -10,6 +10,9 @@ import Toggle from "react-toggle";
 import WbSunnyRoundedIcon from '@material-ui/icons/WbSunnyRounded';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import { makeStyles } from '@material-ui/core/styles';
+// import Navbar from "../src/components/Navbar/index"
+// import Carousel from './components/carousel';
+import SignUp from "./components/SignUp/SignUp";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -46,9 +49,11 @@ function App() {
             }}
           />
         </label>
+        <SignUp />
       </ThemeProvider>
 
       {/* <Carousel /> */}
+
     </div>
   );
 }
