@@ -1,9 +1,9 @@
 import React from 'react'
-import Background from "../../../public/images/background.jpg"
+// import Background from "../../../public/images/background.jpg"
 export default function Carousel() {
     return (
         <div>
-            <Background />
+            {/* <Background /> */}
         </div>
     )
 }
