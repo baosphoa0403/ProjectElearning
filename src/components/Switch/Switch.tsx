@@ -4,12 +4,13 @@ import WbSunnyRoundedIcon from "@material-ui/icons/WbSunnyRounded";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import { makeStyles } from "@material-ui/core/styles";
 import "../Switch/switch.css"
+import {connect} from "react-redux";
 interface Props {
   setBackground: (value: boolean) => void;
   setBackgroundNavbar: (value: boolean) => void;
 }
 
-export default function Switch(props: Props) {
+function Switch(props: Props)  {
   const [darkMode, setDarkMode] = React.useState(false);
   const useStyles = makeStyles({
     root: {
@@ -36,3 +37,5 @@ export default function Switch(props: Props) {
     </label>
   );
 }
+// type ReduxType = ReturnType<typeof mapStateToProps>;
+export default connect(null, null)(Switch)
