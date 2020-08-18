@@ -11,6 +11,9 @@ const DivSlider = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  @media only screen and (max-width: 767px) {
+    opacity: 0;
+  }
 `;
 const DivContentImages = styled.div`
   width: 100%;
@@ -48,7 +51,8 @@ const DivContainer = styled.div`
 const DivContentIntroduce = styled.div`
   text-align: center;
   font-size: 25px;
-  color: black;
+  color: #275ebf;
+  padding: 90px;
 `;
 function Carousel() {
   return (
@@ -58,8 +62,9 @@ function Carousel() {
           <DivContentSliderImage></DivContentSliderImage>
         </DivContainer>
         <DivContentIntroduce>
-          Hãy Đến Với Chúng Tôi Nơi Giúp Bạn Trở Thành Lập Trình Viên Chuyên
-          Nghiệp
+          The place to train professional programmers, Come With Us A Place To
+          Help You Become A Professional Programmer, Bring patience and
+          diligence to succeed
         </DivContentIntroduce>
       </DivContentImages>
     </DivSlider>
