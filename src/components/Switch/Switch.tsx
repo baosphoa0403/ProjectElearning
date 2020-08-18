@@ -1,9 +1,9 @@
 import React from "react";
-import { createMuiTheme } from "@material-ui/core/styles";
 import Toggle from "react-toggle";
 import WbSunnyRoundedIcon from "@material-ui/icons/WbSunnyRounded";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import { makeStyles } from "@material-ui/core/styles";
+import "../Switch/switch.css"
 interface Props {
   setBackground: (value: boolean) => void;
   setBackgroundNavbar: (value: boolean) => void;

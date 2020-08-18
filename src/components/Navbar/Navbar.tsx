@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
-import Switch from "../Toggle/Toogle";
+import Switch from "../Switch/Switch";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "#212121",
       padding: "20px 20px",
     },
-    button: {
+    buttonLight: {
       backgroundColor: "#009e7f",
       color: "white",
       padding: "0 15px",
@@ -38,6 +38,19 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: "#009e7f",
       },
     },
+    buttonDark: {
+      backgroundColor: "#009e7f",
+      color: "black",
+      padding: "0 15px",
+      height: "45px",
+      fontWeight: "bold",
+      [theme.breakpoints.between("xs", "sm")]: {
+        fontSize: "10px",
+      },
+      "&:hover": {
+        backgroundColor: "#009e7f",
+      },
+    }
   })
 );
 interface Props {
@@ -67,10 +80,10 @@ export default function Navbar(props: Props) {
             setBackgroundNavbar={setBackgroundNavbar}
           />
           <Box p={1}>
-            <Button className={classes.button}>Sign In</Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign In</Button>
           </Box>
           <Box p={1}>
-            <Button className={classes.button}>Sign up</Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign up</Button>
           </Box>
         </Toolbar>
       </AppBar>
