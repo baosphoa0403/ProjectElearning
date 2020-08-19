@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/navbar";
 import Carousel from "./components/carousel/carousel";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import CourseInfor from "./components/courseInfor/courseInfor"
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -24,9 +25,12 @@ function App() {
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Navbar setBackground={setBackground} />
-        <Carousel />
+        {/* <Navbar setBackground={setBackground} /> */}
+        {/* <Carousel /> */}
+        <CourseInfor/>
       </ThemeProvider>
+      
+     
     </div>
   );
 }
