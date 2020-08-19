@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { Title } from "../IntroduceStep /style-component-IntroduceStep";
+import { Title, Div } from "../IntroduceStep /style-component-IntroduceStep";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { textAlign } from "@material-ui/system";
@@ -12,12 +12,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       minWidth: 275,
       height: 300,
+      maxWidth: 400,
       textAlign: "center",
       padding: "4em 2em",
-      background: "#edeeef",
+      //   background: "#edeeef",
       border: "1px solid transparent",
-      '&hover': {
-        boxShadow: "0 0 18.69px 2.31px rgba(204,204,223,.5)"
+      "&:hover": {
+        boxShadow: "0 0 18.69px 2.31px rgba(204,204,223,.5)",
+        background: "#212121"
       }
     },
     bullet: {
@@ -34,6 +36,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     p: {
       color: "#bdbdbd"
+    },
+    responsive: {
+      [theme.breakpoints.down("xs")]: {
+        margin: "0px 72px"
+      },
     }
   })
 );
@@ -41,80 +48,101 @@ export default function IntroduceStep() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Container fixed>
+      <Container fixed className={classes.responsive}>
         <Title>WHAT DO WE HAVE?</Title>
-        <Grid container spacing={3}>
-          <Grid item lg={4}>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  <i
-                    className="fa fa-graduation-cap"
-                    style={{ fontSize: "40px", color: "#009e7f" }}
-                  ></i>
-                </Typography>
-                <Typography variant="h5" component="h5" className={classes.h5}>
-                  PROGRAM-ORIENTED LEARNING
-                </Typography>
-                <Typography variant="body2" component="p">
-                  Develop your ability and passion for programming inspiration.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+        <Div>
+          <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="center"
+            spacing={3}
+          >
+            <Grid item lg={4} xs={12} md={4}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    color="textSecondary"
+                    gutterBottom
+                  >
+                    <i
+                      className="fa fa-graduation-cap"
+                      style={{ fontSize: "40px", color: "#009e7f" }}
+                    ></i>
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    className={classes.h5}
+                  >
+                    PROGRAM-ORIENTED LEARNING
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    Develop your ability and passion for programming
+                    inspiration.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Grid item lg={4}>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  <i
-                    className="fa fa-book"
-                    style={{ fontSize: "40px", color: "#009e7f" }}
-                  ></i>
-                </Typography>
-                <Typography variant="h5" component="h5" className={classes.h5}>
-                  FOUNDATION, THINKING, CORE IN PROGRAMMING
-                </Typography>
-                <Typography variant="body2" component="p">
-                  You will be confident in the change of technology and work
-                  environment.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+            <Grid item lg={4} xs={12} md={4}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    color="textSecondary"
+                    gutterBottom
+                  >
+                    <i
+                      className="fa fa-book"
+                      style={{ fontSize: "40px", color: "#009e7f" }}
+                    ></i>
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    className={classes.h5}
+                  >
+                    FOUNDATION, THINKING, CORE IN PROGRAMMING
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    You will be confident in the change of technology and work
+                    environment.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Grid item lg={4}>
-            <Card className={classes.root}>
-              <CardContent>
-                <Typography
-                  className={classes.title}
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  <i
-                    className="fa fa-globe"
-                    style={{ fontSize: "40px", color: "#009e7f" }}
-                  ></i>
-                </Typography>
-                <Typography variant="h5" component="h5" className={classes.h5}>
-                  NEW TECHNOLOGY, SPECIALIZED, REALISTIC
-                </Typography>
-                <Typography variant="body2" component="p">
-                  You can learn and experience the latest in programming
-                  technologies.
-                </Typography>
-              </CardContent>
-            </Card>
+            <Grid item lg={4} xs={12} md={4}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    color="textSecondary"
+                    gutterBottom
+                  >
+                    <i
+                      className="fa fa-globe"
+                      style={{ fontSize: "40px", color: "#009e7f" }}
+                    ></i>
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="h5"
+                    className={classes.h5}
+                  >
+                    NEW TECHNOLOGY, SPECIALIZED, REALISTIC
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    You can learn and experience the latest in programming
+                    technologies.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
+        </Div>
       </Container>
     </React.Fragment>
   );
