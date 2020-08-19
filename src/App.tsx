@@ -28,7 +28,7 @@ function App() {
         <CssBaseline />
         <Navbar setBackground={setBackground} />
         <Carousel />
-        {/* <IntroduceStep /> */}
+        <IntroduceStep />
       </ThemeProvider>
 
       {/* <Carousel /> */}
