@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Carousel from "./components/carousel/carousel";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import IntroduceStep from "./components/IntroduceStep /IntroduceStep";
+import "font-awesome/css/font-awesome.min.css";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -26,7 +28,10 @@ function App() {
         <CssBaseline />
         <Navbar setBackground={setBackground} />
         <Carousel />
+        <IntroduceStep />
       </ThemeProvider>
+
+      {/* <Carousel /> */}
     </div>
   );
 }

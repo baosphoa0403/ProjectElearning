@@ -62,7 +62,6 @@ export default function Navbar(props: Props) {
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
-
     setThemeNavbar(value);
   };
   return (
