@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { Title, Div } from "../IntroduceStep /style-component-IntroduceStep";
+import { Title, Div } from "./style-component-IntroduceStep";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
