@@ -25,8 +25,8 @@ function App() {
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        {/* <Navbar setBackground={setBackground} /> */}
-        {/* <Carousel /> */}
+        <Navbar setBackground={setBackground} />
+        <Carousel />
         <CourseInfor/>
       </ThemeProvider>
       
