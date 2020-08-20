@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         backgroundColor: "#009e7f",
       },
-    },
+    }
   })
 );
 interface Props {
@@ -62,7 +62,6 @@ export default function Navbar(props: Props) {
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
-
     setThemeNavbar(value);
   };
   return (
@@ -80,18 +79,10 @@ export default function Navbar(props: Props) {
             setBackgroundNavbar={setBackgroundNavbar}
           />
           <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign In
-            </Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign In</Button>
           </Box>
           <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign up
-            </Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign up</Button>
           </Box>
         </Toolbar>
       </AppBar>
