@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
-
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -51,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         backgroundColor: "#009e7f",
       },
-    },
+    }
   })
 );
 interface Props {
@@ -68,31 +67,23 @@ export default function Navbar(props: Props) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar
           className={
             themeNavbar ? classes.backgroundDark : classes.backgroundLight
           }
         >
-          <img src={Logo} alt="" />
+          <img src={Logo} />
           <Box p={1} flexGrow={1}></Box>
           <Switch
             setBackground={props.setBackground}
             setBackgroundNavbar={setBackgroundNavbar}
           />
           <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign In
-            </Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign In</Button>
           </Box>
           <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign up
-            </Button>
+            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign up</Button>
           </Box>
         </Toolbar>
       </AppBar>
