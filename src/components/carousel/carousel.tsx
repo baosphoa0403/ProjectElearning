@@ -9,7 +9,7 @@ import {
 
 function Carousel() {
   return (
-    <DivSlider>
+      <DivSlider>
       <DivContentImages>
         <DivContainer>
           <DivContentSliderImage></DivContentSliderImage>

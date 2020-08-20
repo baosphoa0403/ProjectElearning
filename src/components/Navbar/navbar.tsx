@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
-
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       "&:hover": {
         backgroundColor: "#009e7f",
-      },
+      }
     },
   })
 );

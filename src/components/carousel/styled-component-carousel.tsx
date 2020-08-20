@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const DivSlider = styled.div`
   height: 100vh;
   width: 100%;
-  position: absolute;
   left: 0;
   top: 0;
   background-image: url(/images/wave.png);
@@ -50,6 +49,7 @@ export const DivContainer = styled.div`
 export const DivContentIntroduce = styled.div`
   text-align: center;
   font-size: 25px;
-  color: #275ebf;
+  color: #212121;
   padding: 90px;
+  text-transform: uppercase
 `;
