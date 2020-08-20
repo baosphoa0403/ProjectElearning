@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
-
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -68,13 +67,13 @@ export default function Navbar(props: Props) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar
           className={
             themeNavbar ? classes.backgroundDark : classes.backgroundLight
           }
         >
-          <img src={Logo} alt="" />
+          <img src={Logo} />
           <Box p={1} flexGrow={1}></Box>
           <Switch
             setBackground={props.setBackground}
