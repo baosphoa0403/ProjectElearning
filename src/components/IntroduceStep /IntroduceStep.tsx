@@ -6,49 +6,47 @@ import Typography from "@material-ui/core/Typography";
 import { Title, Div } from "./style-component-IntroduceStep";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { textAlign } from "@material-ui/system";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      minWidth: 275,
-      height: 300,
-      maxWidth: 400,
-      textAlign: "center",
-      padding: "4em 2em",
       //   background: "#edeeef",
       border: "1px solid transparent",
       "&:hover": {
-        boxShadow: "0 0 18.69px 2.31px rgba(204,204,223,.5)",
-        background: "#212121"
-      }
+        boxShadow: "0 0 18.69px 2.31px rgba(77, 179, 113,.5)",
+        background: "white",
+
+        color: "#212121",
+      },
     },
     bullet: {
       display: "inline-block",
       margin: "0 2px",
-      transform: "scale(0.8)"
+      transform: "scale(0.8)",
     },
     title: {
-      fontSize: 14
+      fontSize: 14,
     },
     h5: {
       fontSize: "1.3em",
-      lineHeight: "1.4em"
+      lineHeight: "1.4em",
     },
     p: {
-      color: "#bdbdbd"
+      color: "#bdbdbd",
     },
-    responsive: {
-      [theme.breakpoints.down("xs")]: {
-        margin: "0px 72px"
-      },
-    }
+
+    // responsive: {
+    //   [theme.breakpoints.down("xs")]: {
+    //     margin: "0px 72px",
+    //   },
+    // },
   })
 );
 export default function IntroduceStep() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Container fixed className={classes.responsive}>
+      <Container fixed>
         <Title>WHAT DO WE HAVE?</Title>
         <Div>
           <Grid
@@ -76,7 +74,7 @@ export default function IntroduceStep() {
                     component="h5"
                     className={classes.h5}
                   >
-                    PROGRAM-ORIENTED LEARNING
+                    PROGRAM-ORIENTED LEARNING,PROFESSIONAL
                   </Typography>
                   <Typography variant="body2" component="p">
                     Develop your ability and passion for programming
