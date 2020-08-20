@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         backgroundColor: "#009e7f",
       },
-    }
+    },
   })
 );
 interface Props {
@@ -66,7 +66,7 @@ export default function Navbar(props: Props) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar
           className={
             themeNavbar ? classes.backgroundDark : classes.backgroundLight
@@ -79,10 +79,18 @@ export default function Navbar(props: Props) {
             setBackgroundNavbar={setBackgroundNavbar}
           />
           <Box p={1}>
-            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign In</Button>
+            <Button
+              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
+            >
+              Sign In
+            </Button>
           </Box>
           <Box p={1}>
-            <Button className={themeNavbar ? classes.buttonDark : classes.buttonLight }>Sign up</Button>
+            <Button
+              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
+            >
+              Sign up
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

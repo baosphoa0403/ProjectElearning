@@ -3,22 +3,18 @@ import styled from "styled-components";
 export const DivSlider = styled.div`
   height: 100vh;
   width: 100%;
-  left: 0;
-  top: 0;
+
   background-image: url(/images/wave.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   @media only screen and (max-width: 767px) {
-    opacity: 0;
+    display: none;
   }
 `;
 export const DivContentImages = styled.div`
-  width: 100%;
-  height: 100%;
+  padding: 30px 20px 20px 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 export const DivContentSliderImage = styled.div`
   min-height: 200px;
@@ -44,12 +40,16 @@ export const DivContentSliderImage = styled.div`
   }
 `;
 export const DivContainer = styled.div`
-  padding: 0 50px 0 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `;
 export const DivContentIntroduce = styled.div`
   text-align: center;
   font-size: 25px;
   color: #212121;
-  padding: 90px;
+  display: flex;
+
+  align-items: center;
   text-transform: uppercase;
 `;
