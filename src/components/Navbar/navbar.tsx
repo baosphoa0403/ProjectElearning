@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       "&:hover": {
         backgroundColor: "#009e7f",
-      }
+      },
     },
   })
 );
@@ -67,13 +67,13 @@ export default function Navbar(props: Props) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar
           className={
             themeNavbar ? classes.backgroundDark : classes.backgroundLight
           }
         >
-          <img src={Logo} alt="" />
+          <img src={Logo} />
           <Box p={1} flexGrow={1}></Box>
           <Switch
             setBackground={props.setBackground}

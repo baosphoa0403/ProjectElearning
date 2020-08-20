@@ -51,5 +51,5 @@ export const DivContentIntroduce = styled.div`
   font-size: 25px;
   color: #212121;
   padding: 90px;
-  text-transform: uppercase
+  text-transform: uppercase;
 `;
