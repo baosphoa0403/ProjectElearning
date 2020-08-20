@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <Carousel />
       </ThemeProvider>
     </div>
