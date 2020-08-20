@@ -24,7 +24,6 @@ function App() {
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-       
         <Carousel />
       </ThemeProvider>
     </div>
