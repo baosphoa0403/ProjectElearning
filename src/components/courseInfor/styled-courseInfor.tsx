@@ -8,7 +8,6 @@ export const BodyCourse = styled.h4`
 
 `;
 export const H2Course = styled.h2`
-    text-align: center;
     font-weight: 600;
     letter-spacing: 2px;
     font-size: 40px;
@@ -36,14 +35,15 @@ export const H4Form = styled.h4`
     line-height: 1.2;
 `;
 export const ChoosenForm = styled.div`
-padding-right: 0px;
+    padding-right: 0px;
     margin-top: 3rem!important;
     text-align: left!important;  
 `;
 export const ChoosenFormItem = styled.div`
-padding-right: 0px;
+    padding-right: 0px;
     margin-top: 1rem!important;
     text-align: left!important;  
+    
 `;
 export const H5Choosen = styled.h5`
     margin-left: 10px;
@@ -56,6 +56,49 @@ export const H5Choosen = styled.h5`
     margin-bottom: .5rem!important;
     box-sizing: border-box;
 `;
+export const SelectChoosenLevel = styled.select`
+    text-align: left!important; 
+    height: calc(2.25rem + 2px);
+    text-transform: uppercase;
+    padding: 7px 7px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    outline: none!important;
+    border: 1px solid #fff;
+    background: transparent;
+    width: 183%;
+    color: #fff;
+    @media (max-width:424px) and (min-width: 375px){
+        max-width: 169%;
+        outline none;
+    }
+    @media (max-width:1023px) and (min-width: 768px){
+        width: 143%;
+    }
+`;
+export const SelectChoosenCate = styled.select`
+    text-align: left!important; 
+    height: calc(2.25rem + 2px);
+    text-transform: uppercase;
+    padding: 7px 7px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    outline: none!important;
+    border: 1px solid #fff;
+    background: transparent;
+    width: 108%;
+    color: #fff;
+    @media (max-width:424px) and (min-width: 375px){
+        max-width: 100%;
+        outline none;
+    }
+    @media (max-width:1023px) and (min-width: 768px){
+        max-width: 92%;
+        outline none;
+    }
+`;
 export const SelectChoosen = styled.select`
     text-align: left!important; 
     height: calc(2.25rem + 2px);
@@ -64,16 +107,20 @@ export const SelectChoosen = styled.select`
     font-size: 15px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    outline: none;
+    outline: none!important;
     border: 1px solid #fff;
     background: transparent;
-    width: 90%;
+    width: 94%;
     color: #fff;
+    @media (max-width:1023px) and (min-width: 768px){
+        max-width: 92%;
+        outline none;
+    }
 `;
 
 export const SubChoosen = styled.p`
     text-align: center;
-    color: #19224d;
+    color: #004d40;
     letter-spacing: 0.5px;
     font-size: 16px;
     text-transform: capitalize;
@@ -83,13 +130,21 @@ export const SubChoosen = styled.p`
     border: none;
     outline: none;
     background: transparent;
-    border: 2px solid #19224d;
+    border: 2px solid #004d40;
     border-radius: 2px;
     cursor: pointer;
     transition: 0.5s all;
+    :hover{
+        background: #26a69a;
+        border-color: #26a69a;
+        color: #fff;
+        transition: 0.5s all;
+    }
+    
 `;
 export const BodyChoosen = styled.div`
     margin-left: 20px;
+    box-sizing: border-box;
     
 `;
 

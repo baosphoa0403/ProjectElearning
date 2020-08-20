@@ -9,6 +9,8 @@ import {
     H4Form,
     ChoosenForm,
     H5Choosen,
+    SelectChoosenLevel,
+    SelectChoosenCate,
     SelectChoosen,
     SubChoosen,
     BodyChoosen,
@@ -53,21 +55,21 @@ export default function CourseInfor() {
                             <ChoosenForm>
                                 <H5Choosen>Choose your level : </H5Choosen>
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                    <SelectChoosen>
+                                    <SelectChoosenLevel>
                                         <option className={classes.optionBack} label="Choose level" value="1" />
                                         <option className={classes.optionBack}>Introductory</option>
                                         <option className={classes.optionBack}>Intermediate</option>
                                         <option className={classes.optionBack}>Profession</option>
-                                    </SelectChoosen>
+                                    </SelectChoosenLevel>
                                 </FormControl>
                             </ChoosenForm>
                             <ChoosenFormItem>
                                 <H5Choosen>Category : </H5Choosen>
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                    <SelectChoosen style={{ width: "119%!important" }}>
+                                    <SelectChoosenCate >
                                         <option value="-1" label="Choose the category" className={classes.optionBack} />
                                         <option value="-1" className={classes.optionBack}>Please choose your level</option>
-                                    </SelectChoosen>
+                                    </SelectChoosenCate>
                                 </FormControl>
                             </ChoosenFormItem>
                             <ChoosenFormItem>
@@ -75,7 +77,7 @@ export default function CourseInfor() {
                                 <FormControl variant="outlined" className={classes.formControl}>
                                     <SelectChoosen>
                                         <option value="-1" label="choose the subject" className={classes.optionBack} />
-                                        <option value="-1" className={classes.optionBack}>Please select the level and category</option>
+                                        <option value="-1" className={classes.optionBack}>Please select level, category</option>
                                     </SelectChoosen>
                                 </FormControl>
                             </ChoosenFormItem>
