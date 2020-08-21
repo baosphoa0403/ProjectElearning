@@ -57,6 +57,7 @@ export const H5Choosen = styled.h5`
     box-sizing: border-box;
 `;
 export const SelectChoosenLevel = styled.select`
+    display: block;
     text-align: left!important; 
     height: calc(2.25rem + 2px);
     text-transform: uppercase;
@@ -67,74 +68,42 @@ export const SelectChoosenLevel = styled.select`
     outline: none!important;
     border: 1px solid #fff;
     background: transparent;
-    width: 183%;
+    width: 90%;
     color: #fff;
-    @media (max-width:424px) and (min-width: 375px){
-        max-width: 169%;
-        outline none;
+    @media (min-width: 768px) and (max-width: 991.98px) { 
+
     }
-    @media (max-width:680px) and (min-width: 600px){
-        max-width: 110%;
-        outline none;
-    }
-    @media (max-width:767px) and (min-width: 681px){
-        max-width: 130%;
-        outline none;
-    }
-    @media (max-width:860px) and (min-width: 768px){
-        width: 143%;
-    }
-    @media (max-width:1023px) and (min-width: 860px){
-        width: 160%;
-    }
+  
 `;
 export const SelectChoosenCate = styled.select`
-    text-align: left!important; 
+    display: block;
+    text-align: left; 
     height: calc(2.25rem + 2px);
     text-transform: uppercase;
     padding: 7px 7px;
     font-size: 15px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    outline: none!important;
+    outline: none;
     border: 1px solid #fff;
     background: transparent;
-    width: 108%;
+    width: 90%;
     color: #fff;
-    @media (max-width:424px) and (min-width: 375px){
-        max-width: 100%;
-        outline none;
-    }
-    @media (max-width:680px) and (min-width: 600px){
-        max-width: 96%;
-        outline none;
-    }
-    @media (max-width:767px) and (min-width: 681px){
-        max-width: 96%;
-        outline none;
-    }
-    @media (max-width:1023px) and (min-width: 768px){
-        max-width: 92%;
-        outline none;
-    }
 `;
 export const SelectChoosen = styled.select`
-    text-align: left!important; 
+    display: block;
+    text-align: left; 
     height: calc(2.25rem + 2px);
     text-transform: uppercase;
     padding: 7px 7px;
     font-size: 15px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    outline: none!important;
+    outline: none;
     border: 1px solid #fff;
     background: transparent;
-    width: 94%;
+    width: 90%;
     color: #fff;
-    @media (max-width:1023px) and (min-width: 768px){
-        max-width: 92%;
-        outline none;
-    }
 `;
 
 export const SubChoosen = styled.p`
@@ -145,7 +114,7 @@ export const SubChoosen = styled.p`
     text-transform: capitalize;
     display: block;
     padding: 10px 20px;
-    width: 91%;
+    width: 94%;
     border: none;
     outline: none;
     background: transparent;
@@ -164,6 +133,6 @@ export const SubChoosen = styled.p`
 export const BodyChoosen = styled.div`
     margin-left: 20px;
     box-sizing: border-box;
-    
 `;
+
 

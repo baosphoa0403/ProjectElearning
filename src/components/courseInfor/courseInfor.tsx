@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
 import Container from "@material-ui/core/Container";
 import {
     H2Course,
@@ -34,7 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         optionBack: {
             backgroundColor: '#2d3e50',
-            textAlign: 'left'
+            textAlign: 'left',
+            display: 'block',
+            outline: 'none'
         }
     }),
 );
@@ -43,7 +44,7 @@ export default function CourseInfor() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Container maxWidth="md">
+            <Container fixed>
                 <Grid container >
                     <Grid item xs={12} sm={7}>
                         <H2Course>WELCOME TO PICKBAZAR</H2Course>
@@ -54,32 +55,26 @@ export default function CourseInfor() {
                         <BodyChoosen>
                             <ChoosenForm>
                                 <H5Choosen>Choose your level : </H5Choosen>
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <SelectChoosenLevel>
-                                        <option className={classes.optionBack} label="Choose level" value="1" />
-                                        <option className={classes.optionBack}>Introductory</option>
-                                        <option className={classes.optionBack}>Intermediate</option>
-                                        <option className={classes.optionBack}>Profession</option>
-                                    </SelectChoosenLevel>
-                                </FormControl>
+                                <SelectChoosenLevel className={classes.formControl}>
+                                    <option className={classes.optionBack} label="Choose level" value="1" />
+                                    <option className={classes.optionBack}>Introductory</option>
+                                    <option className={classes.optionBack}>Intermediate</option>
+                                    <option className={classes.optionBack}>Profession</option>
+                                </SelectChoosenLevel>
                             </ChoosenForm>
                             <ChoosenFormItem>
                                 <H5Choosen>Category : </H5Choosen>
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <SelectChoosenCate >
-                                        <option value="-1" label="Choose the category" className={classes.optionBack} />
-                                        <option value="-1" className={classes.optionBack}>Please choose your level</option>
-                                    </SelectChoosenCate>
-                                </FormControl>
+                                <SelectChoosenCate className={classes.formControl}>
+                                    <option value="-1" label="Choose the category" className={classes.optionBack} />
+                                    <option value="-1" className={classes.optionBack}>Please choose your level</option>
+                                </SelectChoosenCate>
                             </ChoosenFormItem>
                             <ChoosenFormItem>
                                 <H5Choosen>Subjects : </H5Choosen>
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <SelectChoosen>
-                                        <option value="-1" label="choose the subject" className={classes.optionBack} />
-                                        <option value="-1" className={classes.optionBack}>Please select level, category</option>
-                                    </SelectChoosen>
-                                </FormControl>
+                                <SelectChoosen className={classes.formControl}>
+                                    <option value="-1" label="choose the subject" className={classes.optionBack} />
+                                    <option value="-1" className={classes.optionBack}>Please select level, category</option>
+                                </SelectChoosen>
                             </ChoosenFormItem>
                             <ChoosenFormItem>
                                 <SubChoosen>Submit </SubChoosen>
