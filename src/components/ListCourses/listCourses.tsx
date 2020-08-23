@@ -80,7 +80,7 @@ function ListCourses() {
   const DivGame = styled.div`
     padding: 30px;
     position: relative !important;
-    width: 9.5em !important;
+    width: 14em !important;
     color: white;
 
     &:hover {
@@ -90,14 +90,14 @@ function ListCourses() {
         animation: gameName 250ms forwards;
       }
       .front {
-        transform: translateY(-15%) scale(0.8);
+        transform: translateY(-20%) scale(0.8);
         color: white;
       }
       .background {
         background: #234;
         transition: transform 250ms ease-in-out, opacity 100ms linear;
         opacity: 1;
-        transform: scale(1, 0.65);
+        transform: scale(1, 0.5);
         display: block;
         min-height: 350px;
         border-radius: 0.5rem;
@@ -147,8 +147,8 @@ function ListCourses() {
   `;
   const ContainIMG = styled.img`
   max-width: 100%;
-  width: 1.7em;
-    height: 1.7em;
+  width: 1.5em;
+    height: 1.5em;
     border-radius: 50%;
     border: 2px solid #0d1113; }
     &:nth-of-type(1) {
@@ -201,243 +201,272 @@ function ListCourses() {
     opacity: 0;
   `;
   const DivListCourses = styled.div`
-    padding: 120px 0 0 0;
-    min-height: 100vh;
+    padding: 40px 0 0 0;
+    height: 500px;
+    margin-top: 3em;
+
     background: #009e7f;
     color: #fff;
   `;
-  const H2Tittle = styled.div`
+  const DivTittle = styled.div`
     text-align: center;
     padding: 50px 20px 50px 20px;
     font-size: 25px;
   `;
+  // const DivContaintSearch = styled.div`
+  //   width: 20em;
+  //   box-shadow: 0 21px 36px rgba(0, 0, 0, 0.05);
+  //   align-items: center;
+  //   display: flex;
+  //   justify-content: center;
+  //   @media only screen and (max-width: 480px) {
+  //   }
+  // `;
+  // const InputForSearchCourses = styled.input`
+  //   padding: 10px 20px 10px 10px;
+  //   flex-grow: 1;
+  //   border: none;
+  //   outline: none;
+  //   font-size: 12px;
+  //   color: #77798c;
+
+  //   width: 100%;
+  //   height: 100%;
+  // `;
   return (
-    <DivListCourses>
-      <Container>
-        <Wrapper>
-          <H2Tittle>LIST OF COURSES</H2Tittle>
-          <Slider {...settings}>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+    <React.Fragment>
+      <DivListCourses>
+        {/* <DivContaintSearch>
+        <InputForSearchCourses type="text" placeholder="Search For Courses" />
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+        <span>Search</span>
+      </DivContaintSearch> */}
+        <Container>
+          <Wrapper>
+            <DivTittle>LIST OF COURSES</DivTittle>
+            <Slider {...settings}>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-            <DivGame className="course">
-              <div className="front">
-                <IMGCourse src="/images/g4.jpg" alt="" />
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
 
-                <H3Name className="name-course">Girl Xinh</H3Name>
-                <DivContaintViewersAndIMGs className="contain-viewers-img">
-                  <P>555,9K</P>
-                  <DivContainIMG>
-                    <ContainIMG src="/images/g1.jpg" alt="" />
-                    <ContainIMG src="/images/g2.png" alt="" />
-                    <ContainIMG src="/images/g3.png" alt="" />
-                  </DivContainIMG>
-                </DivContaintViewersAndIMGs>
-              </div>
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+              <DivGame className="course">
+                <div className="front">
+                  <IMGCourse src="/images/g4.jpg" alt="" />
 
-              <DivBackInFor className="back">
-                <DivCoursesInfor>
-                  <PCoursesStartandViewers>
-                    559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                  <PCoursesStartandViewers>
-                    21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
-                  </PCoursesStartandViewers>
-                </DivCoursesInfor>
-                <Button variant="contained" color="primary">
-                  Add To Cart
-                </Button>
-              </DivBackInFor>
+                  <H3Name className="name-course">Girl Xinh</H3Name>
+                  <DivContaintViewersAndIMGs className="contain-viewers-img">
+                    <P>555,9K</P>
+                    <DivContainIMG>
+                      <ContainIMG src="/images/g1.jpg" alt="" />
+                      <ContainIMG src="/images/g2.png" alt="" />
+                      <ContainIMG src="/images/g3.png" alt="" />
+                    </DivContainIMG>
+                  </DivContaintViewersAndIMGs>
+                </div>
 
-              <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
-            </DivGame>
-          </Slider>
-        </Wrapper>
-      </Container>
-    </DivListCourses>
+                <DivBackInFor className="back">
+                  <DivCoursesInfor>
+                    <PCoursesStartandViewers>
+                      559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                    <PCoursesStartandViewers>
+                      21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                    </PCoursesStartandViewers>
+                  </DivCoursesInfor>
+                  <Button variant="contained" color="primary">
+                    See Detail
+                  </Button>
+                </DivBackInFor>
+
+                <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+              </DivGame>
+            </Slider>
+          </Wrapper>
+        </Container>
+      </DivListCourses>
+    </React.Fragment>
   );
 }
 
