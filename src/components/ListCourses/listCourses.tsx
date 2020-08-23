@@ -204,8 +204,11 @@ function ListCourses() {
     padding: 40px 0 0 0;
     height: 500px;
     margin-top: 3em;
-
-    background: #009e7f;
+    background-image: url(/images/backgroundforlist.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     color: #fff;
   `;
   const DivTittle = styled.div`
@@ -269,7 +272,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -300,7 +303,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -331,7 +334,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -362,7 +365,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -393,7 +396,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -424,7 +427,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>
@@ -455,7 +458,7 @@ function ListCourses() {
                       21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
                     </PCoursesStartandViewers>
                   </DivCoursesInfor>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="secondary">
                     See Detail
                   </Button>
                 </DivBackInFor>

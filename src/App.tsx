@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import IntroduceStep from "./components/IntroduceStep/IntroduceStep";
 import "font-awesome/css/font-awesome.min.css";
 import CourseInfor from "./components/courseInfor/courseInfor";
+import ListCourses from "./components/ListCourses/listCourses";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -31,6 +32,7 @@ function App() {
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
+        <ListCourses />
       </ThemeProvider>
 
       {/* <Carousel /> */}
