@@ -7,6 +7,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import IntroduceStep from "./components/IntroduceStep /IntroduceStep";
 import 'font-awesome/css/font-awesome.min.css';
 import CourseInfor from "./components/courseInfor/courseInfor";
+import IntroduceCourse from "./components/IntroduceCourse/IntroduceCourse";
+import IntroduceTarget from "./components/IntroduceTarget/IntroduceTarget";
 
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
@@ -32,6 +34,8 @@ function App() {
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
+        <IntroduceCourse />
+        <IntroduceTarget />
       </ThemeProvider>
 
       {/* <Carousel /> */}
