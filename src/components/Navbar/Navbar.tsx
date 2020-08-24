@@ -72,7 +72,7 @@ export default function Navbar(props: Props) {
             themeNavbar ? classes.backgroundDark : classes.backgroundLight
           }
         >
-          <img src={Logo} />
+          <img src={Logo} alt="" />
           <Box p={1} flexGrow={1}></Box>
           <Switch
             setBackground={props.setBackground}
@@ -97,7 +97,3 @@ export default function Navbar(props: Props) {
     </div>
   );
 }
-
-
-
-import styled from "styled-components";
