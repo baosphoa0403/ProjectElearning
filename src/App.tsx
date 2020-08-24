@@ -8,6 +8,7 @@ import IntroduceStep from "./components/IntroduceStep/IntroduceStep";
 import "font-awesome/css/font-awesome.min.css";
 import CourseInfor from "./components/courseInfor/courseInfor";
 import ListCourses from "./components/ListCourses/listCourses";
+import SearchForListCourse from "./components/SearchForListCourses/searchforlistcourses";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -33,6 +34,7 @@ function App() {
         <CourseInfor />
         <IntroduceStep />
         <ListCourses />
+        {/* <SearchForListCourse /> */}
       </ThemeProvider>
 
       {/* <Carousel /> */}
