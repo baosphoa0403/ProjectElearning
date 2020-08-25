@@ -13,7 +13,7 @@ export const Div = styled.div`
     margin-bottom: 44px !important;
     margin: 250px 0px;
     @media only screen and (min-width: 320px) and (max-width: 1024px) {
-       display: none;
+      display: none;
     }
   }
   &.content{
