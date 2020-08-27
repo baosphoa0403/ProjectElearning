@@ -17,6 +17,10 @@ import Golang from "./component-icons/golang";
 import Swift from "./component-icons/swift";
 import PS from "./component-icons/ps";
 import Android from "./component-icons/android";
+import Web from "./component-icons/web";
+import Mobile from "./component-icons/mobile";
+
+import RecipeReviewCard from "./cardforlistcourse";
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
 
@@ -87,19 +91,21 @@ export default function SearchForListCourse() {
               textColor="primary"
               aria-label="scrollable force tabs example"
             >
-              <Tab label="NodeJS" icon={<Nodejs />} {...a11yProps(0)} />
-              <Tab label="GoLang" icon={<Golang />} {...a11yProps(1)} />
-              <Tab label="FullStack" icon={<FullStack />} {...a11yProps(2)} />
-              <Tab label="Ps" icon={<PS />} {...a11yProps(3)} />
-              <Tab label="Swift" icon={<Swift />} {...a11yProps(4)} />
-              <Tab label="Android" icon={<Android />} {...a11yProps(5)} />
-              <Tab label="Javascript" icon={<JsIcon />} {...a11yProps(6)} />
-              <Tab label="Reactjs" icon={<Reactjs />} {...a11yProps(7)} />
-              <Tab label="Angular" icon={<Angular />} {...a11yProps(8)} />
+              <Tab label="WebApp" icon={<Web />} {...a11yProps(0)} />
+              <Tab label="MobileApp" icon={<Mobile />} {...a11yProps(1)} />
+              <Tab label="NodeJS" icon={<Nodejs />} {...a11yProps(2)} />
+              <Tab label="GoLang" icon={<Golang />} {...a11yProps(3)} />
+              <Tab label="FullStack" icon={<FullStack />} {...a11yProps(4)} />
+              <Tab label="Ps" icon={<PS />} {...a11yProps(5)} />
+              <Tab label="Swift" icon={<Swift />} {...a11yProps(6)} />
+              <Tab label="Android" icon={<Android />} {...a11yProps(7)} />
+              <Tab label="Javascript" icon={<JsIcon />} {...a11yProps(8)} />
+              <Tab label="Reactjs" icon={<Reactjs />} {...a11yProps(9)} />
+              <Tab label="Angular" icon={<Angular />} {...a11yProps(10)} />
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0}>
-            Item One
+            <RecipeReviewCard />
           </TabPanel>
           <TabPanel value={value} index={1}>
             Item Two
@@ -124,6 +130,12 @@ export default function SearchForListCourse() {
           </TabPanel>
           <TabPanel value={value} index={8}>
             Item nine
+          </TabPanel>
+          <TabPanel value={value} index={9}>
+            Item ten
+          </TabPanel>
+          <TabPanel value={value} index={10}>
+            Item elevent
           </TabPanel>
         </div>
       </Container>

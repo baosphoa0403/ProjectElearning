@@ -28,13 +28,13 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <CssBaseline />
+        {/* <CssBaseline />
         <Navbar setBackground={setBackground} />
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
-        <ListCourses />
-        {/* <SearchForListCourse /> */}
+        <ListCourses /> */}
+        <SearchForListCourse />
       </ThemeProvider>
 
       {/* <Carousel /> */}
