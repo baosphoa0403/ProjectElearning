@@ -18,6 +18,13 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Star from "./component-icons/star";
+const randomMoney = () => {
+  let number = Math.random() * (1000 - 1) + 1;
+
+  let string = number.toString();
+  let index = string.indexOf(".");
+  return string.slice(0, index);
+};
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -140,13 +147,7 @@ export default function RecipeReviewCard() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const randomMoney = () => {
-    let number = Math.random() * (1000 - 1) + 1;
 
-    let string = number.toString();
-    let index = string.indexOf(".");
-    return string.slice(0, index);
-  };
   return (
     <Card className={classes.root}>
       <SpanAmination></SpanAmination>

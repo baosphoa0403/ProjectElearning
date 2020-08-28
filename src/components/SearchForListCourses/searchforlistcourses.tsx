@@ -19,7 +19,7 @@ import PS from "./component-icons/ps";
 import Android from "./component-icons/android";
 import Web from "./component-icons/web";
 import Mobile from "./component-icons/mobile";
-
+import Cart from "./cart";
 import RecipeReviewCard from "./cardforlistcourse";
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
@@ -139,6 +139,7 @@ export default function SearchForListCourse() {
           </TabPanel>
         </div>
       </Container>
+      <Cart />
     </React.Fragment>
   );
 }
