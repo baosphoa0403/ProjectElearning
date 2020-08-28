@@ -11,6 +11,9 @@ import Instructors from "./components/Instructors/Instructors";
 import Footer from "./components/Footer/footer";
 import "font-awesome/css/font-awesome.min.css";
 import CourseInfor from "./components/courseInfor/courseInfor";
+import IntroduceCourse from "./components/IntroduceCourse/IntroduceCourse";
+import IntroduceTarget from "./components/IntroduceTarget/IntroduceTarget";
+
 import ListCourses from "./components/ListCourses/listCourses";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
@@ -39,6 +42,8 @@ function App() {
         <Achievements/>
         <Instructors/>
         <Footer/>
+        <IntroduceCourse />
+        <IntroduceTarget />
         <ListCourses />
       </ThemeProvider>
 
