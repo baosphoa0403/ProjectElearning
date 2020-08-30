@@ -21,6 +21,9 @@ import Web from "./component-icons/web";
 import Mobile from "./component-icons/mobile";
 import Cart from "./cart";
 import RecipeReviewCard from "./cardforlistcourse";
+
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
 
@@ -59,6 +62,17 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper,
+  },
+  rootGrid: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(0),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  justifyContent: {
+    justifyContent: "center",
   },
 }));
 
@@ -105,7 +119,30 @@ export default function SearchForListCourse() {
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0}>
-            <RecipeReviewCard />
+            <div className={classes.rootGrid}>
+              <Grid container spacing={3} className={classes.justifyContent}>
+                <Grid item lg={3}>
+                  <Paper className={classes.paper}>
+                    <RecipeReviewCard />
+                  </Paper>
+                </Grid>
+                <Grid item lg={3}>
+                  <Paper className={classes.paper}>
+                    <RecipeReviewCard />
+                  </Paper>
+                </Grid>
+                <Grid item lg={3}>
+                  <Paper className={classes.paper}>
+                    <RecipeReviewCard />
+                  </Paper>
+                </Grid>
+                <Grid item lg={3}>
+                  <Paper className={classes.paper}>
+                    <RecipeReviewCard />
+                  </Paper>
+                </Grid>
+              </Grid>
+            </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
             Item Two
