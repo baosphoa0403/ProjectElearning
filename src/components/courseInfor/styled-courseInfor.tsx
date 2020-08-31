@@ -69,11 +69,7 @@ export const SelectChoosenLevel = styled.select`
     border: 1px solid #fff;
     background: transparent;
     width: 90%;
-    color: #fff;
-    @media (min-width: 768px) and (max-width: 991.98px) { 
-
-    }
-  
+    color: #fff; 
 `;
 export const SelectChoosenCate = styled.select`
     display: block;
