@@ -13,8 +13,8 @@ import "font-awesome/css/font-awesome.min.css";
 import CourseInfor from "./components/courseInfor/courseInfor";
 import IntroduceCourse from "./components/IntroduceCourse/IntroduceCourse";
 import IntroduceTarget from "./components/IntroduceTarget/IntroduceTarget";
-
 import ListCourses from "./components/ListCourses/listCourses";
+import CourseDetail from "./components/CourseDetail/CourseDetail";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -36,7 +36,7 @@ function App() {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <Navbar setBackground={setBackground} />
-        <Carousel />
+        {/* <Carousel />
         <CourseInfor />
         <IntroduceStep />
         <IntroduceTarget />
@@ -44,7 +44,8 @@ function App() {
         <ListCourses />
         <Instructors/>
         <Achievements/>
-        <Footer/>
+        <Footer/> */}
+        <CourseDetail />
       </ThemeProvider>
 
       {/* <Carousel /> */}
