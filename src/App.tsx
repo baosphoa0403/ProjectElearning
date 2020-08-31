@@ -15,6 +15,7 @@ import IntroduceCourse from "./components/IntroduceCourse/IntroduceCourse";
 import IntroduceTarget from "./components/IntroduceTarget/IntroduceTarget";
 
 import ListCourses from "./components/ListCourses/listCourses";
+import SearchForListCourse from "./components/SearchForListCourses/searchforlistcourses";
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -34,11 +35,13 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <CssBaseline />
+        {/* <CssBaseline />
         <Navbar setBackground={setBackground} />
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
+        <ListCourses /> */}
+        <SearchForListCourse />
         <IntroduceTarget />
         <IntroduceCourse />
         <ListCourses />
