@@ -39,12 +39,12 @@ function App() {
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
-        <Achievements/>
-        <Instructors/>
-        <Footer/>
-        <IntroduceCourse />
         <IntroduceTarget />
+        <IntroduceCourse />
         <ListCourses />
+        <Instructors/>
+        <Achievements/>
+        <Footer/>
       </ThemeProvider>
 
       {/* <Carousel /> */}
