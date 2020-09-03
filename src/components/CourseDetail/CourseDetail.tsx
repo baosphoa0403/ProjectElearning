@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Container from "@material-ui/core/Container";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Cart from "../SearchForListCourses/cart";
 const useStyles = makeStyles(theme => ({
   h2: {
     fontSize: "21px",
@@ -50,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 export default function CourseDetail() {
   const classes = useStyles();
+  const [isOpen, setOpen] = React.useState(false);
   return (
     <React.Fragment>
       <Container >
@@ -116,7 +118,7 @@ export default function CourseDetail() {
               <Typography component="div">
                 <ButtonCard>
                   <ShoppingBasketIcon />
-                  <Typography component="p" className={classes.add}>
+                  <Typography component="p" className={classes.add} onClick={()=>{setOpen(!isOpen)}}>
                     Add To Cart
                   </Typography>
                 </ButtonCard>
@@ -125,6 +127,7 @@ export default function CourseDetail() {
           </Grid>
         </DivProductView>
       </Container>
+      <Cart/>
     </React.Fragment>
   );
 }
