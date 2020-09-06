@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: theme.palette.background.paper,
         display: 'flex',
         height: 224,
+        marginTop: "200px"
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
@@ -82,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         textColor:'green'
     },
     item1: {
-        padding: '30px 0',
+        // padding: '30px 0',
         backgroundColor: '#fff',
         boxShadow: '0 6px 9px rgba(50,50,93,.06), 0 2px 5px rgba(0,0,0,.08)',
         // overflow: 'scroll',
@@ -90,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
     },
     item11: {
-        padding: '30px 0',
+        // padding: '30px 0',
         backgroundColor: '#fff',
         boxShadow: '0 6px 9px rgba(50,50,93,.06), 0 2px 5px rgba(0,0,0,.08)',
         // overflow: 'scroll',
@@ -142,7 +143,7 @@ export default function VerticalTabs() {
 
     return (
         <React.Fragment>
-            <Container maxWidth="lg">
+            <Container fixed>
                 <div className={classes.root}>
                     <Grid container >
                         <Grid item xs={12} className={classes.hello} sm={3}>

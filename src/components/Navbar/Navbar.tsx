@@ -93,7 +93,7 @@ export default function Navbar(props: Props) {
               Sign up
             </Button>
           </Box>
-          <InforUses/>
+          {/* <InforUses/> */}
         </Toolbar>
       </AppBar>
     </div>
