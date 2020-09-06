@@ -12,8 +12,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-import { createMuiTheme } from '@material-ui/core/styles';
-import green from "@material-ui/core/colors/green"
 import {
     H3Item1,
     SpanItem1,
@@ -27,7 +25,7 @@ import {
     LabelItem2,
     InputItem2,
     Div,
-    Div2
+
 
 } from "./styled-inforusers"
 interface TabPanelProps {
@@ -69,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: theme.palette.background.paper,
         display: 'flex',
         height: 224,
-        marginTop: "200px"
+        marginTop: '200px',
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
@@ -80,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         padding: '50px 0',
         listStyle: 'none',
         indicatorColor: 'green',
-        textColor:'green'
+        textColor: 'green'
     },
     item1: {
         // padding: '30px 0',
@@ -120,7 +118,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     hello: {
         [theme.breakpoints.between('sm', 'md')]: {
             display: 'none',
-          },
+        },
     }
 
 }));
@@ -129,13 +127,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function VerticalTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-    const theme = createMuiTheme({
-        palette: {
-          secondary: {
-            main: '#f44336',
-          },
-        },
-      });
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
@@ -146,7 +137,7 @@ export default function VerticalTabs() {
             <Container fixed>
                 <div className={classes.root}>
                     <Grid container >
-                        <Grid item xs={12} className={classes.hello} sm={3}>
+                        <Grid item xs={12} className={classes.hello} lg={3}>
                             <Div>
                                 <Tabs
                                     orientation="vertical"
@@ -155,7 +146,7 @@ export default function VerticalTabs() {
                                     onChange={handleChange}
                                     className={classes.tabs}
                                     indicatorColor="primary"
-                                   
+
                                 >
                                     <Tab label="Your Order" {...a11yProps(0)} />
                                     <Tab label="Checkout" {...a11yProps(1)} />
@@ -165,7 +156,7 @@ export default function VerticalTabs() {
                                 </Tabs>
                             </Div>
                         </Grid>
-                        <Grid item xs={12}  sm={9} >
+                        <Grid item xs={12} sm={12} md={12} lg={9}>
                             <TabPanel value={value} index={0}>
                                 <Grid item xs={12} sm={9} className={classes.item1}>
                                     <H3Item1>My Order</H3Item1>
@@ -177,7 +168,7 @@ export default function VerticalTabs() {
                                 </Grid> */}
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                {/* <Div2> */}
+
                                 <DivItem2>
                                     <DivCheckoutItem2>
                                         <H3Item2>Your order</H3Item2>
@@ -258,7 +249,7 @@ export default function VerticalTabs() {
                                     </DivCheckoutItem2>
                                     <button className={classes.button2}>Proceed to Checkout</button>
                                 </DivItem2>
-                                {/* </Div2>a */}
+
                             </TabPanel>
                             <TabPanel value={value} index={2}>
                                 <DivItem2>
@@ -309,7 +300,7 @@ export default function VerticalTabs() {
 
                             </TabPanel>
                             <TabPanel value={value} index={3}>
-                                Item Four
+                                Logout
                     </TabPanel>
                         </Grid>
                     </Grid>
