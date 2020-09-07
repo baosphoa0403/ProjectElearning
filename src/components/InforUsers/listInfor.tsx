@@ -120,7 +120,6 @@ const useStyles = makeStyles((theme: Theme) => ({
             display: 'none',
         },
     }
-
 }));
 
 
