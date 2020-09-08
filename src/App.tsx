@@ -17,6 +17,7 @@ import IntroduceTarget from "./components/IntroduceTarget/IntroduceTarget";
 import ListCourses from "./components/ListCourses/listCourses";
 import SearchForListCourse from "./components/SearchForListCourses/searchforlistcourses";
 import TabPanel from "./components/InforUsers/listInfor"
+import Test from "./components/Test/Test";
 
 function App() {
   const [darkMode, setDarkMode] = React.useState(false);
@@ -51,6 +52,7 @@ function App() {
         <Instructors />
         <Achievements />
         <Footer /> */}
+        <Test />
         <TabPanel />
            
       </ThemeProvider>
