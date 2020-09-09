@@ -1,15 +1,10 @@
-import { combineReducers, createStore } from 'redux';
-import { IDemoState } from '../constant/Constant';
-import { demoReducer } from '../action/Action';
+import { combineReducers } from "redux";
+// import {createStore} from "redux";
+import testReducer from "../../components/Test/Modules/Reducers/Reducers";
+const rootReducer = combineReducers({
+  testReducer,
+});
 
+export type rootState = ReturnType<typeof rootReducer>;
 
-export interface IRootState {
-    demo: IDemoState
-}
-
-const store = createStore<IRootState, any, any, any>(
-    combineReducers({
-        demo: demoReducer
-}));
-
-export default store;
+export default rootReducer;

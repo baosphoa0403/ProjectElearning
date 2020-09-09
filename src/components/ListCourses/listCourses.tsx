@@ -94,7 +94,7 @@ function ListCourses() {
         color: white;
       }
       .background {
-        background: #234;
+        background: #009e7f;
         transition: transform 250ms ease-in-out, opacity 100ms linear;
         opacity: 1;
         transform: scale(1, 0.5);
