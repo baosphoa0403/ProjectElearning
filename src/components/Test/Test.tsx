@@ -14,9 +14,9 @@ interface TestArr {
     )
 }
 
-const mapStateToProps = (state: testReducer) => {
+const mapStateToProps = (state: any) => {
    return {
-     arr: state.testReducer.arr1
+     arr: state.test.arr1
    }
 }
 const mapDispatchToProps = () => {
