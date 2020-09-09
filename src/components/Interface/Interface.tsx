@@ -3,3 +3,6 @@ export interface Test {
 }
 
 // export interface RootState {}
+export interface Home {
+  listCourses: [];
+}

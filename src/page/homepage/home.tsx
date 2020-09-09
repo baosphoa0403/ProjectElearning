@@ -11,7 +11,11 @@ import Achievements from "../../components/Achievements/Achievements";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Footer from "../../components/Footer/footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
-function HomePage() {
+import { connect } from "react-redux";
+import { rootState } from "../../../src/redux/reducers/Reducers";
+import { useEffect } from "react";
+import * as action from "../module/actions/action";
+function HomePage(props: any) {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
     palette: {
@@ -26,6 +30,9 @@ function HomePage() {
   const setBackground = (value: boolean) => {
     setDarkMode(value);
   };
+  useEffect(() => {
+    props.getListCourses();
+  }, []);
 
   return (
     <React.Fragment>
@@ -37,7 +44,7 @@ function HomePage() {
         <IntroduceStep />
 
         <IntroduceTarget />
-        <ListCourses />
+        <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
@@ -46,5 +53,16 @@ function HomePage() {
     </React.Fragment>
   );
 }
-
-export default HomePage;
+const mapStateToProps = (state: rootState) => {
+  return {
+    newListCourses: state.reducerHome.listCourses,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getListCourses: () => {
+      dispatch(action.funGetListCoureseAPI());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
