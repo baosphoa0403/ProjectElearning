@@ -35,9 +35,9 @@ function HomePage() {
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
-        <ListCourses />
 
         <IntroduceTarget />
+        <ListCourses />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
