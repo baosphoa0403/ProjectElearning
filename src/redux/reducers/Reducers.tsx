@@ -1,12 +1,10 @@
-import { combineReducers} from 'redux';
-import { IDemoState } from '../constant/Constant';
-import { demoReducer } from '../action/Action';
-import testReducer from "../../components/Test/Modules/Reducers/Reducers"
+import { combineReducers } from "redux";
+// import {createStore} from "redux";
+import testReducer from "../../components/Test/Modules/Reducers/Reducers";
 const rootReducer = combineReducers({
-    testReducer
-})
+  testReducer,
+});
 
+export type rootState = ReturnType<typeof rootReducer>;
 
-export default type rootState = ReturnType<typeof rootReducer>
-
-// export type RootState = ReturnType<typeof rootReducer>
+export default rootReducer;

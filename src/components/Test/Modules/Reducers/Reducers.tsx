@@ -1,25 +1,31 @@
 import { Test } from "../../../Interface/Interface";
-import * as ActionType from "../Actions/Action"
+import * as ActionType from "../Contants/Contants";
+
 const initialState: Test = {
-   arr1: [
-       {name: "hihi", age: 20},
-       {name: "bảo", age: 20},
-       {name: "sang", age: 20},
-    ] 
-}
+  arr1: [
+    { name: "hihi", age: 20 },
+    { name: "bảo", age: 20 },
+    { name: "sang", age: 20 },
+  ],
+};
 
+const testReducer = (state: Test = initialState, action: any) => {
+  switch (action.type) {
+    case ActionType.getHihi:
+      console.log("hihi");
+      return { ...state };
+    case ActionType.addHello:
+      console.log("gui len roi", action.value);
 
-const testReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case ActionType.hihi:
-            console.log("haha");
-            return {...state}
-           
-    
-        default:
-            break;
-    }
-    return {...state}
-}
+      return { ...state };
+    case ActionType.getHaha:
+      console.log("haha");
 
-export default testReducer
+      return { ...state };
+    default:
+      break;
+  }
+  return { ...state };
+};
+
+export default testReducer;
