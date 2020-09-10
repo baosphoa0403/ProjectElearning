@@ -6,17 +6,18 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Container from "@material-ui/core/Container";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Cart from "../SearchForListCourses/cart";
-const useStyles = makeStyles(theme => ({
+import { RouteComponentProps, withRouter } from "react-router-dom";
+const useStyles = makeStyles((theme) => ({
   h2: {
     fontSize: "21px",
     fontWeight: 700,
-    color: "#0d1136"
+    color: "#0d1136",
   },
   p: {
     fontSize: "14px",
-    color: "#77798c"
+    color: "#77798c",
   },
   content: {
     fontSize: "15px",
@@ -26,54 +27,57 @@ const useStyles = makeStyles(theme => ({
     height: "115px",
     // do readMore and less
     overflow: "hidden",
-    margin: "0"
+    margin: "0",
   },
   readMore: {
     color: "#009e7f",
     fontWeight: 600,
     cursor: "pointer",
     marginBottom: "50px",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
   },
   price: {
     fontSize: "22px",
     fontWeight: 600,
     color: "#009e7f",
-    marginBottom: "20px"
+    marginBottom: "20px",
   },
   add: {
-    margin: "0px 10px"
-  }, 
+    margin: "0px 10px",
+  },
   icon: {
     margin: "-7px 0px",
-    fontSize: "25px"
-  }
+    fontSize: "25px",
+  },
 }));
-export default function CourseDetail() {
+interface PropsParams extends RouteComponentProps<{ id: string }> {}
+function CourseDetailChild(props: PropsParams) {
   const classes = useStyles();
   const [isOpen, setOpen] = React.useState(false);
+  console.log(props.match.params);
+
   return (
     <React.Fragment>
-      <Container >
+      <Container>
         <DivProductView>
-          <Grid container direction="row" justify="center" alignItems="flex-start">
-            <Grid lg={6} xl={6} md={6} >
-              <ButtonBack> 
-              <ArrowBackIcon className={classes.icon}/>
-              <Typography
-                component="span"
-                variant="button"
-              >
-                Back
-              </Typography>
-               
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+          >
+            <Grid lg={6} xl={6} md={6}>
+              <ButtonBack>
+                <ArrowBackIcon className={classes.icon} />
+                <Typography component="span" variant="button">
+                  Back
+                </Typography>
               </ButtonBack>
               <Img>
-              <img src={imgTest} width="100%" height="100%" />
+                <img src={imgTest} width="100%" height="100%" alt="" />
               </Img>
-
             </Grid>
-            <Grid lg={6} xl={6} md={6} >
+            <Grid lg={6} xl={6} md={6}>
               <Typography variant="h5" component="h2" className={classes.h2}>
                 The Golden Treasury of Children Literature
               </Typography>
@@ -118,7 +122,13 @@ export default function CourseDetail() {
               <Typography component="div">
                 <ButtonCard>
                   <ShoppingBasketIcon />
-                  <Typography component="p" className={classes.add} onClick={()=>{setOpen(!isOpen)}}>
+                  <Typography
+                    component="p"
+                    className={classes.add}
+                    onClick={() => {
+                      setOpen(!isOpen);
+                    }}
+                  >
                     Add To Cart
                   </Typography>
                 </ButtonCard>
@@ -127,7 +137,9 @@ export default function CourseDetail() {
           </Grid>
         </DivProductView>
       </Container>
-      <Cart/>
+      <Cart />
     </React.Fragment>
   );
 }
+const CourseDetail = withRouter(CourseDetailChild as any); //Note: It is a workaround not an actual solution
+export default CourseDetail;
