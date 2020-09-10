@@ -65,6 +65,9 @@ export default function Navbar(props: Props) {
     console.log(value);
     setThemeNavbar(value);
   };
+
+  const [user, setUser] = React.useState({})
+  
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
