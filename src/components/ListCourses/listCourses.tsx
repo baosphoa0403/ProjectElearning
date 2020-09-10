@@ -3,6 +3,10 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import img1 from "../../images/george-clinton.jpg";
+import img2 from "../../images/george-richards.jpg";
+import img3 from "../../images/robert-richards.jpg";
 function ListCourses(props: any) {
   const settings = {
     infinite: true,
@@ -58,11 +62,15 @@ function ListCourses(props: any) {
 
             <H3Name className="name-course">{course.tenKhoaHoc}</H3Name>
             <DivContaintViewersAndIMGs className="contain-viewers-img">
-              <P>555,9K</P>
+              <DivViews>
+                {" "}
+                {course.luotXem}
+                <VisibilityIcon />
+              </DivViews>
               <DivContainIMG>
-                <ContainIMG src="/images/g1.jpg" alt="" />
-                <ContainIMG src="/images/g2.png" alt="" />
-                <ContainIMG src="/images/g3.png" alt="" />
+                <ContainIMG src={img1} alt="" />
+                <ContainIMG src={img2} alt="" />
+                <ContainIMG src={img3} alt="" />
               </DivContainIMG>
             </DivContaintViewersAndIMGs>
           </div>
@@ -70,10 +78,12 @@ function ListCourses(props: any) {
           <DivBackInFor className="back">
             <DivCoursesInfor>
               <PCoursesStartandViewers>
-                559k<SpanCoursesInfor>Watching</SpanCoursesInfor>
+                {course.luotXem}
+                <SpanCoursesInfor>Watching</SpanCoursesInfor>
               </PCoursesStartandViewers>
               <PCoursesStartandViewers>
-                21/11/2016<SpanCoursesInfor>Opening</SpanCoursesInfor>
+                {course.ngayTao}
+                <SpanCoursesInfor>Opening</SpanCoursesInfor>
               </PCoursesStartandViewers>
             </DivCoursesInfor>
             <Button variant="contained" color="secondary">
@@ -153,8 +163,10 @@ function ListCourses(props: any) {
     }
   `;
 
-  const P = styled.p`
-    margin: 0;
+  const DivViews = styled.p`
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `;
 
   const DivBackInFor = styled.div`
