@@ -11,35 +11,49 @@ import {
   ElementpLoginHere,
   ElementaLoginHere,
 } from "./styled-component-signup";
+import { useForm } from "react-hook-form";
+interface InputSignUp {
+  taiKhoan: string,
+  matKhau: string,
+  hoTen: string,
+  soDT: string,
+  maNhom: string,
+  email: string,
+  errorInput: string,
+}
 function SignUp() {
+  const { register, handleSubmit, errors } = useForm<InputSignUp>();
+  const onSubmit = (data: InputSignUp) => {
+    alert(JSON.stringify(data, null));
+  };
   return (
     <BodySignUp>
       <DivBackground>
         <Container maxWidth="sm">
           <DivSignUpContent>
-            <form id="signup-form" className="signup-form">
+            <form id="signup-form" className="signup-form" onSubmit={handleSubmit(onSubmit)}>
               <H2SignUp>Create account</H2SignUp>
 
               <DivFormGroup>
-                <InputFormSignUp type="text" placeholder="Your Email" />
+                <InputFormSignUp type="text" placeholder="Your Email" ref={register}/>
               </DivFormGroup>
 
               <DivFormGroup>
-                <InputFormSignUp type="text" placeholder="Account" />
+                <InputFormSignUp type="text" placeholder="Account" ref={register}/>
               </DivFormGroup>
               <DivFormGroup>
-                <InputFormSignUp type="password" placeholder="Password" />
-              </DivFormGroup>
-
-              <DivFormGroup>
-                <InputFormSignUp type="text" placeholder="Your Name" />
-              </DivFormGroup>
-              <DivFormGroup>
-                <InputFormSignUp type="text" placeholder="Phone Number" />
+                <InputFormSignUp type="password" placeholder="Password" ref={register} />
               </DivFormGroup>
 
               <DivFormGroup>
-                <InputFormSignUp type="text" placeholder="Code Group" />
+                <InputFormSignUp type="text" placeholder="Your Name" ref={register} />
+              </DivFormGroup>
+              <DivFormGroup>
+                <InputFormSignUp type="text" placeholder="Phone Number" ref={register}/>
+              </DivFormGroup>
+
+              <DivFormGroup>
+                <InputFormSignUp type="text" placeholder="Code Group" ref={register}/>
               </DivFormGroup>
               <DivFormGroup>
                 <InputSubmitSignUp
