@@ -59,18 +59,18 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 interface Props {
   setBackground: (value: boolean) => void;
- 
+  user: {hoTen: String}
 }
 
 
-function Navbar(props: Props) {
+const Navbar: React.FC<Props>  = ({setBackground, user}) => {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
     setThemeNavbar(value);
   };
-  console.log(props.user);
+  console.log(user);
   
   return (
 
@@ -85,10 +85,12 @@ function Navbar(props: Props) {
           <img src={Logo} alt="" />
           <Box p={1} flexGrow={1}></Box>
           <Switch
-            setBackground={props.setBackground}
+            setBackground={setBackground}
             setBackgroundNavbar={setBackgroundNavbar}
           />
-          <Box p={1}>
+          
+          {user.hoTen === "" ? (<span>
+            <Box p={1}>
             <Button
               className={themeNavbar ? classes.buttonDark : classes.buttonLight}
             >
@@ -102,16 +104,14 @@ function Navbar(props: Props) {
               Sign up
             </Button>
           </Box>
-          {/* <InforUses/> */}
+          </span>) : (<p style={{color: "red"}}>{user.hoTen}</p>)  }
+       
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+export default Navbar
 
-const mapStateToProps = (state: rootState) => {
-  return{
-    user: state.SignUpReducer.user
-  }  
-}
-export default connect(mapStateToProps, null)(Navbar);
+
+

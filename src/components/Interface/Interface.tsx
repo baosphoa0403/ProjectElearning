@@ -5,7 +5,7 @@ export interface Test {
 // export interface RootState {}
 
 export interface SignUp {
-  user: {}
+  user: {hoTen: String}
 }
 export interface Home {
   listCourses: [];

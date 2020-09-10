@@ -1,7 +1,7 @@
 import {SignUp} from "../../../Interface/Interface"
 import * as ActionType from "../Contants/Contants"
 const initialState: SignUp = {
-    user: {}
+    user: {hoTen: ""}
 };
   
 

@@ -43,7 +43,6 @@ function HomePage(props: any) {
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
-
         <IntroduceTarget />
         <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
