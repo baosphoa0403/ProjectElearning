@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
+import InforUses from "../InforUsers/inforUses"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -92,6 +93,7 @@ export default function Navbar(props: Props) {
               Sign up
             </Button>
           </Box>
+          {/* <InforUses/> */}
         </Toolbar>
       </AppBar>
     </div>
