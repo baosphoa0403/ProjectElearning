@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Div = styled.div`
   &.start {
-    margin: 200px 0px;
+    margin: 50px 0px;
     background-color: #009e7f !important;
     img {
       max-width: 100%;
