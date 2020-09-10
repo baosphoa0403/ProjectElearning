@@ -12,6 +12,7 @@ import {
   ElementpLoginHere,
   ElementaSignUpHere,
 } from "./styled-component-login";
+import { connect } from "react-redux";
 import * as action from "./Modules/Actions/Action";
 interface Inputs {
    taiKhoan: string, 
@@ -19,12 +20,14 @@ interface Inputs {
    errorInput: string
 }
 
-export default function Login() {
+
+ function Login(props: any) {
   const { register, handleSubmit, errors } = useForm<Inputs>({
     mode: "onBlur"
   });
+  
   const onSubmit = (data: Inputs) =>{
-    action.actSignInAPI(data)
+    props.getListCourses(data)
   }
   return (
     <BodyLogin>
@@ -36,13 +39,13 @@ export default function Login() {
                 <form id="login-form" className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <H2Login>USER LOGIN</H2Login>
                   <DivFormGroup>
-                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Dont Forget Your Username Should Be Cool!"})}
+                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Don't Forget Your Username Should Be Cool!"})}
                     style={{borderColor: errors.taiKhoan && "red"}}
                     />
                      {errors.taiKhoan && <p style={{color: "red"}}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
-                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Dont Forget Your Password Should Be Cool!"})}
+                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Don't Forget Your Password Should Be Cool!"})}
                      style={{borderColor: errors.matKhau && "red"}}
                     />
                     {errors.matKhau && <p style={{color: "red"}}>{errors.matKhau.message}</p>}
@@ -73,4 +76,12 @@ export default function Login() {
 
   )
 }
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getListCourses: (data: any) => {
+      dispatch(action.actSignInAPI(data));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Login)
 

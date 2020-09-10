@@ -7,6 +7,9 @@ import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import InforUses from "../InforUsers/inforUses"
+import {rootState} from "../../redux/reducers/Reducers"
+import { connect } from "react-redux";
+import {SignUp} from "../Interface/Interface"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -56,19 +59,22 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 interface Props {
   setBackground: (value: boolean) => void;
+ 
 }
 
-export default function Navbar(props: Props) {
+
+function Navbar(props: Props) {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
     setThemeNavbar(value);
   };
-
-  const [user, setUser] = React.useState({})
+  console.log(props.user);
   
   return (
+
+    
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar
@@ -102,3 +108,10 @@ export default function Navbar(props: Props) {
     </div>
   );
 }
+
+const mapStateToProps = (state: rootState) => {
+  return{
+    user: state.SignUpReducer.user
+  }  
+}
+export default connect(mapStateToProps, null)(Navbar);

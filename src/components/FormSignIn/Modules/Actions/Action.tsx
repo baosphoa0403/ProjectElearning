@@ -6,8 +6,6 @@ interface Data{
   matKhau: string,
   errorInput: string
 }
-
-
 export const actSignInAPI =  (data: Data) => {
   console.log(data);
   return async (dispatch: any) => {
@@ -18,19 +16,15 @@ export const actSignInAPI =  (data: Data) => {
         data
       })
       Swal.fire("Sign In Success !", "Click OK to exit!", "success");
-      console.log(res.data);
       localStorage.setItem("user", JSON.stringify(res.data))
       dispatch(actSignIn(res.data))
   } catch (error) {
-      console.log(error);
-      Swal.fire("Sign In Fail!", error.response.data, "error");
-  }
-  }
-}
 
-export const actSignIn =  (user: any) => {
-  console.log(user);
-  
+      Swal.fire("Sign In Fail!", error.response.data, "error");
+  }  
+ }
+}
+export const actSignIn =  (user: any) => {  
   return {
      type: ActionType.signIn,
      data: user

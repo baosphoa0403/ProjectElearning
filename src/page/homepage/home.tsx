@@ -11,8 +11,12 @@ import Achievements from "../../components/Achievements/Achievements";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Footer from "../../components/Footer/footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { connect } from "react-redux";
+import { rootState } from "../../../src/redux/reducers/Reducers";
+import { useEffect } from "react";
+import * as action from "../module/actions/action";
 import Login from "../../components/FormSignIn/signin";
-function HomePage() {
+function HomePage(props: any) {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
     palette: {
@@ -27,26 +31,41 @@ function HomePage() {
   const setBackground = (value: boolean) => {
     setDarkMode(value);
   };
+  useEffect(() => {
+    props.getListCourses();
+  }, []);
 
   return (
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        {/* <CssBaseline />
-        <Navbar setBackground={setBackground} />
+        <CssBaseline />
+        <Navbar setBackground={setBackground} user={props.user} />
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
 
         <IntroduceTarget />
-        <ListCourses />
+        <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
-        <Footer /> */}
+        <Footer />
         <Login />
       </ThemeProvider>
     </React.Fragment>
   );
 }
-
-export default HomePage;
+const mapStateToProps = (state: rootState) => {
+  return {
+    newListCourses: state.reducerHome.listCourses,
+    user: state.SignUpReducer.user
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getListCourses: () => {
+      dispatch(action.funGetListCoureseAPI());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

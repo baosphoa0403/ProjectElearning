@@ -5,5 +5,8 @@ export interface Test {
 // export interface RootState {}
 
 export interface SignUp {
-  user: any
+  user: {}
+}
+export interface Home {
+  listCourses: [];
 }
