@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from "@material-ui/core/Container";
+import { useForm } from "react-hook-form";
 import {
   BodyLogin,
   DivBackground,
@@ -11,7 +12,23 @@ import {
   ElementpLoginHere,
   ElementaSignUpHere,
 } from "./styled-component-login";
-export default function Login() {
+import { connect } from "react-redux";
+import * as action from "./Modules/Actions/Action";
+interface Inputs {
+   taiKhoan: string, 
+   matKhau: string,
+   errorInput: string
+}
+
+
+ function Login(props: any) {
+  const { register, handleSubmit, errors } = useForm<Inputs>({
+    mode: "onBlur"
+  });
+  
+  const onSubmit = (data: Inputs) =>{
+    props.getListCourses(data)
+  }
   return (
     <BodyLogin>
       <DivBackground>
@@ -19,13 +36,19 @@ export default function Login() {
           <section className="login">
             <Container maxWidth="sm">
               <DivLoginContent>
-                <form id="login-form" className="login-form">
+                <form id="login-form" className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <H2Login>USER LOGIN</H2Login>
                   <DivFormGroup>
-                    <InputFormLogin type="text" placeholder="Account" />
+                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Don't Forget Your Username Should Be Cool!"})}
+                    style={{borderColor: errors.taiKhoan && "red"}}
+                    />
+                     {errors.taiKhoan && <p style={{color: "red"}}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
-                    <InputFormLogin type="password" placeholder="Password" />
+                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Don't Forget Your Password Should Be Cool!"})}
+                     style={{borderColor: errors.matKhau && "red"}}
+                    />
+                    {errors.matKhau && <p style={{color: "red"}}>{errors.matKhau.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
                     <InputSubmitLogin
@@ -53,4 +76,12 @@ export default function Login() {
 
   )
 }
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getListCourses: (data: any) => {
+      dispatch(action.actSignInAPI(data));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Login)
 
