@@ -1,12 +1,34 @@
 import React from "react";
 import "./App.css";
 
-import HomePage from "./page/homepage/home";
+import { routesHome } from "./routes/index";
+import { HomeTemplate } from "./templates/HomeTemplate";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 function App() {
+  const showHomeLayout = (routesHome: any) => {
+    if (routesHome && routesHome.length > 0) {
+      return routesHome.map((item: any, index: any) => {
+        return (
+          <HomeTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        );
+      });
+    }
+  };
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route>
+          {showHomeLayout(routesHome)}
+
+          {/* <Route path="/admin" component={Admin} exact={false} /> */}
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
