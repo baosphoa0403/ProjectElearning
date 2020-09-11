@@ -89,7 +89,7 @@ const Navbar: React.FC<Props>  = ({setBackground, user}) => {
             setBackgroundNavbar={setBackgroundNavbar}
           />
           
-          {user.hoTen === "" ? (<span>
+          {user.hoTen === "" ? (<span style={{display:'flex'}}>
             <Box p={1}>
             <Button
               className={themeNavbar ? classes.buttonDark : classes.buttonLight}
