@@ -14,7 +14,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 import { rootState } from "../../../src/redux/reducers/Reducers";
 import { useEffect } from "react";
-import * as action from "../module/actions/action";
+import Login from "../../components/FormSignIn/signin";
+import * as action from "./module/actions/action";
+import SignUp from "../../components/SignUp/SignUp";
 function HomePage(props: any) {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -38,17 +40,18 @@ function HomePage(props: any) {
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Navbar setBackground={setBackground} />
+        <Navbar setBackground={setBackground} user={props.user} />
         <Carousel />
         <CourseInfor />
         <IntroduceStep />
-
         <IntroduceTarget />
         <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
         <Footer />
+        <Login />
+        <SignUp />
       </ThemeProvider>
     </React.Fragment>
   );
@@ -56,6 +59,7 @@ function HomePage(props: any) {
 const mapStateToProps = (state: rootState) => {
   return {
     newListCourses: state.reducerHome.listCourses,
+    user: state.SignUpReducer.user
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

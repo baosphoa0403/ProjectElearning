@@ -7,6 +7,19 @@ import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import InforUses from "../InforUsers/inforUses"
+import { rootState } from "../../redux/reducers/Reducers"
+import { connect } from "react-redux";
+import { SignUp } from "../Interface/Interface"
+import styled from "styled-components";
+const NameUser = styled.p`
+  font-size: 28px;
+  margin: auto 40px;
+  color: black;
+  // font-family: Arial, Helvetica, sans-serif !important;
+  &:hover{
+    color: #26a69a;
+  }
+`
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -56,16 +69,22 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 interface Props {
   setBackground: (value: boolean) => void;
+  user: { hoTen: String }
 }
 
-export default function Navbar(props: Props) {
+
+const Navbar: React.FC<Props> = ({ setBackground, user }) => {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
     setThemeNavbar(value);
   };
+  console.log(user);
+
   return (
+
+
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar
@@ -76,26 +95,33 @@ export default function Navbar(props: Props) {
           <img src={Logo} alt="" />
           <Box p={1} flexGrow={1}></Box>
           <Switch
-            setBackground={props.setBackground}
+            setBackground={setBackground}
             setBackgroundNavbar={setBackgroundNavbar}
           />
-          <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign In
+
+          {user.hoTen === "" ? (<span style={{ display: 'flex' }}>
+            <Box p={1}>
+              <Button
+                className={themeNavbar ? classes.buttonDark : classes.buttonLight}
+              >
+                Sign In
             </Button>
-          </Box>
-          <Box p={1}>
-            <Button
-              className={themeNavbar ? classes.buttonDark : classes.buttonLight}
-            >
-              Sign up
+            </Box>
+            <Box p={1}>
+              <Button
+                className={themeNavbar ? classes.buttonDark : classes.buttonLight}
+              >
+                Sign up
             </Button>
-          </Box>
-          {/* <InforUses/> */}
+            </Box>
+          </span>) : (<NameUser>Hello, {user.hoTen}</NameUser>)}
+
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+export default Navbar
+
+
+

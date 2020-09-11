@@ -1,9 +1,9 @@
-import { SignUp } from "../../../Interface/Interface"
+import { SignUps } from "../../../Interface/Interface"
 import * as ActionType from "../Constant/Constants"
-const initialState: SignUp = {
+const initialState: SignUps = {
     user: {}
 }
-const SignUpsReducer = (state: SignUp = initialState, action: any) => {
+const SignUpsReducer = (state: SignUps = initialState, action: any) => {
     switch (action.type) {
         case ActionType.SIGN_UP:
             console.log(action.data);
