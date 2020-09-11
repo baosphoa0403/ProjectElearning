@@ -57,7 +57,7 @@ function HomePage(props: any) {
 const mapStateToProps = (state: rootState) => {
   return {
     newListCourses: state.reducerHome.listCourses,
-    user: state.SignUpReducer.user
+    user: state.SignInReducer.user
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

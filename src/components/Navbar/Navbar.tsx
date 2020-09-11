@@ -6,10 +6,6 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
-import InforUses from "../InforUsers/inforUses"
-import { rootState } from "../../redux/reducers/Reducers"
-import { connect } from "react-redux";
-import { SignUp } from "../Interface/Interface"
 import styled from "styled-components";
 const NameUser = styled.p`
   font-size: 28px;
