@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
-// import {createStore} from "redux";
 import testReducer from "../../components/Test/Modules/Reducers/Reducers";
-import reducerHome from "../../page/module/reducers/reducer";
 import SignUpReducer from "../../components/FormSignIn/Modules/Reducers/Reducers";
+import reducerHome from "../../page/homepage/module/reducers/reducer";
 const rootReducer = combineReducers({
   testReducer,
   reducerHome,
