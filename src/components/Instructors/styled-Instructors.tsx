@@ -9,6 +9,7 @@ export const BodyInstructor = styled.div`
   background-position: center center;
   box-sizing: border-box;
   background-color: #f2f6fb;
+  padding-bottom: 55px;
 
   .slick-next {
     right: 0;
