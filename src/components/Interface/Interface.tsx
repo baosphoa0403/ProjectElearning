@@ -4,7 +4,7 @@ export interface Test {
 
 // export interface RootState {}
 
-export interface SignUp {
+export interface SignIn {
   user: {hoTen: String}
 }
 export interface Home {

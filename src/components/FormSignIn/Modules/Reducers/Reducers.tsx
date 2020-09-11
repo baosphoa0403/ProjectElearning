@@ -1,11 +1,11 @@
-import {SignUp} from "../../../Interface/Interface"
+import {SignIn} from "../../../Interface/Interface"
 import * as ActionType from "../Contants/Contants"
-const initialState: SignUp = {
+const initialState: SignIn = {
     user: {hoTen: ""}
 };
   
 
-const SignUpReducer = (state: SignUp = initialState, action: any) => {
+const SignInReducer = (state: SignIn = initialState, action: any) => {
     switch (action.type) {
       case ActionType.signIn:
         console.log(action.data);
@@ -18,4 +18,4 @@ const SignUpReducer = (state: SignUp = initialState, action: any) => {
     return { ...state };
   };
   
-  export default SignUpReducer; 
+  export default SignInReducer; 
