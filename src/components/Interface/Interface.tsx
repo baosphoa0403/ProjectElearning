@@ -10,3 +10,6 @@ export interface SignIn {
 export interface Home {
   listCourses: [];
 }
+export interface SignUps {
+  user: {}
+}

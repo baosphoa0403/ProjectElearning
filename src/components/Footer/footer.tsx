@@ -2,6 +2,10 @@ import React from 'react'
 import Container from "@material-ui/core/Container";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import {
     BodyFooter,
     PageContent,
@@ -15,9 +19,6 @@ import {
     PageListIMG,
     H6ItemIMG,
     PageContentIMG
-
-
-
 } from "./styled-footer"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             flexGrow: 1,
         },
-       
+
 
     }),
 );
@@ -97,24 +98,16 @@ export default function Footer() {
                             <Content><H6Content>SOCIAL.NETWORK</H6Content></Content>
                             <PageListIMG>
                                 <PageListItemIMG>
-                                    <IMGitem><H6ItemIMG href="https://www.facebook.com/"><i className="fa fa-facebook"></i></H6ItemIMG></IMGitem>
-
+                                    <IMGitem><H6ItemIMG href="https://www.facebook.com/"><FacebookIcon /></H6ItemIMG></IMGitem>
                                 </PageListItemIMG>
                                 <PageListItemIMG>
-                                    <IMGitem><H6ItemIMG href="https://www.twitter.com/"><i className="fa fa-twitter"></i></H6ItemIMG></IMGitem>
-
+                                    <IMGitem><H6ItemIMG href="https://www.twitter.com/"><TwitterIcon /></H6ItemIMG></IMGitem>
                                 </PageListItemIMG>
                                 <PageListItemIMG>
-                                    <IMGitem><H6ItemIMG href="https://www.instagram.com/"><i className="fa fa-instagram"></i></H6ItemIMG></IMGitem>
-
+                                    <IMGitem><H6ItemIMG href="https://www.instagram.com/"><InstagramIcon /></H6ItemIMG></IMGitem>
                                 </PageListItemIMG>
                                 <PageListItemIMG>
-                                    <IMGitem><H6ItemIMG href="https://www.behance.net/"><i className="fa fa-behance"></i></H6ItemIMG></IMGitem>
-
-                                </PageListItemIMG>
-                                <PageListItemIMG>
-                                    <IMGitem><H6ItemIMG href="https://www.youtube.com/"><i className="fa fa-youtube"></i></H6ItemIMG></IMGitem>
-
+                                    <IMGitem><H6ItemIMG href="https://www.youtube.com/"><YouTubeIcon /></H6ItemIMG></IMGitem>
                                 </PageListItemIMG>
                             </PageListIMG>
                         </PageContentIMG>

@@ -63,12 +63,12 @@ const useStyles = makeStyles({
 export default function Instructors() {
   const classes = useStyles();
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 3100,
+    autoplaySpeed: 2700,
     // nextArrow: <NextArrow/>,
     // prevArrow: <PrevArrow />,
   };
