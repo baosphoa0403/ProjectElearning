@@ -1,21 +1,20 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Container from "@material-ui/core/Container";
-
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import YouTubeIcon from '@material-ui/icons/YouTube';
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import YouTubeIcon from "@material-ui/icons/YouTube";
 import img1 from "../../images/george-clinton.jpg";
 import img2 from "../../images/george-richards.jpg";
 import img3 from "../../images/robert-richards.jpg";
@@ -26,15 +25,14 @@ import img7 from "../../images/namrata-parmar.jpg";
 import {
   BodyInstructor,
   InstructorTop,
-  InstructorH3
-} from './styled-Instructors';
+  InstructorH3,
+} from "./styled-Instructors";
 const useStyles = makeStyles({
   root: {
     maxHeight: 345,
     maxWidth: 300,
-    textAlign: 'center',
-    margin: '20px 5px',
-
+    textAlign: "center",
+    margin: "20px 5px",
   },
   media: {
     height: 200,
@@ -65,23 +63,22 @@ const useStyles = makeStyles({
 export default function Instructors() {
   const classes = useStyles();
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 3100,
+    autoplaySpeed: 2700,
     // nextArrow: <NextArrow/>,
     // prevArrow: <PrevArrow />,
-
   };
   return (
     <BodyInstructor>
-      <Container maxWidth="md" >
+      <Container maxWidth="md">
         <InstructorTop>
           <InstructorH3>Top Instructors</InstructorH3>
         </InstructorTop>
-        <Slider {...settings} >
+        <Slider {...settings}>
           <div>
             <Card className={classes.root}>
               <CardActionArea>
@@ -92,25 +89,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    George Clinton
+                    George
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Photograher, Travel Bloger
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Developer
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -125,25 +126,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    George Richards
+                    Richards
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
                     Teacher
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -158,25 +163,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Demo Instructor
+                    William
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
                     Teacher
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -191,25 +200,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Jane Doe
+                    JaneDoe
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
                     Coach Fitness Trainer
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -224,25 +237,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Namrata Parmar
+                    Narata
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Marketing Consultants 
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Marketing Consultants
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -257,25 +274,29 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                  Betty Milner
+                    Betty
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Photograher, Travel Bloger
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Travel Bloger
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
@@ -290,32 +311,35 @@ export default function Instructors() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    George Clinton
+                    Clintonter
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Photograher, Travel Bloger
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Photograher
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <IconButton aria-label="add to favorites">
-                  <FacebookIcon style={{ color: '#1976d2' }} />
+                  <FacebookIcon style={{ color: "#1976d2" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <TwitterIcon style={{ color: '#2196f3' }} />
+                  <TwitterIcon style={{ color: "#2196f3" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <InstagramIcon style={{ color: '#ab47bc' }} />
+                  <InstagramIcon style={{ color: "#ab47bc" }} />
                 </IconButton>
                 <IconButton aria-label="add to favorites">
-                  <YouTubeIcon style={{ color: 'red' }} />
+                  <YouTubeIcon style={{ color: "red" }} />
                 </IconButton>
               </CardActions>
             </Card>
           </div>
         </Slider>
-      </Container >
+      </Container>
     </BodyInstructor>
-
-  )
+  );
 }

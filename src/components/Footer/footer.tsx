@@ -15,9 +15,6 @@ import {
     PageListIMG,
     H6ItemIMG,
     PageContentIMG
-
-
-
 } from "./styled-footer"
 
 const useStyles = makeStyles((theme: Theme) =>

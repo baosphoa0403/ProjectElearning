@@ -1,9 +1,1 @@
-import React from 'react'
-
-export default function Constants() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+export const SIGN_UP = "SIGN_UP";
