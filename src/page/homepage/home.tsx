@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import Login from "../../components/FormSignIn/signin";
 import * as action from "./module/actions/action";
 import SignUp from "../../components/SignUp/SignUp";
+import SearchForListCourse from "../searchforcourse/searchForCourse";
 function HomePage(props: any) {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -39,7 +40,7 @@ function HomePage(props: any) {
   return (
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        <CssBaseline />
+        {/* <CssBaseline />
         <Navbar setBackground={setBackground} user={props.user} />
         <Carousel />
         <CourseInfor />
@@ -51,7 +52,8 @@ function HomePage(props: any) {
         <Achievements />
         <Footer />
         <Login />
-        <SignUp />
+        <SignUp /> */}
+        <SearchForListCourse />
       </ThemeProvider>
     </React.Fragment>
   );
@@ -59,7 +61,7 @@ function HomePage(props: any) {
 const mapStateToProps = (state: rootState) => {
   return {
     newListCourses: state.reducerHome.listCourses,
-    user: state.SignInReducer.user
+    user: state.SignInReducer.user,
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

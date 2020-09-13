@@ -139,18 +139,14 @@ function CourseDetailChild(props: PropsParams) {
                 component="p"
                 className={classes.content}
               >
-                nibh quisque id justo sit amet sapien dignissim vestibulum
-                vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia curae nulla dapibus dolor vel est donec odio
-                justo sollicitudin ut suscipit a feugiat et eros vestibulum ac
-                est lacinia nisi venenatis tristique fusce congue diam id ornare
-                imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed
-                augue aliquam erat volutpat in congue etiam justo etiam pretium
-                iaculis justo in hac habitasse platea dictumst etiam faucibus
-                cursus urna ut tellus nulla ut erat id mauris vulputate
-                elementum nullam varius nulla facilisi cras non velit nec nisi
-                vulputate nonummy maecenas tincidunt lacus at velit vivamus vel
-                nulla eget eros elementum pellentesque quisque porta volutpat
+                The direction and constancy of the will is what really matters,
+                and intellect and feeling are only important insofar as they
+                contribute to that . There is only one way to happiness, and
+                that is to cease worrying things which are beyond the power of
+                our will . Don’t let your will roar when your power only
+                whispers. You can bind my body, tie my hands, govern my actions:
+                you are the strongest, and society adds to your power; but with
+                my will, sir, you can do nothing.
               </Typography>
               <Typography
                 component="div"
