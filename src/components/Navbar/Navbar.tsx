@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import styled from "styled-components";
+import Typography from '@material-ui/core/Typography';
 const NameUser = styled.p`
   font-size: 28px;
   margin: auto 40px;
@@ -89,12 +90,18 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
           }
         >
           <img src={Logo} alt="" />
-          <Box p={1} flexGrow={1}></Box>
+
+          <Box p={1} flexGrow={1}>
+            <ul style={{listStyle: "none", display: "flex", justifyContent: "center", fontSize: "20px" }}>
+              <li style={{color: "black", margin: "0px 100px"}}>Home</li>
+              <li style={{color: "black"}}>List Course</li>
+            </ul>
+          </Box>
           <Switch
             setBackground={setBackground}
             setBackgroundNavbar={setBackgroundNavbar}
           />
-
+          
           {user.hoTen === "" ? (<span style={{ display: 'flex' }}>
             <Box p={1}>
               <Button
