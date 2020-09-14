@@ -28,7 +28,8 @@ const randomMoney = () => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
+      width: "16em",
+
       position: "relative",
     },
     media: {
@@ -57,6 +58,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     width100: {
       width: "100%",
+    },
+    title: {
+      height: "25px",
+      overflow: "hidden",
+      display: "block",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
     },
   })
 );
@@ -140,10 +148,20 @@ const H3Money = styled.h3`
   font-size: 23px;
   font-weight: bold;
 `;
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard(props: any) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  let {
+    course,
+    WebApp,
+    Mobile,
+    Nodejs,
+    Golang,
+    FullStack,
+    Ps,
+    Reactjs,
+    AllCourse,
+  } = props;
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -157,7 +175,14 @@ export default function RecipeReviewCard() {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {WebApp === "WebApp" && "W"}
+            {Mobile === "Mobile" && "M"}
+            {Nodejs === "Nodejs" && "N"}
+            {Golang === "Golang" && "G"}
+            {Ps === "Ps" && "P"}
+            {Reactjs === "Reactjs" && "R"}
+            {AllCourse === "AllCourse" && "A"}
+            {FullStack === "FullStack" && "F"}
           </Avatar>
         }
         action={
@@ -165,12 +190,12 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Lập trình Golang 2020"
-        subheader="31/03/2020"
+        title={<span className={classes.title}>{course.tenKhoaHoc}</span>}
+        subheader={course.ngayTao}
       />
       <CardMedia
         className={classes.media}
-        image="/images/2.png"
+        image={course.hinhAnh}
         title="Paella dish"
       />
       <CardContent className={classes.displayJustifyContent}>

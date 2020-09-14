@@ -21,3 +21,6 @@ export interface Home {
 export interface SignUps {
   user: {};
 }
+export interface DetailCourse {
+  detailCourse: {};
+}
