@@ -4,9 +4,9 @@ import * as ActionType from "../Contants/Contants"
 interface Data{
   taiKhoan: string, 
   matKhau: string,
-  errorInput: string
+  errorInput: string,
 }
-export const actSignInAPI =  (data: Data) => {
+export const actSignInAPI =  (data: Data, history:any) => {
   console.log(data);
   return async (dispatch: any) => {
     try {
@@ -18,8 +18,8 @@ export const actSignInAPI =  (data: Data) => {
       Swal.fire("Sign In Success !", "Click OK to exit!", "success");
       localStorage.setItem("user", JSON.stringify(res.data))
       dispatch(actSignIn(res.data))
+      history.push("/")
   } catch (error) {
-
       Swal.fire("Sign In Fail!", error.response.data, "error");
   }  
  }

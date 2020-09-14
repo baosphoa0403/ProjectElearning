@@ -1,5 +1,6 @@
 import HomePage from "../page/homepage/home";
 import DetailCourse from "../page/detailcourses/detailcourse";
+import Login from "../components/FormSignIn/signin";
 const routesHome = [
   {
     path: "/",
@@ -16,5 +17,10 @@ const routesHome = [
     exact: false,
     component: DetailCourse,
   },
+  {
+    path: "/signIn",
+    exact: false,
+    component: Login
+  }
 ];
 export { routesHome };
