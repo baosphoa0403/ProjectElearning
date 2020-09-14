@@ -7,13 +7,13 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import JsIcon from "./component-icons/jsicon";
+
 import Nodejs from "./component-icons/nodejs";
 import FullStack from "./component-icons/fullstack";
 import Reactjs from "./component-icons/react";
-import Angular from "./component-icons/angular";
+
 import Golang from "./component-icons/golang";
-import Swift from "./component-icons/swift";
+
 import PS from "./component-icons/ps";
 import AllCourse from "./component-icons/allcourse";
 import Web from "./component-icons/web";
@@ -36,7 +36,7 @@ function TabPanel(props: any) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -93,9 +93,9 @@ export default function SearchForListCourse(props: any) {
         course.biDanh === "khoa-fullstack"
       );
     });
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} WebApp="WebApp" />
           </Paper>
@@ -108,9 +108,9 @@ export default function SearchForListCourse(props: any) {
       return course.biDanh === "android-cookie" || course.biDanh === "swift-os";
     });
 
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} Mobile="Mobile" />
           </Paper>
@@ -123,9 +123,9 @@ export default function SearchForListCourse(props: any) {
       return course.biDanh === "nodejs";
     });
 
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} Nodejs="Nodejs" />
           </Paper>
@@ -139,9 +139,9 @@ export default function SearchForListCourse(props: any) {
       return course.biDanh === "lap-trinh-golang-2020";
     });
 
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} Golang="Golang" />
           </Paper>
@@ -154,9 +154,9 @@ export default function SearchForListCourse(props: any) {
       return course.biDanh === "khoa-fullstack";
     });
 
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} FullStack="FullStack" />
           </Paper>
@@ -169,9 +169,9 @@ export default function SearchForListCourse(props: any) {
     const newCourses = listCourses.filter((course: any) => {
       return course.biDanh === "photoshop-2020";
     });
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} Ps="Ps" />
           </Paper>
@@ -184,9 +184,9 @@ export default function SearchForListCourse(props: any) {
     const newCourses = listCourses.filter((course: any) => {
       return course.biDanh === "reactjs";
     });
-    return newCourses.map((course: any) => {
+    return newCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} Reactjs="Reactjs" />
           </Paper>
@@ -196,9 +196,9 @@ export default function SearchForListCourse(props: any) {
   };
 
   const getListCourse = () => {
-    return listCourses.map((course: any) => {
+    return listCourses.map((course: any, index: any) => {
       return (
-        <Grid item lg={3}>
+        <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
             <RecipeReviewCard course={course} AllCourse="AllCourse" />
           </Paper>
