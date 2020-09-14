@@ -50,8 +50,6 @@ function HomePage(props: any) {
         <Instructors />
         <Achievements />
         <Footer />
-        <Login />
-        <SignUp />
       </ThemeProvider>
     </React.Fragment>
   );
