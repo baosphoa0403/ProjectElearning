@@ -11,8 +11,6 @@ function SearchForCourse() {
         "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
-        console.log(res.data);
-
         setListCourse(res.data);
       })
       .catch((err: any) => {

@@ -81,8 +81,10 @@ function CourseDetailChild(props: PropsParams) {
     },
   });
   let id = props.match.params.id;
-  console.log(newCourse);
-
+  const [valueForCart, setValueForCart] = React.useState(false);
+  const handleCart = (value: any) => {
+    setValueForCart(value);
+  };
   useEffect(() => {
     console.log(id);
 
@@ -166,6 +168,7 @@ function CourseDetailChild(props: PropsParams) {
                     className={classes.add}
                     onClick={() => {
                       setOpen(!isOpen);
+                      setValueForCart(true);
                     }}
                   >
                     Add To Cart
@@ -177,7 +180,7 @@ function CourseDetailChild(props: PropsParams) {
         </DivProductView>
       </Container>
 
-      <Cart />
+      <Cart valueForCart={valueForCart} handleCart={handleCart} />
     </React.Fragment>
   );
 }
@@ -189,5 +192,6 @@ function CourseDetailChild(props: PropsParams) {
 // const mapDispatchToProps = (dispatch: any) => {
 //   return {};
 // };
+
 const CourseDetail = withRouter(CourseDetailChild as any); //Note: It is a workaround not an actual solution
 export default CourseDetail;

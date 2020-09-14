@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { rootState } from "../../redux/reducers/Reducers";
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -130,13 +132,16 @@ const DivTotal = styled.div`
     margin: 0;
   }
 `;
-
-function Cart() {
-  const [valueCart, setValueCart] = useState(false);
+interface Props {
+  valueForCart: boolean;
+  handleCart: (value: any) => void;
+}
+function Cart(props: Props) {
+  let { valueForCart } = props;
 
   return (
     <React.Fragment>
-      <DivNavigationCart className={valueCart ? "show" : "hidden"}>
+      <DivNavigationCart className={valueForCart ? "show" : "hidden"}>
         <DivHeaderNavigationCart>
           <div className="item-header">
             <span>
@@ -147,7 +152,7 @@ function Cart() {
           <div
             className="img-toogle"
             onClick={() => {
-              setValueCart(false);
+              props.handleCart(false);
             }}
           >
             <img src="/icons/x.png" alt="" />
@@ -164,7 +169,7 @@ function Cart() {
 
       <DivToogle
         onClick={() => {
-          setValueCart(true);
+          props.handleCart(true);
         }}
       >
         <DivItem className="item">
@@ -178,5 +183,9 @@ function Cart() {
     </React.Fragment>
   );
 }
-
-export default Cart;
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
+  };
+};
+export default connect(mapStateToProps, null)(Cart);

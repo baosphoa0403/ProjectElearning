@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchForListCourse(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const [valueForCart, setValueForCart] = React.useState(false);
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
@@ -97,7 +97,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} WebApp="WebApp" />
+            <RecipeReviewCard
+              course={course}
+              WebApp="WebApp"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -112,7 +116,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} Mobile="Mobile" />
+            <RecipeReviewCard
+              course={course}
+              Mobile="Mobile"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -127,7 +135,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} Nodejs="Nodejs" />
+            <RecipeReviewCard
+              course={course}
+              Nodejs="Nodejs"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -143,7 +155,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} Golang="Golang" />
+            <RecipeReviewCard
+              course={course}
+              Golang="Golang"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -158,7 +174,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} FullStack="FullStack" />
+            <RecipeReviewCard
+              course={course}
+              FullStack="FullStack"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -173,7 +193,7 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} Ps="Ps" />
+            <RecipeReviewCard course={course} Ps="Ps" handleCart={handleCart} />
           </Paper>
         </Grid>
       );
@@ -188,7 +208,11 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} Reactjs="Reactjs" />
+            <RecipeReviewCard
+              course={course}
+              Reactjs="Reactjs"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
@@ -200,11 +224,18 @@ export default function SearchForListCourse(props: any) {
       return (
         <Grid item lg={3} key={index}>
           <Paper className={classes.paper}>
-            <RecipeReviewCard course={course} AllCourse="AllCourse" />
+            <RecipeReviewCard
+              course={course}
+              AllCourse="AllCourse"
+              handleCart={handleCart}
+            />
           </Paper>
         </Grid>
       );
     });
+  };
+  const handleCart = (value: any) => {
+    setValueForCart(value);
   };
   return (
     <React.Fragment>
@@ -295,7 +326,7 @@ export default function SearchForListCourse(props: any) {
           </TabPanel>
         </div>
       </Container>
-      <Cart />
+      <Cart valueForCart={valueForCart} handleCart={handleCart} />
     </React.Fragment>
   );
 }

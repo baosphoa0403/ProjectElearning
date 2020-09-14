@@ -11,20 +11,14 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Star from "./component-icons/star";
-const randomMoney = () => {
-  let number = Math.random() * (1000 - 1) + 1;
-
-  let string = number.toString();
-  let index = string.indexOf(".");
-  return string.slice(0, index);
-};
+import { connect } from "react-redux";
+import * as action from "./moduleForCard/actions/action";
+import { rootState } from "../../redux/reducers/Reducers";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -144,11 +138,20 @@ const SpanAmination = styled.span`
     }
   }
 `;
-const H3Money = styled.h3`
-  font-size: 23px;
-  font-weight: bold;
+const DivStyleTolTal = styled.div`
+  span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3c3b37;
+  }
+  .best-sell {
+    text-decoration-line: line-through;
+    font-size: 16px;
+    padding: 5px;
+    color: #73726c;
+  }
 `;
-export default function RecipeReviewCard(props: any) {
+function RecipeReviewCard(props: any) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   let {
@@ -207,7 +210,10 @@ export default function RecipeReviewCard(props: any) {
           <Star />
         </div>
 
-        <H3Money>${randomMoney()}</H3Money>
+        <DivStyleTolTal>
+          <span>$10</span>
+          <span className="best-sell">$199</span>
+        </DivStyleTolTal>
       </CardContent>
       <CardActions disableSpacing className={classes.displayJustifyContent}>
         <IconButton
@@ -224,6 +230,10 @@ export default function RecipeReviewCard(props: any) {
           variant="contained"
           color="secondary"
           className={classes.width100}
+          onClick={() => {
+            props.handleCart(true);
+            props.sendCourse(course);
+          }}
         >
           Add To Cart
         </Button>
@@ -231,12 +241,20 @@ export default function RecipeReviewCard(props: any) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            onion, salt and pepper, and cook, stirring often until thickened and
-            fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-            cups chicken broth; bring to a boil.
+            The direction and constancy of the will is what really matters, and
+            intellect and feeling are only important insofar as they contribute
+            to that
           </Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
 }
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    sendCourse: (course: any) => {
+      dispatch(action.actSendCourseToStore(course));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(RecipeReviewCard);
