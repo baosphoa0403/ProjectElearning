@@ -45,7 +45,7 @@ function ListCourses(props: any) {
       },
     ],
   };
-  console.log(props.listCourses);
+
   let { listCourses } = props;
 
   const renderListCourses = () => {
@@ -86,26 +86,28 @@ function ListCourses(props: any) {
       }
     }
   `;
-  const DivListCourses = styled.div`
-    padding: 40px 0 0 0;
-    height: 500px;
-    margin-top: 3em;
-    background-image: url(/images/backgroundforlist.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    color: #fff;
-  `;
-  const DivTittle = styled.div`
-    text-align: center;
-    padding: 50px 20px 50px 20px;
-    font-size: 25px;
+  const Div = styled.div`
+    &.listcourse {
+      padding: 40px 0 0 0;
+      height: 500px;
+      margin-top: 3em;
+      background-image: url(/images/backgroundforlist.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+    &.tiltecourse {
+      text-align: center;
+      padding: 50px 20px 50px 20px;
+      font-size: 25px;
+    }
   `;
 
   return (
     <React.Fragment>
-      <DivListCourses>
+      <Div className="listcourse">
         {/* <DivContaintSearch>
         <InputForSearchCourses type="text" placeholder="Search For Courses" />
 
@@ -113,11 +115,11 @@ function ListCourses(props: any) {
       </DivContaintSearch> */}
         <Container>
           <Wrapper>
-            <DivTittle>LIST OF COURSES</DivTittle>
+            <Div>LIST OF COURSES</Div>
             <Slider {...settings}>{renderListCourses()}</Slider>
           </Wrapper>
         </Container>
-      </DivListCourses>
+      </Div>
     </React.Fragment>
   );
 }
