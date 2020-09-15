@@ -27,7 +27,7 @@ interface Inputs {
   });
   
   const onSubmit = (data: Inputs) =>{
-    props.getListCourses(data)
+    props.getListCourses(data, props.history)
   }
   return (
     <BodyLogin>
@@ -78,8 +78,8 @@ interface Inputs {
 }
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    getListCourses: (data: any) => {
-      dispatch(action.actSignInAPI(data));
+    getListCourses: (data: any, history: any) => {
+      dispatch(action.actSignInAPI(data, history));
     },
   };
 };
