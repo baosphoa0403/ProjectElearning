@@ -8,10 +8,13 @@ import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Typography from '@material-ui/core/Typography';
+import InforUses from "../InforUsers/inforUses";
 const NameUser = styled.p`
   font-size: 28px;
-  margin: auto 40px;
+  margin: auto 10px;
   color: black;
+  display: flex;
   // font-family: Arial, Helvetica, sans-serif !important;
   &:hover{
     color: #26a69a;
@@ -65,23 +68,41 @@ const useStyles = makeStyles((theme: Theme) =>
     signUpStyle: {
       textDecoration: "none",
       color: "white"
-    } 
+    }
   })
 );
 interface Props {
   setBackground: (value: boolean) => void;
-  user: { hoTen: String }
+  props: any
 }
 
 
-const Navbar: React.FC<Props> = ({ setBackground, user }) => {
+const Navbar: React.FC<Props> = ({ setBackground, props }) => {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
     setThemeNavbar(value);
   };
-  console.log(user);
+  const [user1, setUser] = React.useState();
+  const emitRoute = () => {
+    props.history.push("/signIn")
+  }
+  console.log(user1);
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let userLocal: any = localStorage.getItem("user");
+      let user: any = JSON.parse(userLocal);
+      setUser(user)
+    }
+  }, [])
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null)
+  }
+
+
 
   return (
 
@@ -94,16 +115,23 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
           }
         >
           <img src={Logo} alt="" />
-          <Box p={1} flexGrow={1}></Box>
+
+          <Box p={1} flexGrow={1}>
+            <ul style={{ listStyle: "none", display: "flex", justifyContent: "center", fontSize: "20px" }}>
+              <li style={{ color: "black", margin: "0px 100px" }}>Home</li>
+              <li style={{ color: "black" }}>List Course</li>
+            </ul>
+          </Box>
           <Switch
             setBackground={setBackground}
             setBackgroundNavbar={setBackgroundNavbar}
           />
 
-          {user.hoTen === "" ? (<span style={{ display: 'flex' }}>
+          {!user1 ? (<span style={{ display: 'flex' }}>
             <Box p={1}>
               <Button
                 className={themeNavbar ? classes.buttonDark : classes.buttonLight}
+                onClick={emitRoute}
               >
                 Sign In
             </Button>
@@ -115,7 +143,7 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
                 <Link className={classes.signUpStyle} to="/signUp">Sign up</Link>
               </Button>
             </Box>
-          </span>) : (<NameUser>Hello, {user.hoTen}</NameUser>)}
+          </span>) : (<NameUser>Hello {user1?.hoTen}  <InforUses logout={logout} /></NameUser>)}
 
         </Toolbar>
       </AppBar>

@@ -5,13 +5,24 @@ export interface Test {
 // export interface RootState {}
 
 export interface SignIn {
-  user: { hoTen: String }
+  user: {
+    hoTen: String,
+    accessToken: String,
+    email: String,
+    maLoaiNguoiDung: String,
+    maNhom: String,
+    soDT: String,
+    taiKhoan: String,
+  };
 }
 export interface Home {
   listCourses: [];
 }
 export interface SignUps {
-  user: {}
+  user: {};
+}
+export interface DetailCourse {
+  detailCourse: {};
 }
 export interface YourProfiles {
   data: { taiKhoan: string, matKhau: string }
