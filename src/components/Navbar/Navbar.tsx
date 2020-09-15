@@ -8,6 +8,7 @@ import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
+import InforUses from "../InforUsers/inforUses";
 const NameUser = styled.p`
   font-size: 28px;
   margin: auto 40px;
@@ -20,21 +21,21 @@ const NameUser = styled.p`
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     title: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     backgroundLight: {
       backgroundColor: "#fff",
-      padding: "20px 20px",
+      padding: "20px 20px"
     },
     backgroundDark: {
       backgroundColor: "#212121",
-      padding: "20px 20px",
+      padding: "20px 20px"
     },
     buttonLight: {
       backgroundColor: "#009e7f",
@@ -43,11 +44,11 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "45px",
       fontWeight: "bold",
       [theme.breakpoints.between("xs", "sm")]: {
-        fontSize: "10px",
+        fontSize: "10px"
       },
       "&:hover": {
-        backgroundColor: "#009e7f",
-      },
+        backgroundColor: "#009e7f"
+      }
     },
     buttonDark: {
       backgroundColor: "#009e7f",
@@ -56,27 +57,43 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "45px",
       fontWeight: "bold",
       [theme.breakpoints.between("xs", "sm")]: {
-        fontSize: "10px",
+        fontSize: "10px"
       },
       "&:hover": {
-        backgroundColor: "#009e7f",
-      },
-    },
+        backgroundColor: "#009e7f"
+      }
+    }
   })
 );
 interface Props {
   setBackground: (value: boolean) => void;
-  user: { hoTen: String };
+  props: any;
 }
 
-const Navbar: React.FC<Props> = ({ setBackground, user }) => {
+const Navbar: React.FC<Props> = ({ setBackground, props }) => {
   const classes = useStyles();
   const [themeNavbar, setThemeNavbar] = React.useState(false);
   const setBackgroundNavbar = (value: boolean) => {
     console.log(value);
     setThemeNavbar(value);
   };
-  console.log(user);
+  const [user1, setUser] = React.useState();
+  const emitRoute = () => {
+    props.history.push("/signIn");
+  };
+  console.log(user1);
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let userLocal: any = localStorage.getItem("user");
+      let user: any = JSON.parse(userLocal);
+      setUser(user);
+    }
+  }, []);
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
     <div className={classes.root}>
@@ -94,7 +111,7 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
                 listStyle: "none",
                 display: "flex",
                 justifyContent: "center",
-                fontSize: "20px",
+                fontSize: "20px"
               }}
             >
               <li style={{ color: "black", margin: "0px 100px" }}>Home</li>
@@ -106,13 +123,14 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
             setBackgroundNavbar={setBackgroundNavbar}
           />
 
-          {user.hoTen === "" ? (
+          {!user1 ? (
             <span style={{ display: "flex" }}>
               <Box p={1}>
                 <Button
                   className={
                     themeNavbar ? classes.buttonDark : classes.buttonLight
                   }
+                  onClick={emitRoute}
                 >
                   Sign In
                 </Button>
@@ -128,7 +146,9 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
               </Box>
             </span>
           ) : (
-            <NameUser>Hello, {user.hoTen}</NameUser>
+            <NameUser style={{display: "flex"}}>
+              Hello {user1?.hoTen} <InforUses logout={logout} />
+            </NameUser>
           )}
         </Toolbar>
       </AppBar>
