@@ -180,7 +180,7 @@ function CourseDetailChild(props: PropsParams) {
         </DivProductView>
       </Container>
 
-      <Cart valueForCart={valueForCart} handleCart={handleCart} />
+      {/* <Cart valueForCart={valueForCart} handleCart={handleCart} /> */}
     </React.Fragment>
   );
 }

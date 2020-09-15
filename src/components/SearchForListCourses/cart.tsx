@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { rootState } from "../../redux/reducers/Reducers";
+
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -135,9 +134,12 @@ const DivTotal = styled.div`
 interface Props {
   valueForCart: boolean;
   handleCart: (value: any) => void;
+  arrContainCourseAndQuantity: [];
 }
+
 function Cart(props: Props) {
-  let { valueForCart } = props;
+  let { valueForCart, arrContainCourseAndQuantity, handleCart } = props;
+  console.log(arrContainCourseAndQuantity);
 
   return (
     <React.Fragment>
@@ -152,7 +154,7 @@ function Cart(props: Props) {
           <div
             className="img-toogle"
             onClick={() => {
-              props.handleCart(false);
+              handleCart(false);
             }}
           >
             <img src="/icons/x.png" alt="" />
@@ -169,7 +171,7 @@ function Cart(props: Props) {
 
       <DivToogle
         onClick={() => {
-          props.handleCart(true);
+          handleCart(true);
         }}
       >
         <DivItem className="item">
@@ -183,9 +185,5 @@ function Cart(props: Props) {
     </React.Fragment>
   );
 }
-const mapStateToProps = (state: rootState) => {
-  return {
-    arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
-  };
-};
-export default connect(mapStateToProps, null)(Cart);
+
+export default Cart;

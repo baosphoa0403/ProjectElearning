@@ -17,8 +17,8 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Star from "./component-icons/star";
 import { connect } from "react-redux";
-import * as action from "./moduleForCard/actions/action";
-import { rootState } from "../../redux/reducers/Reducers";
+import * as action from "./moduleSeartchForCard/actions/action";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {

@@ -14,7 +14,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 import { rootState } from "../../../src/redux/reducers/Reducers";
 import { useEffect } from "react";
-
 import * as action from "./module/actions/action";
 
 function HomePage(props: any) {
