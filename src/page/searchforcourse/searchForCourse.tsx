@@ -2,8 +2,12 @@ import React from "react";
 import SearchForListCourse from "../../components/SearchForListCourses/searchforlistcourses";
 import { useEffect } from "react";
 import Axios from "axios";
-function SearchForCourse() {
+import { connect } from "react-redux";
+import { rootState } from "../../redux/reducers/Reducers";
+
+function SearchForCourse(props: any) {
   const [listCourses, setListCourse] = React.useState([]);
+
   useEffect(() => {
     Axios({
       method: "GET",
@@ -11,8 +15,6 @@ function SearchForCourse() {
         "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
-        console.log(res.data);
-
         setListCourse(res.data);
       })
       .catch((err: any) => {
@@ -21,9 +23,16 @@ function SearchForCourse() {
   }, []);
   return (
     <React.Fragment>
-      <SearchForListCourse listCourses={listCourses} />
+      <SearchForListCourse
+        listCourses={listCourses}
+        arrContainCourseAndQuantity={props.arrContainCourseAndQuantity}
+      />
     </React.Fragment>
   );
 }
-
-export default SearchForCourse;
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
+  };
+};
+export default connect(mapStateToProps, null)(SearchForCourse);

@@ -1,0 +1,70 @@
+import { Course, CourseFromCard } from "../../../Interface/Interface";
+import * as ActionType from "../contants/contants";
+const initialState: CourseFromCard = {
+  quantity: 0,
+  ArrContainCourseAndQuantity: [
+    {
+      Course: {
+        maKhoaHoc: null,
+        biDanh: null,
+        tenKhoaHoc: null,
+        moTa: null,
+        luotXem: null,
+        hinhAnh: null,
+        maNhom: null,
+        ngayTao: null,
+        soLuongHocVien: 0,
+        nguoiTao: {
+          taiKhoan: null,
+          hoTen: null,
+          maLoaiNguoiDung: null,
+          tenLoaiNguoiDung: null,
+        },
+        danhMucKhoaHoc: {
+          maDanhMucKhoahoc: null,
+          tenDanhMucKhoaHoc: null,
+        },
+      },
+      quantityForCourse: 0,
+    },
+  ],
+};
+
+const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
+  switch (action.type) {
+    case ActionType.sendCourseToStore:
+      if (state.ArrContainCourseAndQuantity[0].Course.maKhoaHoc === null) {
+        state.ArrContainCourseAndQuantity[0].Course = action.Course;
+        state.ArrContainCourseAndQuantity[0].quantityForCourse++;
+        state.quantity++;
+      } else {
+        let index = state.ArrContainCourseAndQuantity.findIndex(
+          (ContainCourseAndQuantity: any) => {
+            return (
+              ContainCourseAndQuantity.Course.maKhoaHoc ===
+              action.Course.maKhoaHoc
+            );
+          }
+        );
+
+        if (index === -1) {
+          let obj = {
+            Course: action.Course,
+            quantityForCourse: action.quantityForCourse,
+          };
+          obj.quantityForCourse++;
+          state.ArrContainCourseAndQuantity.push(obj);
+          state.quantity++;
+        } else {
+          state.quantity++;
+          state.ArrContainCourseAndQuantity[index].quantityForCourse++;
+        }
+      }
+
+      return { ...state };
+    default:
+      break;
+  }
+  return { ...state };
+};
+export default cardReducer;

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
+
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -130,13 +131,19 @@ const DivTotal = styled.div`
     margin: 0;
   }
 `;
+interface Props {
+  valueForCart: boolean;
+  handleCart: (value: any) => void;
+  arrContainCourseAndQuantity: [];
+}
 
-function Cart() {
-  const [valueCart, setValueCart] = useState(false);
+function Cart(props: Props) {
+  let { valueForCart, arrContainCourseAndQuantity, handleCart } = props;
+  console.log(arrContainCourseAndQuantity);
 
   return (
     <React.Fragment>
-      <DivNavigationCart className={valueCart ? "show" : "hidden"}>
+      <DivNavigationCart className={valueForCart ? "show" : "hidden"}>
         <DivHeaderNavigationCart>
           <div className="item-header">
             <span>
@@ -147,7 +154,7 @@ function Cart() {
           <div
             className="img-toogle"
             onClick={() => {
-              setValueCart(false);
+              handleCart(false);
             }}
           >
             <img src="/icons/x.png" alt="" />
@@ -164,7 +171,7 @@ function Cart() {
 
       <DivToogle
         onClick={() => {
-          setValueCart(true);
+          handleCart(true);
         }}
       >
         <DivItem className="item">

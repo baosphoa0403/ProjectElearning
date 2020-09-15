@@ -1,6 +1,10 @@
+import { connect } from "react-redux";
 import React from "react";
 import CourseDetail from "../../components/CourseDetail/CourseDetail";
-function DetailCourse() {
+import { rootState } from "../../redux/reducers/Reducers";
+function DetailCourse(props: any) {
+  console.log();
+
   return (
     <React.Fragment>
       <CourseDetail />
@@ -8,4 +12,9 @@ function DetailCourse() {
   );
 }
 
-export default DetailCourse;
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
+  };
+};
+export default connect(mapStateToProps, null)(DetailCourse);
