@@ -14,9 +14,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 import { rootState } from "../../../src/redux/reducers/Reducers";
 import { useEffect } from "react";
-import Login from "../../components/FormSignIn/signin";
 import * as action from "./module/actions/action";
-import SignUp from "../../components/SignUp/SignUp";
+import VerticalTabs from "../../components/InforUsers/listInfor"
 function HomePage(props: any) {
   const [darkMode, setDarkMode] = React.useState(false);
   const darkTheme = createMuiTheme({
@@ -50,8 +49,7 @@ function HomePage(props: any) {
         <Instructors />
         <Achievements />
         <Footer />
-        <Login />
-        <SignUp />
+        <VerticalTabs />
       </ThemeProvider>
     </React.Fragment>
   );

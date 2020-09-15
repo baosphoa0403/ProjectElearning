@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -9,9 +9,9 @@ import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
+import UserProfile from "./YourProfile/UserProfile"
+import { connect } from "react-redux"
+import * as action from "./Modules/Actions/Action"
 import {
   H3Item1,
   SpanItem1,
@@ -106,12 +106,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: "#909090",
     width: "100%",
   },
-  root2: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
   hello: {
     [theme.breakpoints.between("sm", "md")]: {
       display: "none",
@@ -119,13 +113,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+function VerticalTabs(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    props.getProfiles();
+  }, []);
 
   return (
     <React.Fragment>
@@ -259,51 +256,7 @@ export default function VerticalTabs() {
                 </DivItem2>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <DivItem2>
-                  <div style={{ marginBottom: "3rem" }}>
-                    <H3Item2>Your Profile</H3Item2>
-                    <form className={classes.root2} style={{ display: "flex" }}>
-                      <TextField id="name-basic" label="NAME" />
-                      <TextField id="email-basic" label="EMAIL" />
-                      <Button
-                        variant="contained"
-                        style={{ backgroundColor: "#009e7f" }}
-                        size="large"
-                        startIcon={<SaveIcon />}
-                      >
-                        Save
-                      </Button>
-                    </form>
-                  </div>
-                  <div style={{ marginBottom: "3rem" }}>
-                    <H3Item2>Contact Number</H3Item2>
-                    <form className={classes.root2} style={{ display: "flex" }}>
-                      <TextField id="phone-basic" label="Number" />
-                      <Button
-                        variant="contained"
-                        style={{ backgroundColor: "#009e7f" }}
-                        size="large"
-                        startIcon={<SaveIcon />}
-                      >
-                        Save
-                      </Button>
-                    </form>
-                  </div>
-                  <div style={{ marginBottom: "3rem" }}>
-                    <H3Item2>Contact Number</H3Item2>
-                    <form className={classes.root2} style={{ display: "flex" }}>
-                      <TextField id="address-basic" label="Address" />
-                      <Button
-                        variant="contained"
-                        style={{ backgroundColor: "#009e7f" }}
-                        size="large"
-                        startIcon={<SaveIcon />}
-                      >
-                        Save
-                      </Button>
-                    </form>
-                  </div>
-                </DivItem2>
+                <UserProfile />
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <ConfirmCourses />
@@ -318,3 +271,13 @@ export default function VerticalTabs() {
     </React.Fragment>
   );
 }
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getProfiles: (data: any) => {
+      dispatch(action.actGetProfileAPI(data));
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(VerticalTabs);
+
+

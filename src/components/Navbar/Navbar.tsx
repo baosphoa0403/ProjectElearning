@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import Switch from "../Switch/Switch";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const NameUser = styled.p`
   font-size: 28px;
   margin: auto 40px;
@@ -61,6 +62,10 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: "#009e7f",
       },
     },
+    signUpStyle: {
+      textDecoration: "none",
+      color: "white"
+    } 
   })
 );
 interface Props {
@@ -107,8 +112,8 @@ const Navbar: React.FC<Props> = ({ setBackground, user }) => {
               <Button
                 className={themeNavbar ? classes.buttonDark : classes.buttonLight}
               >
-                Sign up
-            </Button>
+                <Link className={classes.signUpStyle} to="/signUp">Sign up</Link>
+              </Button>
             </Box>
           </span>) : (<NameUser>Hello, {user.hoTen}</NameUser>)}
 

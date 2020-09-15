@@ -5,11 +5,14 @@ export interface Test {
 // export interface RootState {}
 
 export interface SignIn {
-  user: {hoTen: String}
+  user: { hoTen: String }
 }
 export interface Home {
   listCourses: [];
 }
 export interface SignUps {
   user: {}
+}
+export interface YourProfiles {
+  data: { taiKhoan: string, matKhau: string }
 }
