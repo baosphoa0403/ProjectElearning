@@ -8,13 +8,14 @@ interface Data{
 }
 export const actSignInAPI =  (data: Data, history:any) => {
   console.log(data);
+
   return async (dispatch: any) => {
     try {
       const res = await Axios({
         method: "POST",
         url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
         data
-      })
+      }) 
       Swal.fire("Sign In Success !", "Click OK to exit!", "success");
       localStorage.setItem("user", JSON.stringify(res.data))
       dispatch(actSignIn(res.data))
