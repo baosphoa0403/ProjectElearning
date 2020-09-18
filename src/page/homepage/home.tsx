@@ -45,7 +45,7 @@ function HomePage(props: any) {
         <CourseInfor />
         <IntroduceStep />
         <IntroduceTarget />
-        {/* <ListCourses listCourses={props.newListCourses} /> */}
+        <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
