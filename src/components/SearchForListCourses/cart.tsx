@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Item, QuantityAdjustment, Img, Info } from "./styleComponent";
 import { Link } from "react-router-dom";
-
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+import Test from "../../images/images1.jpg";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { Course } from "../Interface/Interface";
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -134,12 +139,17 @@ const DivTotal = styled.div`
 interface Props {
   valueForCart: boolean;
   handleCart: (value: any) => void;
-  arrContainCourseAndQuantity: [];
+  arrContainCourseAndQuantity: Course[];
+  allQuantity: 0;
 }
 
 function Cart(props: Props) {
-  let { valueForCart, arrContainCourseAndQuantity, handleCart } = props;
-  console.log(arrContainCourseAndQuantity);
+  let {
+    valueForCart,
+    arrContainCourseAndQuantity,
+    handleCart,
+    allQuantity,
+  } = props;
 
   return (
     <React.Fragment>
@@ -149,7 +159,7 @@ function Cart(props: Props) {
             <span>
               <img src="/icons/cart.png" alt="" />
             </span>
-            <span>(0)</span> Item
+            <span>({allQuantity})</span> Item
           </div>
           <div
             className="img-toogle"
@@ -160,7 +170,62 @@ function Cart(props: Props) {
             <img src="/icons/x.png" alt="" />
           </div>
         </DivHeaderNavigationCart>
-        <DivBodyNavigationCart>No Products</DivBodyNavigationCart>
+        <DivBodyNavigationCart>
+          {arrContainCourseAndQuantity.map((item) => {
+            return (
+              <Item>
+                <QuantityAdjustment>
+                  <AddIcon />
+                  <div style={{ margin: "0px 8px", fontWeight: "bold" }}>
+                    {item.quantityForCourse}
+                  </div>
+                  <RemoveIcon />
+                </QuantityAdjustment>
+                <Img>
+                  <img
+                    src={item.Course.hinhAnh}
+                    style={{ width: "100%", height: "100%" }}
+                    alt=""
+                  />
+                </Img>
+                <Info>
+                  <div
+                    style={{
+                      fontSize: "15px",
+                      width: "140px",
+                      color: "#0d1136",
+                    }}
+                  >
+                    {item.Course.tenKhoaHoc}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                      color: "#009e7f",
+                      margin: "5px 0px",
+                    }}
+                  >
+                    $96
+                  </div>
+                </Info>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    color: "0d1136",
+                  }}
+                >
+                  $96
+                </div>
+                <HighlightOffIcon
+                  style={{ color: "rgb(0, 158, 127)", fontSize: "30px" }}
+                />
+              </Item>
+            );
+            // <h1>hello</h1>)
+          })}
+        </DivBodyNavigationCart>
         <DivFooterNavigationCart>
           <Link to="/home">
             <span>Checkout</span>

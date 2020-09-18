@@ -21,11 +21,15 @@ function SearchForCourse(props: any) {
         console.log(err);
       });
   }, []);
+  // useEffect(() => {
+  //   console.log(props.arrContainCourseAndQuantity);
+  // }, [props.arrContainCourseAndQuantity]);
   return (
     <React.Fragment>
       <SearchForListCourse
         listCourses={listCourses}
         arrContainCourseAndQuantity={props.arrContainCourseAndQuantity}
+        allQuantity={props.allQuantity}
       />
     </React.Fragment>
   );
@@ -33,6 +37,7 @@ function SearchForCourse(props: any) {
 const mapStateToProps = (state: rootState) => {
   return {
     arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
+    allQuantity: state.cardReducer.quantity,
   };
 };
 export default connect(mapStateToProps, null)(SearchForCourse);

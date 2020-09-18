@@ -82,7 +82,7 @@ export default function SearchForListCourse(props: any) {
     setValue(newValue);
   };
 
-  let { listCourses, arrContainCourseAndQuantity } = props;
+  let { listCourses, arrContainCourseAndQuantity, allQuantity } = props;
 
   const getListWebApp = () => {
     const newCourses = listCourses.filter((course: any) => {
@@ -330,6 +330,7 @@ export default function SearchForListCourse(props: any) {
         valueForCart={valueForCart}
         handleCart={handleCart}
         arrContainCourseAndQuantity={arrContainCourseAndQuantity}
+        allQuantity={allQuantity}
       />
     </React.Fragment>
   );
