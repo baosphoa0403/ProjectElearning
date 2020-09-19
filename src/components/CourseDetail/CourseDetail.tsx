@@ -1,7 +1,7 @@
 import React from "react";
 import { DivProductView, ButtonCard, ButtonBack, Img } from "./StyleDetail";
 import Grid from "@material-ui/core/Grid";
-import imgTest from "../../images/imgTest.png";
+
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
@@ -9,6 +9,11 @@ import Container from "@material-ui/core/Container";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Cart from "../SearchForListCourses/cart";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { rootState } from "../../redux/reducers/Reducers";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import Axios from "axios";
+
 const useStyles = makeStyles((theme) => ({
   h2: {
     fontSize: "21px",
@@ -54,10 +59,54 @@ interface PropsParams extends RouteComponentProps<{ id: string }> {}
 function CourseDetailChild(props: PropsParams) {
   const classes = useStyles();
   const [isOpen, setOpen] = React.useState(false);
-  console.log(props.match.params);
+  const [newCourse, setNewCourse] = React.useState({
+    maKhoaHoc: "string",
+    biDanh: "string",
+    tenKhoaHoc: "string",
+    moTa: "string",
+    luotXem: Number,
+    hinhAnh: "string",
+    maNhom: "string",
+    ngayTao: "string",
+    soLuongHocVien: Number,
+    nguoiTao: {
+      taiKhoan: "string",
+      hoTen: "string",
+      maLoaiNguoiDung: "string",
+      tenLoaiNguoiDung: "string",
+    },
+    danhMucKhoaHoc: {
+      maDanhMucKhoahoc: "string",
+      tenDanhMucKhoaHoc: "string",
+    },
+  });
+  let id = props.match.params.id;
+  const [valueForCart, setValueForCart] = React.useState(false);
+  const handleCart = (value: any) => {
+    setValueForCart(value);
+  };
+  useEffect(() => {
+    console.log(id);
 
+    Axios({
+      method: "GET",
+      url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`,
+    })
+      .then((res: any) => {
+        setNewCourse(res.data);
+      })
+      .catch((err: any) => {
+        console.log(err.request);
+      });
+  }, []);
   return (
     <React.Fragment>
+      <ButtonBack>
+        <ArrowBackIcon className={classes.icon} />
+        <Typography component="span" variant="button">
+          Back
+        </Typography>
+      </ButtonBack>
       <Container>
         <DivProductView>
           <Grid
@@ -67,47 +116,39 @@ function CourseDetailChild(props: PropsParams) {
             alignItems="flex-start"
           >
             <Grid lg={6} xl={6} md={6}>
-              <ButtonBack>
-                <ArrowBackIcon className={classes.icon} />
-                <Typography component="span" variant="button">
-                  Back
-                </Typography>
-              </ButtonBack>
               <Img>
-                <img src={imgTest} width="100%" height="100%" alt="" />
+                <img
+                  src={newCourse.hinhAnh}
+                  width="100%"
+                  height="100%"
+                  alt=""
+                />
               </Img>
             </Grid>
             <Grid lg={6} xl={6} md={6}>
               <Typography variant="h5" component="h2" className={classes.h2}>
-                The Golden Treasury of Children Literature
+                {newCourse.biDanh}
               </Typography>
-              <Typography variant="caption" component="p" className={classes.p}>
-                By Skipton Stitwell
+              <Typography
+                variant="caption"
+                component="span"
+                className={classes.p}
+              >
+                By {newCourse.nguoiTao.hoTen}
               </Typography>
               <Typography
                 variant="body1"
                 component="p"
                 className={classes.content}
               >
-                nibh quisque id justo sit amet sapien dignissim vestibulum
-                vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia curae nulla dapibus dolor vel est donec odio
-                justo sollicitudin ut suscipit a feugiat et eros vestibulum ac
-                est lacinia nisi venenatis tristique fusce congue diam id ornare
-                imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed
-                augue aliquam erat volutpat in congue etiam justo etiam pretium
-                iaculis justo in hac habitasse platea dictumst etiam faucibus
-                cursus urna ut tellus nulla ut erat id mauris vulputate
-                elementum nullam varius nulla facilisi cras non velit nec nisi
-                vulputate nonummy maecenas tincidunt lacus at velit vivamus vel
-                nulla eget eros elementum pellentesque quisque porta volutpat
-                erat quisque erat eros viverra eget congue eget semper rutrum
-                nulla nunc purus phasellus in felis donec semper sapien a libero
-                nam dui proin leo odio porttitor id consequat in consequat ut
-                nulla sed accumsan felis ut at dolor quis odio consequat varius
-                integer ac leo pellentesque ultrices mattis odio donec vitae
-                nisi nam ultrices libero non mattis pulvinar nulla pede
-                ullamcorper augue a suscipit
+                The direction and constancy of the will is what really matters,
+                and intellect and feeling are only important insofar as they
+                contribute to that . There is only one way to happiness, and
+                that is to cease worrying things which are beyond the power of
+                our will . Don’t let your will roar when your power only
+                whispers. You can bind my body, tie my hands, govern my actions:
+                you are the strongest, and society adds to your power; but with
+                my will, sir, you can do nothing.
               </Typography>
               <Typography
                 component="div"
@@ -127,6 +168,7 @@ function CourseDetailChild(props: PropsParams) {
                     className={classes.add}
                     onClick={() => {
                       setOpen(!isOpen);
+                      setValueForCart(true);
                     }}
                   >
                     Add To Cart
@@ -137,9 +179,19 @@ function CourseDetailChild(props: PropsParams) {
           </Grid>
         </DivProductView>
       </Container>
-      <Cart />
+
+      {/* <Cart valueForCart={valueForCart} handleCart={handleCart} /> */}
     </React.Fragment>
   );
 }
+// const mapStateToProps = (state: rootState) => {
+//   return {
+//     newDetailCourse: state.detailCourseReducer.detailCourse,
+//   };
+// };
+// const mapDispatchToProps = (dispatch: any) => {
+//   return {};
+// };
+
 const CourseDetail = withRouter(CourseDetailChild as any); //Note: It is a workaround not an actual solution
 export default CourseDetail;

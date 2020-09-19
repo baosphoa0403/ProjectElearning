@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+
+import { Link } from "react-router-dom";
+
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -44,6 +46,11 @@ const DivHeaderNavigationCart = styled.div`
   .img-toogle:hover {
     cursor: pointer;
   }
+  .item-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const DivBodyNavigationCart = styled.div`
   flex-grow: 1;
@@ -65,10 +72,28 @@ const DivFooterNavigationCart = styled.div`
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  background-color: #009e7f;
+  background-color: #f1f1f1 !important;
   margin: 20px;
   border-radius: 30px;
   border: 2px solid #f1f1f1;
+  a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-decoration: none;
+    color: rgb(0, 158, 127);
+    span {
+      padding: 15px;
+    }
+  }
+  .total {
+    border-radius: 30px;
+    background-color: #fff;
+    padding: 15px 30px;
+    color: #009e7f;
+    font-weight: 600;
+    padding: 15px 30px;
+  }
 `;
 const DivToogle = styled.div`
   background-color: #009e7f;
@@ -106,35 +131,47 @@ const DivTotal = styled.div`
     margin: 0;
   }
 `;
+interface Props {
+  valueForCart: boolean;
+  handleCart: (value: any) => void;
+  arrContainCourseAndQuantity: [];
+}
 
-function Cart() {
-  const [valueCart, setValueCart] = useState(false);
+function Cart(props: Props) {
+  let { valueForCart, arrContainCourseAndQuantity, handleCart } = props;
+  console.log(arrContainCourseAndQuantity);
 
   return (
     <React.Fragment>
-      <DivNavigationCart className={valueCart ? "show" : "hidden"}>
+      <DivNavigationCart className={valueForCart ? "show" : "hidden"}>
         <DivHeaderNavigationCart>
-          <div className="item-header">Item</div>
+          <div className="item-header">
+            <span>
+              <img src="/icons/cart.png" alt="" />
+            </span>
+            <span>(0)</span> Item
+          </div>
           <div
             className="img-toogle"
             onClick={() => {
-              setValueCart(false);
+              handleCart(false);
             }}
           >
             <img src="/icons/x.png" alt="" />
           </div>
         </DivHeaderNavigationCart>
-        <DivBodyNavigationCart>asdsadsa</DivBodyNavigationCart>
+        <DivBodyNavigationCart>No Products</DivBodyNavigationCart>
         <DivFooterNavigationCart>
-          Buy $999999 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Dolorum quis recusandae quo ex. Officiis aut iusto reiciendis nesciunt
-          recusandae eaque nostrum voluptas voluptatibus dicta perspiciatis,
+          <Link to="/home">
+            <span>Checkout</span>
+            <div className="total">$00.0</div>
+          </Link>
         </DivFooterNavigationCart>
       </DivNavigationCart>
 
       <DivToogle
         onClick={() => {
-          setValueCart(true);
+          handleCart(true);
         }}
       >
         <DivItem className="item">

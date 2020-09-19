@@ -11,6 +11,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Link from '@material-ui/core/Link';
+import { connect } from "react-redux";
 // import { Link }   from 'react-router-dom';
 import {
     ItemInfor,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 
 type Anchor = 'right';
 
-export default function InforUses() {
+export default function InforUses(props: any) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         right: false,
@@ -65,7 +66,7 @@ export default function InforUses() {
             </List>
             <Divider />
 
-            <List>
+            <List onClick={props.logout}>
                 {['Logout'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <ExitToAppIcon />}</ListItemIcon>

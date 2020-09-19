@@ -1,7 +1,15 @@
 import {SignIn} from "../../../Interface/Interface"
 import * as ActionType from "../Contants/Contants"
 const initialState: SignIn = {
-    user: {hoTen: ""}
+  user: {
+    hoTen: "",
+    accessToken: "",
+    email: "",
+    maLoaiNguoiDung: "",
+    maNhom: "",
+    soDT: "",
+    taiKhoan: ""
+  }
 };
   
 

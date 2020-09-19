@@ -5,11 +5,76 @@ export interface Test {
 // export interface RootState {}
 
 export interface SignIn {
-  user: {hoTen: String}
+  user: {
+    hoTen: String,
+    accessToken: String,
+    email: String,
+    maLoaiNguoiDung: String,
+    maNhom: String,
+    soDT: String,
+    taiKhoan: String,
+  };
 }
 export interface Home {
   listCourses: [];
 }
 export interface SignUps {
-  user: {}
+  user: {};
+}
+export interface DetailCourse {
+  detailCourse: {};
+}
+export interface CourseFromCard {
+  quantity: 0;
+  ArrContainCourseAndQuantity: [
+    {
+      Course: {
+        maKhoaHoc: any;
+        biDanh: any;
+        tenKhoaHoc: any;
+        moTa: any;
+        luotXem: any;
+        hinhAnh: any;
+        maNhom: any;
+        ngayTao: any;
+        soLuongHocVien: any;
+        nguoiTao: {
+          taiKhoan: any;
+          hoTen: any;
+          maLoaiNguoiDung: any;
+          tenLoaiNguoiDung: any;
+        };
+        danhMucKhoaHoc: {
+          maDanhMucKhoahoc: any;
+          tenDanhMucKhoaHoc: any;
+        };
+      };
+      quantityForCourse: 0;
+    }
+  ];
+}
+export interface Course {
+  Course: {
+    maKhoaHoc: any;
+    biDanh: any;
+    tenKhoaHoc: any;
+    moTa: any;
+    luotXem: any;
+    hinhAnh: any;
+    maNhom: any;
+    ngayTao: any;
+    soLuongHocVien: any;
+    nguoiTao: {
+      taiKhoan: any;
+      hoTen: any;
+      maLoaiNguoiDung: any;
+      tenLoaiNguoiDung: any;
+    };
+    danhMucKhoaHoc: {
+      maDanhMucKhoahoc: any;
+      tenDanhMucKhoaHoc: any;
+    };
+  };
+  quantityForCourse: 0;
+  type: any;
 }
