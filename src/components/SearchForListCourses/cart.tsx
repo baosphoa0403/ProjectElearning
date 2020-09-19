@@ -150,7 +150,8 @@ function Cart(props: Props) {
     handleCart,
     allQuantity,
   } = props;
-
+  console.log(arrContainCourseAndQuantity);
+  
   return (
     <React.Fragment>
       <DivNavigationCart className={valueForCart ? "show" : "hidden"}>

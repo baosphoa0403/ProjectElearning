@@ -7,7 +7,8 @@ import { rootState } from "../../redux/reducers/Reducers";
 
 function SearchForCourse(props: any) {
   const [listCourses, setListCourse] = React.useState([]);
-
+  console.log(props.arrContainCourseAndQuantity);
+  
   useEffect(() => {
     Axios({
       method: "GET",

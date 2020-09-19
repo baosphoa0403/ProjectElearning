@@ -235,6 +235,8 @@ export default function SearchForListCourse(props: any) {
     });
   };
   const handleCart = (value: any) => {
+    console.log(value);
+    
     setValueForCart(value);
   };
   return (
