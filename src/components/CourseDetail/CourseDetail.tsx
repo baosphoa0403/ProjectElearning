@@ -13,8 +13,8 @@ import { rootState } from "../../redux/reducers/Reducers";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import Axios from "axios";
-import {Course, CourseFromCard} from "../Interface/Interface";
-import * as action from "../SearchForListCourses/moduleSeartchForCard/actions/action"
+import { Course, CourseFromCard } from "../Interface/Interface";
+import * as action from "../SearchForListCourses/moduleSeartchForCard/actions/action";
 const useStyles = makeStyles((theme) => ({
   h2: {
     fontSize: "21px",
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   add: {
     margin: "0px 10px",
+    cursor: "pointer",
   },
   icon: {
     margin: "-7px 0px",
@@ -85,17 +86,17 @@ function CourseDetailChild(props: any) {
       tenDanhMucKhoaHoc: "string",
     },
   });
-  let {arrContainCourseAndQuantity, allQuantity} = props;
+  let { arrContainCourseAndQuantity, allQuantity } = props;
   // let id = props.match.params.id;
-  let {id} = useParams();
+  let { id } = useParams();
   console.log(arrContainCourseAndQuantity);
-  
+
   const [valueForCart, setValueForCart] = React.useState(false);
   const handleCart = (value: any) => {
     setValueForCart(value);
   };
   // console.log(props.arrContainCourseAndQuantity);
-  
+
   useEffect(() => {
     console.log(id);
 
@@ -178,9 +179,9 @@ function CourseDetailChild(props: any) {
                     component="p"
                     className={classes.add}
                     onClick={() => {
-                      setOpen(!isOpen);
+                      setOpen(true);
                       setValueForCart(true);
-                      props.sendCourse(newCourse)
+                      props.sendCourse(newCourse);
                     }}
                   >
                     Add To Cart
@@ -192,7 +193,12 @@ function CourseDetailChild(props: any) {
         </DivProductView>
       </Container>
 
-      <Cart valueForCart={valueForCart} handleCart={handleCart} arrContainCourseAndQuantity={arrContainCourseAndQuantity} allQuantity={allQuantity} />
+      <Cart
+        valueForCart={valueForCart}
+        handleCart={handleCart}
+        arrContainCourseAndQuantity={arrContainCourseAndQuantity}
+        allQuantity={allQuantity}
+      />
     </React.Fragment>
   );
 }
@@ -217,7 +223,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     sendCourse: (course: any) => {
       dispatch(action.actSendCourseToStore(course));
-    }
-  }
-}
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CourseDetailChild) as any)
+    },
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CourseDetailChild) as any
+);
