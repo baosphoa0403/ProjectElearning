@@ -8,7 +8,7 @@ const initialState: SignIn = {
     maLoaiNguoiDung: "",
     maNhom: "",
     soDT: "",
-    taiKhoan: ""
+    taiKhoan: "",
   }
 };
   

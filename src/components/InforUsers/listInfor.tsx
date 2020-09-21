@@ -10,8 +10,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import UserProfile from "./YourProfile/UserProfile"
-import { connect } from "react-redux"
-import * as action from "./Modules/Actions/Action"
 import {
   H3Item1,
   SpanItem1,
@@ -66,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: "flex",
     height: 224,
-    marginTop: "200px",
+    marginTop: "100px",
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -113,16 +111,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function VerticalTabs(props: any) {
+export default function VerticalTabs(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
-  useEffect(() => {
-    props.getProfiles();
-  }, []);
 
   return (
     <React.Fragment>
@@ -271,13 +266,5 @@ function VerticalTabs(props: any) {
     </React.Fragment>
   );
 }
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    getProfiles: (data: any) => {
-      dispatch(action.actGetProfileAPI(data));
-    }
-  }
-}
-export default connect(null, mapDispatchToProps)(VerticalTabs);
 
 

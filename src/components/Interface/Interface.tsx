@@ -25,5 +25,13 @@ export interface DetailCourse {
   detailCourse: {};
 }
 export interface YourProfiles {
-  data: { taiKhoan: string, matKhau: string }
+  dataUpdate: {
+    taiKhoan: string,
+    matKhau: String,
+    soDT: String,
+    email: String,
+    hoTen: String,
+    maNhom: String,
+    maLoaiNguoiDung: String,
+  }
 }
