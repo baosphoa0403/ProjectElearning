@@ -50,7 +50,7 @@ function HomePage(props: any) {
         <Instructors />
         <Achievements />
         <Footer />
-        <VerticalTabs />
+        {/* <VerticalTabs /> */}
       </ThemeProvider>
     </React.Fragment>
   );

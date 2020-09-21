@@ -62,6 +62,11 @@ const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         backgroundColor: "#009e7f"
       }
+    },
+    responsive: {
+      [theme.breakpoints.down('xs')]: {
+        display: "none"
+      },
     }
   })
 );
@@ -105,16 +110,17 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
         >
           <img src={Logo} alt="" />
 
-          <Box p={1} flexGrow={1}>
+          <Box p={1} flexGrow={1}  className={classes.responsive}>
             <ul
               style={{
                 listStyle: "none",
                 display: "flex",
-                justifyContent: "center",
-                fontSize: "20px"
+                justifyContent: "space-evenly",
+                fontSize: "20px",
               }}
+             
             >
-              <li style={{ color: "black", margin: "0px 100px" }}>Home</li>
+              <li style={{ color: "black"}}>Home</li>
               <li style={{ color: "black" }}>List Course</li>
             </ul>
           </Box>
@@ -147,7 +153,7 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
             </span>
           ) : (
             <NameUser style={{display: "flex"}}>
-              Hello {user1?.hoTen} <InforUses logout={logout} />
+           {user1?.hoTen} <InforUses logout={logout} />
             </NameUser>
           )}
         </Toolbar>
