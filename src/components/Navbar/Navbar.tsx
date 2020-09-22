@@ -64,8 +64,15 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
     responsive: {
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down("xs")]: {
         display: "none"
+      },
+    },
+    userNameResMoblie: {
+      [theme.breakpoints.down("xs")]: {
+        margin: "auto !important",
+        marginRight: "inherit!important",
+        
       },
     }
   })
@@ -110,7 +117,7 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
         >
           <img src={Logo} alt="" />
 
-          <Box p={1} flexGrow={1}  className={classes.responsive}>
+          <Box p={1} flexGrow={1} className={classes.responsive}>
             <ul
               style={{
                 listStyle: "none",
@@ -118,9 +125,9 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
                 justifyContent: "space-evenly",
                 fontSize: "20px",
               }}
-             
+
             >
-              <li style={{ color: "black"}}>Home</li>
+              <li style={{ color: "black" }}>Home</li>
               <li style={{ color: "black" }}>List Course</li>
             </ul>
           </Box>
@@ -152,10 +159,10 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
               </Box>
             </span>
           ) : (
-            <NameUser style={{display: "flex"}}>
-           {user1?.hoTen} <InforUses logout={logout} />
-            </NameUser>
-          )}
+              <NameUser style={{ display: "flex" }} className={classes.userNameResMoblie}>
+                {user1?.hoTen} <InforUses logout={logout} />
+              </NameUser>
+            )}
         </Toolbar>
       </AppBar>
     </div>
