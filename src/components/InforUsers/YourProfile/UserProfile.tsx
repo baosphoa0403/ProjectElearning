@@ -34,12 +34,9 @@ export default function UserProfile() {
   const [maLoaiNguoiDung, setmaLoaiNguoiDung] = useState("");
   const [maNhom, setmaNhom] = useState("");
   const [email, setemail] = useState("");
-  const [errorMess, setError] = useState("");
   const [detail, setDetail] = useState();
   const [isOk, setIsOk] = useState(false);
 
-  //   const [flag, setFlag] = React.useState(false);
-  // check form
   const { register, handleSubmit, errors } = useForm<Inputs>({
     mode: "onBlur"
   });
@@ -53,14 +50,6 @@ export default function UserProfile() {
       setDetail(user);
     }
   }, []);
-
-  //   console.log(detail);
-  //   console.log(detail?.accessToken);
-  //   useEffect(() => {
-  //       console.log("hihi");
-
-  //     //  setFlag(!flag)
-  //   }, [errors])
   useEffect(() => {
     settaiKhoan(detail?.taiKhoan);
     setmaLoaiNguoiDung(detail?.maLoaiNguoiDung);
@@ -113,9 +102,6 @@ export default function UserProfile() {
         Swal.fire("Account Editing Failed!", error.response.data, "error");
       });
   };
-  const onError = (errors: any) => {
-    console.log(errors)
-  }
   const enable = matKhau?.length > 0
     && hoTen?.length > 0
     && soDT?.length > 0
@@ -201,7 +187,6 @@ export default function UserProfile() {
             size="large"
             startIcon={<SaveIcon />}
             onClick={editUser}
-            // disabled={flag}
             disabled={!enable}
           >
             Save your changes
