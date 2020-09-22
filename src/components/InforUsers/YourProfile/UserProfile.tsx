@@ -22,7 +22,6 @@ interface Inputs {
   matKhau: string;
   hoTen: string;
   soDT: string;
-
   errorInput: string;
 }
 
@@ -39,7 +38,7 @@ export default function UserProfile() {
   const [detail, setDetail] = useState();
   const [isOk, setIsOk] = useState(false);
 
-//   const [flag, setFlag] = React.useState(false);
+  //   const [flag, setFlag] = React.useState(false);
   // check form
   const { register, handleSubmit, errors } = useForm<Inputs>({
     mode: "onBlur"
@@ -55,13 +54,13 @@ export default function UserProfile() {
     }
   }, []);
 
-//   console.log(detail);
-//   console.log(detail?.accessToken);
-//   useEffect(() => {
-//       console.log("hihi");
-      
-//     //  setFlag(!flag)
-//   }, [errors])
+  //   console.log(detail);
+  //   console.log(detail?.accessToken);
+  //   useEffect(() => {
+  //       console.log("hihi");
+
+  //     //  setFlag(!flag)
+  //   }, [errors])
   useEffect(() => {
     settaiKhoan(detail?.taiKhoan);
     setmaLoaiNguoiDung(detail?.maLoaiNguoiDung);
@@ -117,22 +116,22 @@ export default function UserProfile() {
   const onError = (errors: any) => {
     console.log(errors)
   }
+  const enable = matKhau?.length > 0
+    && hoTen?.length > 0
+    && soDT?.length > 0
+    && email?.length > 0
+    && soDT?.match("^[0-9]{1,20}$")
+    && email?.match("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
   return (
     <DivItem2>
       <form>
         <div style={{ marginBottom: "3rem" }}>
           <H3Item2>Your Profile</H3Item2>
           <form className={classes.root2} >
-            <TextField
-              id="name-basic"
-              label="Account"
-              name="taiKhoan"
-              value={taiKhoan}
-              disabled
-            />
+            <TextField id="name-basic" label="Account" name="taiKhoan" value={taiKhoan} disabled />
             <TextField
               id="email-basic"
-              label={errors.matKhau ? "Error Password" : "Password" }
+              label={errors.matKhau ? "Error Password" : "Password"}
               name="matKhau"
               value={matKhau}
               onChange={e => {
@@ -150,7 +149,7 @@ export default function UserProfile() {
           <form className={classes.root2}>
             <TextField
               id="name-basic"
-              label={errors.hoTen ? "Error Name" : "Name" }
+              label={errors.hoTen ? "Error Name" : "Name"}
               name="hoTen"
               value={hoTen}
               onChange={e => sethoTen(e.target.value)}
@@ -158,13 +157,12 @@ export default function UserProfile() {
                 required: true,
               })}
               error={errors.hoTen && true}
-            //   helperText={errors.hoTen?.type === "required" && "Name input is required"}
-            helperText={errors.hoTen?.type === "required" && "Name input is required"}
+              helperText={errors.hoTen?.type === "required" && "Name input is required"}
             />
             <TextField
-              
+
               id="email-basic"
-              label={errors.email ? "Error Email" : "Email" }
+              label={errors.email ? "Error Email" : "Email"}
               name="email"
               value={email}
               onChange={e => setemail(e.target.value)}
@@ -174,29 +172,25 @@ export default function UserProfile() {
                 pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i
               })}
               error={errors.email && true}
-              helperText={errors.email?.type === "required" && "Email input is required" || errors.email?.type === "pattern" && "Email is invalid" }
+              helperText={errors.email?.type === "required" && "Email input is required" || errors.email?.type === "pattern" && "Email is invalid"}
             />
           </form>
         </div>
         <div style={{ marginBottom: "3rem" }}>
           <form className={classes.root2}>
-            <TextField
-              id="email-basic"
-              label="User Type Code"
-              value={maLoaiNguoiDung}
-              disabled
-            />
+            <TextField id="email-basic" label="User Type Code" value={maLoaiNguoiDung} disabled />
             <TextField
               id="phone-basic"
-              label={errors.soDT ? "Error Phone Number" : "Phone Number" }
+              label={errors.soDT ? "Error Phone Number" : "Phone Number"}
               name="soDT"
               value={soDT}
               onChange={e => setsoDT(e.target.value)}
               inputRef={register({
                 required: true,
+                pattern: /[0-9]{1,20}$/i
               })}
               error={errors.soDT && true}
-              helperText={errors.soDT?.type === "required" && "Phone Number is required"}
+              helperText={errors.soDT?.type === "required" && "Phone Number is required" || errors.soDT?.type === "pattern" && "Phone is Invalid"}
             />
           </form>
         </div>
@@ -208,6 +202,7 @@ export default function UserProfile() {
             startIcon={<SaveIcon />}
             onClick={editUser}
             // disabled={flag}
+            disabled={!enable}
           >
             Save your changes
           </Button>
