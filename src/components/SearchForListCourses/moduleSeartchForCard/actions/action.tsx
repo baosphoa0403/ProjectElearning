@@ -7,3 +7,9 @@ export const actSendCourseToStore = (course: any) => {
     quantityForCourse: 0,
   };
 };
+export const actIncreaseCourses = (course: any) => {
+  return {
+    type: ActionType.increaseCourse,
+    Course: course,
+  };
+};

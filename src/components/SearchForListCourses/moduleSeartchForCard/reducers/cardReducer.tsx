@@ -62,6 +62,29 @@ const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
       }
 
       return { ...state };
+    case ActionType.increaseCourse:
+      let index = state.ArrContainCourseAndQuantity.findIndex(
+        (ContainCourseAndQuantity: any) => {
+          return (
+            ContainCourseAndQuantity.Course.maKhoaHoc ===
+            action.Course.maKhoaHoc
+          );
+        }
+      );
+
+      if (index === -1) {
+        let obj = {
+          Course: action.Course,
+          quantityForCourse: action.quantityForCourse,
+        };
+        obj.quantityForCourse++;
+        state.ArrContainCourseAndQuantity.push(obj);
+        state.quantity++;
+      } else {
+        state.quantity++;
+        state.ArrContainCourseAndQuantity[index].quantityForCourse++;
+      }
+      return { ...state };
     default:
       break;
   }

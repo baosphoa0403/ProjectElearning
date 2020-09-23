@@ -4,11 +4,10 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
 import { rootState } from "../../redux/reducers/Reducers";
-
+import * as action from "../../components/SearchForListCourses/moduleSeartchForCard/actions/action";
 function SearchForCourse(props: any) {
   const [listCourses, setListCourse] = React.useState([]);
-  console.log(props.arrContainCourseAndQuantity);
-  
+
   useEffect(() => {
     Axios({
       method: "GET",
@@ -25,12 +24,16 @@ function SearchForCourse(props: any) {
   // useEffect(() => {
   //   console.log(props.arrContainCourseAndQuantity);
   // }, [props.arrContainCourseAndQuantity]);
+  const handleIncreaseCourse = (course: any) => {
+    props.increaseCourse(course);
+  };
   return (
     <React.Fragment>
       <SearchForListCourse
         listCourses={listCourses}
         arrContainCourseAndQuantity={props.arrContainCourseAndQuantity}
         allQuantity={props.allQuantity}
+        handleIncreaseCourse={handleIncreaseCourse}
       />
     </React.Fragment>
   );
@@ -41,4 +44,11 @@ const mapStateToProps = (state: rootState) => {
     allQuantity: state.cardReducer.quantity,
   };
 };
-export default connect(mapStateToProps, null)(SearchForCourse);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    increaseCourse: (course: any) => {
+      dispatch(action.actIncreaseCourses(course));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForCourse);

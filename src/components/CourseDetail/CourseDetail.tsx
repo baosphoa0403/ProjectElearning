@@ -86,7 +86,11 @@ function CourseDetailChild(props: any) {
       tenDanhMucKhoaHoc: "string",
     },
   });
-  let { arrContainCourseAndQuantity, allQuantity } = props;
+  let {
+    arrContainCourseAndQuantity,
+    allQuantity,
+    handleIncreaseCourse,
+  } = props;
   // let id = props.match.params.id;
   let { id } = useParams();
   console.log(arrContainCourseAndQuantity);
@@ -198,6 +202,7 @@ function CourseDetailChild(props: any) {
         handleCart={handleCart}
         arrContainCourseAndQuantity={arrContainCourseAndQuantity}
         allQuantity={allQuantity}
+        handleIncreaseCourse={handleIncreaseCourse}
       />
     </React.Fragment>
   );

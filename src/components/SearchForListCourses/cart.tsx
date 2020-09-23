@@ -139,6 +139,7 @@ const DivTotal = styled.div`
 interface Props {
   valueForCart: boolean;
   handleCart: (value: any) => void;
+  handleIncreaseCourse: (value: any) => void;
   arrContainCourseAndQuantity: Course[];
   allQuantity: 0;
 }
@@ -149,9 +150,9 @@ function Cart(props: Props) {
     arrContainCourseAndQuantity,
     handleCart,
     allQuantity,
+    handleIncreaseCourse,
   } = props;
-  console.log(arrContainCourseAndQuantity);
-  
+
   return (
     <React.Fragment>
       <DivNavigationCart className={valueForCart ? "show" : "hidden"}>
@@ -172,58 +173,64 @@ function Cart(props: Props) {
           </div>
         </DivHeaderNavigationCart>
         <DivBodyNavigationCart>
-          {arrContainCourseAndQuantity.map((item) => {
-            return (
-              <Item>
-                <QuantityAdjustment>
-                  <AddIcon />
-                  <div style={{ margin: "0px 8px", fontWeight: "bold" }}>
-                    {item.quantityForCourse}
-                  </div>
-                  <RemoveIcon />
-                </QuantityAdjustment>
-                <Img>
-                  <img
-                    src={item.Course.hinhAnh}
-                    style={{ width: "100%", height: "100%" }}
-                    alt=""
-                  />
-                </Img>
-                <Info>
+          {arrContainCourseAndQuantity.map((item, index) => {
+            if (item.Course.maKhoaHoc !== null) {
+              return (
+                <Item key={index}>
+                  <QuantityAdjustment>
+                    <AddIcon
+                      onClick={() => {
+                        handleIncreaseCourse(item.Course);
+                      }}
+                    />
+                    <div style={{ margin: "0px 8px", fontWeight: "bold" }}>
+                      {item.quantityForCourse}
+                    </div>
+                    <RemoveIcon />
+                  </QuantityAdjustment>
+                  <Img>
+                    <img
+                      src={item.Course.hinhAnh}
+                      style={{ width: "100%", height: "100%" }}
+                      alt=""
+                    />
+                  </Img>
+                  <Info>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        width: "140px",
+                        color: "#0d1136",
+                      }}
+                    >
+                      {item.Course.tenKhoaHoc}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        color: "#009e7f",
+                        margin: "5px 0px",
+                      }}
+                    >
+                      $96
+                    </div>
+                  </Info>
                   <div
                     style={{
-                      fontSize: "15px",
-                      width: "140px",
-                      color: "#0d1136",
-                    }}
-                  >
-                    {item.Course.tenKhoaHoc}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "15px",
+                      fontSize: "16px",
                       fontWeight: "bold",
-                      color: "#009e7f",
-                      margin: "5px 0px",
+                      color: "0d1136",
                     }}
                   >
                     $96
                   </div>
-                </Info>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    color: "0d1136",
-                  }}
-                >
-                  $96
-                </div>
-                <HighlightOffIcon
-                  style={{ color: "rgb(0, 158, 127)", fontSize: "30px" }}
-                />
-              </Item>
-            );
+                  <HighlightOffIcon
+                    style={{ color: "rgb(0, 158, 127)", fontSize: "30px" }}
+                  />
+                </Item>
+              );
+            }
             // <h1>hello</h1>)
           })}
         </DivBodyNavigationCart>
