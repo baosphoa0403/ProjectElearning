@@ -68,11 +68,15 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "none"
       },
     },
+    signUpStyle: {
+      textDecoration: "none",
+      color: "white",
+    },
     userNameResMoblie: {
       [theme.breakpoints.down("xs")]: {
         margin: "auto !important",
         marginRight: "inherit!important",
-        
+
       },
     }
   })

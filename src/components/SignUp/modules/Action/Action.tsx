@@ -9,9 +9,8 @@ interface Data {
     maNhom: string,
     email: string,
 }
-export const actSignUpAPI = (data: Data) => {
+export const actSignUpAPI = (data: Data, props: any) => {
     const newData: Data = { ...data, maNhom: "GP01" }
-    // console.log(newData);
     return (dispatch: any) => {
         Axios({
             method: "POST",
@@ -19,11 +18,15 @@ export const actSignUpAPI = (data: Data) => {
             data: newData,
         })
             .then((res: any) => {
-                Swal.fire("Sign Up Success!!!", "Click OK to return Home", "success");
+                Swal.fire("Sign Up Success!!!", "Click OK to Login", "success").then(
+                    () => {
+                      props.history.push("/signIn");
+                    }
+                  );
                 dispatch(actSignUp(res.data));
             })
             .catch((err: any) => {
-                Swal.fire("Fail to SignUp ", err.response.data, "error");
+                Swal.fire("Fail to Sign Up ", err.response.data, "error");
             })
     }
 }

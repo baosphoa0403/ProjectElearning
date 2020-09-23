@@ -14,7 +14,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 import { rootState } from "../../../src/redux/reducers/Reducers";
 import { useEffect } from "react";
-import VerticalTabs from "../../components/InforUsers/listInfor";
 import * as action from "./module/actions/action";
 
 function HomePage(props: any) {
@@ -45,12 +44,11 @@ function HomePage(props: any) {
         <CourseInfor />
         <IntroduceStep />
         <IntroduceTarget />
-        {/* <ListCourses listCourses={props.newListCourses} /> */}
+        <ListCourses listCourses={props.newListCourses} />
         <IntroduceCourse />
         <Instructors />
         <Achievements />
         <Footer />
-        {/* <VerticalTabs /> */}
       </ThemeProvider>
     </React.Fragment>
   );
