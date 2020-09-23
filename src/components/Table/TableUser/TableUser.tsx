@@ -1,39 +1,43 @@
 import React from "react";
 import MaterialTable from "material-table"
-interface Columns {
-    title: string,
-    field: string
+interface Column {
+    name: string;
+    occupation: string;
+    age: number;
 }
 export default function TableUser() {
     const { useState } = React;
 
-    const [columns, setColumns] = useState([
-      { title: 'Name', field: 'name' },
-      { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-      {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-      },
-    ]);
   
-    const [data, setData] = useState([
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-      { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    const [dataStore, setDataStore] = useState([
+        { name: "Jon", job: "Software Dev", age: 29 }
     ]);
   
   return (
     <React.Fragment>
       <MaterialTable
         title="Editable Preview"
-        columns={columns}
-        data={data}
+        columns={[
+            {
+                title: "Name",
+                field: "name"
+            },
+            {
+                title: "Occupation",
+                field: "job"
+            },
+            {
+                title: "Age",
+                field: "age",
+                type: "numeric"
+            }
+        ]}
+        data={dataStore}
         editable={{
           onRowAdd: newData =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                setData([...data, newData]);
+                setDataStore([...dataStore, newData]);
 
                 resolve();
               }, 1000);
@@ -41,10 +45,10 @@ export default function TableUser() {
           onRowUpdate: (newData, oldData: any) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataUpdate = [...data];
+                const dataUpdate = [...dataStore];
                 const index = oldData.tableData.id;
                 dataUpdate[index] = newData;
-                setData([...dataUpdate]);
+                setDataStore([...dataUpdate]);
 
                 resolve();
               }, 1000);
@@ -52,10 +56,10 @@ export default function TableUser() {
           onRowDelete: (oldData: any) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataDelete = [...data];
+                const dataDelete = [...dataStore];
                 const index = oldData.tableData.id;
                 dataDelete.splice(index, 1);
-                setData([...dataDelete]);
+                setDataStore([...dataDelete]);
 
                 resolve();
               }, 1000);
