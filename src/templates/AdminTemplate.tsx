@@ -19,7 +19,7 @@ export const AdminTemplate: React.FC<routeComponent> = ({Component , ...props}) 
         <Route 
         {...props}
         render = {propsComponent => {
-           if (localStorage.getItem("userAdmin")) {
+           if (localStorage.getItem("hello")) {
             return (
                 <AdminLayout>
                     {/* <NavbarAdmin /> */}

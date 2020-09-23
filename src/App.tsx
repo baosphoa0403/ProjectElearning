@@ -40,8 +40,8 @@ function App() {
       <Switch>
         <Route>
           {showHomeLayout(routesHome)}
-           {showAdminLayout(routesAdmin)}
-          <Route path="/admin" component={Auth} exact={false} />
+          {showAdminLayout(routesAdmin)}
+          <Route path="/admin" component={Auth} exact={true} />
         </Route>
       </Switch>
     </BrowserRouter>

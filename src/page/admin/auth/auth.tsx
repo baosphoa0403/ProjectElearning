@@ -13,7 +13,7 @@ import {
     ElementaSignUpHere,
   } from "../../../components/FormSignIn/styled-component-login"
 import { connect } from "react-redux";
-// import * as action from "./Modules/Actions/Action";
+import * as action from "./module/actions/action";
 interface Inputs {
    taiKhoan: string, 
    matKhau: string,
@@ -76,13 +76,13 @@ interface Inputs {
 
   )
 }
-// const mapDispatchToProps = (dispatch: any) => {
-//   return {
-//     getListCourses: (data: any, history: any) => {
-//       dispatch(action.actSignInAPI(data, history));
-//     },
-//   };
-// };
-// connect(null, mapDispatchToProps)()
-export default Auth
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getListCourses: (data: any, history: any) => {
+      dispatch(action.loginAdmin(data, history));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Auth)
+
 
