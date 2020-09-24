@@ -6,13 +6,13 @@ export interface Test {
 
 export interface SignIn {
   user: {
-    hoTen: String,
-    accessToken: String,
-    email: String,
-    maLoaiNguoiDung: String,
-    maNhom: String,
-    soDT: String,
-    taiKhoan: String,
+    hoTen: String;
+    accessToken: String;
+    email: String;
+    maLoaiNguoiDung: String;
+    maNhom: String;
+    soDT: String;
+    taiKhoan: String;
   };
 }
 export interface Home {
@@ -25,7 +25,7 @@ export interface DetailCourse {
   detailCourse: {};
 }
 export interface CourseFromCard {
-  quantity: 0;
+  quantity: Number | any;
   ArrContainCourseAndQuantity: [
     {
       Course: {

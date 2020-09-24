@@ -90,6 +90,8 @@ function CourseDetailChild(props: any) {
     arrContainCourseAndQuantity,
     allQuantity,
     handleIncreaseCourse,
+    handleDecrease,
+    handleDeleteCourse,
   } = props;
   // let id = props.match.params.id;
   let { id } = useParams();
@@ -203,6 +205,8 @@ function CourseDetailChild(props: any) {
         arrContainCourseAndQuantity={arrContainCourseAndQuantity}
         allQuantity={allQuantity}
         handleIncreaseCourse={handleIncreaseCourse}
+        handleDecrease={handleDecrease}
+        handleDeleteCourse={handleDeleteCourse}
       />
     </React.Fragment>
   );

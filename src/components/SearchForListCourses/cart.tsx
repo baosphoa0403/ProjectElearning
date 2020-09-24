@@ -140,6 +140,8 @@ interface Props {
   valueForCart: boolean;
   handleCart: (value: any) => void;
   handleIncreaseCourse: (value: any) => void;
+  handleDecrease: (value: any) => void;
+  handleDeleteCourse: (value: any) => void;
   arrContainCourseAndQuantity: Course[];
   allQuantity: 0;
 }
@@ -151,6 +153,8 @@ function Cart(props: Props) {
     handleCart,
     allQuantity,
     handleIncreaseCourse,
+    handleDecrease,
+    handleDeleteCourse,
   } = props;
 
   return (
@@ -186,7 +190,11 @@ function Cart(props: Props) {
                     <div style={{ margin: "0px 8px", fontWeight: "bold" }}>
                       {item.quantityForCourse}
                     </div>
-                    <RemoveIcon />
+                    <RemoveIcon
+                      onClick={() => {
+                        handleDecrease(item.Course);
+                      }}
+                    />
                   </QuantityAdjustment>
                   <Img>
                     <img
@@ -227,6 +235,9 @@ function Cart(props: Props) {
                   </div>
                   <HighlightOffIcon
                     style={{ color: "rgb(0, 158, 127)", fontSize: "30px" }}
+                    onClick={() => {
+                      handleDeleteCourse(item.Course);
+                    }}
                   />
                 </Item>
               );

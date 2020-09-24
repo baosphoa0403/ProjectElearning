@@ -27,6 +27,12 @@ function SearchForCourse(props: any) {
   const handleIncreaseCourse = (course: any) => {
     props.increaseCourse(course);
   };
+  const handleDecrease = (course: any) => {
+    props.decreaseCourse(course);
+  };
+  const handleDeleteCourse = (course: any) => {
+    props.deleteCourse(course);
+  };
   return (
     <React.Fragment>
       <SearchForListCourse
@@ -34,6 +40,8 @@ function SearchForCourse(props: any) {
         arrContainCourseAndQuantity={props.arrContainCourseAndQuantity}
         allQuantity={props.allQuantity}
         handleIncreaseCourse={handleIncreaseCourse}
+        handleDecrease={handleDecrease}
+        handleDeleteCourse={handleDeleteCourse}
       />
     </React.Fragment>
   );
@@ -48,6 +56,12 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     increaseCourse: (course: any) => {
       dispatch(action.actIncreaseCourses(course));
+    },
+    decreaseCourse: (course: any) => {
+      dispatch(action.actDecreaseCourses(course));
+    },
+    deleteCourse: (course: any) => {
+      dispatch(action.actDeleteCourses(course));
     },
   };
 };

@@ -13,3 +13,16 @@ export const actIncreaseCourses = (course: any) => {
     Course: course,
   };
 };
+
+export const actDecreaseCourses = (course: any) => {
+  return {
+    type: ActionType.decreaseCourse,
+    Course: course,
+  };
+};
+export const actDeleteCourses = (course: any) => {
+  return {
+    type: ActionType.deleteCourse,
+    Course: course,
+  };
+};
