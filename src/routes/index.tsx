@@ -3,6 +3,8 @@ import DetailCourse from "../page/detailcourses/detailcourse";
 import SignUp from "../components/SignUp/SignUp";
 import Login from "../components/FormSignIn/signin"
 import VerticalTabs from "../components/InforUsers/listInfor";
+import searchForCourse from "../page/searchforcourse/searchForCourse";
+
 const routesHome = [
   {
     path: "/",
@@ -18,6 +20,11 @@ const routesHome = [
     path: "/detail/:id",
     exact: false,
     component: DetailCourse,
+  },
+  {
+    path: "/allcourse",
+    exact: false,
+    component: searchForCourse,
   },
   {
     path: "/signIn",
