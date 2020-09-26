@@ -62,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
 //   allQuantity: 0;
 // }
 // interface PropsParams extends RouteComponentProps<{ id: string }> {}
+interface Props {
+  handleIncreaseCourse: (value: any) => void;
+  handleDecrease: (value: any) => void;
+  handleDeleteCourse: (value: any) => void;
+}
 function CourseDetailChild(props: any) {
   const classes = useStyles();
   const [isOpen, setOpen] = React.useState(false);
@@ -86,13 +91,7 @@ function CourseDetailChild(props: any) {
       tenDanhMucKhoaHoc: "string",
     },
   });
-  let {
-    arrContainCourseAndQuantity,
-    allQuantity,
-    handleIncreaseCourse,
-    handleDecrease,
-    handleDeleteCourse,
-  } = props;
+  let { arrContainCourseAndQuantity, allQuantity } = props;
   // let id = props.match.params.id;
   let { id } = useParams();
   console.log(arrContainCourseAndQuantity);
@@ -102,7 +101,15 @@ function CourseDetailChild(props: any) {
     setValueForCart(value);
   };
   // console.log(props.arrContainCourseAndQuantity);
-
+  const handleIncreaseCourse = (course: any) => {
+    props.increaseCourse(course);
+  };
+  const handleDecrease = (course: any) => {
+    props.decreaseCourse(course);
+  };
+  const handleDeleteCourse = (course: any) => {
+    props.deleteCourse(course);
+  };
   useEffect(() => {
     console.log(id);
 
@@ -232,6 +239,15 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     sendCourse: (course: any) => {
       dispatch(action.actSendCourseToStore(course));
+    },
+    increaseCourse: (course: any) => {
+      dispatch(action.actIncreaseCourses(course));
+    },
+    decreaseCourse: (course: any) => {
+      dispatch(action.actDecreaseCourses(course));
+    },
+    deleteCourse: (course: any) => {
+      dispatch(action.actDeleteCourses(course));
     },
   };
 };

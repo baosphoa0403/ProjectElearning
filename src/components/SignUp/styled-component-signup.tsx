@@ -114,4 +114,5 @@ export const ElementpLoginHere = styled.p`
 export const ElementaLoginHere = styled.a`
   font-weight: 700;
   color: #222;
+  cursor: pointer;
 `;

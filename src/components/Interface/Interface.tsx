@@ -24,6 +24,17 @@ export interface SignUps {
 export interface DetailCourse {
   detailCourse: {};
 }
+export interface YourProfiles {
+  dataUpdate: {
+    taiKhoan: string,
+    matKhau: String,
+    soDT: String,
+    email: String,
+    hoTen: String,
+    maNhom: String,
+    maLoaiNguoiDung: String,
+  }
+}
 export interface CourseFromCard {
   quantity: Number | any;
   ArrContainCourseAndQuantity: [

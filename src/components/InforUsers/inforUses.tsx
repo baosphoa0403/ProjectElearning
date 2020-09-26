@@ -10,9 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import Link from '@material-ui/core/Link';
-import { connect } from "react-redux";
-// import { Link }   from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
     ItemInfor,
 } from "./styled-inforusers";
@@ -59,9 +57,10 @@ export default function InforUses(props: any) {
         >
             <List>
                 <ListItem button style={{ display: 'grid' }} className={classes.user}>
-                    <Link href=""  style={{ textDecoration: 'none', textAlign: 'left', }}><ItemInfor>+ Profile</ItemInfor></Link>
+                    {/* <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left', }}><ItemInfor>+ Profile</ItemInfor></Link>
                     <Link href="" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>+ Checkout</ItemInfor></Link>
-                    <Link href="" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>+ My Orders</ItemInfor></Link>
+                    <Link href="" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>+ My Orders</ItemInfor></Link> */}
+                    <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left', }}><ItemInfor>Your Profile</ItemInfor></Link>
                 </ListItem>
             </List>
             <Divider />

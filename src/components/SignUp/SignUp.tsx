@@ -30,6 +30,9 @@ function SignUp(props: any) {
   const onSubmit = (data: InputSignUp) => {
     props.getSignUp(data);
   }
+  const moveToLogin = () => {
+    props.history.push("/signIn")
+  }
   return (
     <BodySignUp>
       <DivBackground>
@@ -108,8 +111,8 @@ function SignUp(props: any) {
             <ElementpLoginHere>
               Have already an account ?
               <ElementaLoginHere
-                href="https://colorlib.com/etc/regform/colorlib-regform-8/?fbclid=IwAR3sh3S6Rfd_czJxJLv9uGOox4tGVIPs8_T9yyF85Hwrl__IC0sW4QxEH24#"
                 className="loginhere-link"
+                onClick={moveToLogin}
               >
                 Login here
               </ElementaLoginHere>
@@ -120,10 +123,10 @@ function SignUp(props: any) {
     </BodySignUp>
   );
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     getSignUp: (data: any) => {
-      dispatch(action.actSignUpAPI(data));
+      dispatch(action.actSignUpAPI(data, props));
     }
   }
 }
