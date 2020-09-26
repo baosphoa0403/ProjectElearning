@@ -85,6 +85,16 @@ function ListCourses(props: any) {
         color: #234;
       }
     }
+    .listcourse-titel {
+      text-align: center;
+      font-size: 40px;
+    }
+    @media only screen and (max-width: 660px) {
+      .listcourse-titel {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
   `;
   const Div = styled.div`
     &.listcourse {
@@ -115,7 +125,7 @@ function ListCourses(props: any) {
       </DivContaintSearch> */}
         <Container>
           <Wrapper>
-            <Div>LIST OF COURSES</Div>
+            <p className="listcourse-titel">LIST OF COURSES</p>
             <Slider {...settings}>{renderListCourses()}</Slider>
           </Wrapper>
         </Container>

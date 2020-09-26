@@ -8,12 +8,13 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Container from "@material-ui/core/Container";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Cart from "../SearchForListCourses/cart";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter, useParams } from "react-router-dom";
 import { rootState } from "../../redux/reducers/Reducers";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import Axios from "axios";
-
+import { Course, CourseFromCard } from "../Interface/Interface";
+import * as action from "../SearchForListCourses/moduleSeartchForCard/actions/action";
 const useStyles = makeStyles((theme) => ({
   h2: {
     fontSize: "21px",
@@ -49,14 +50,24 @@ const useStyles = makeStyles((theme) => ({
   },
   add: {
     margin: "0px 10px",
+    cursor: "pointer",
   },
   icon: {
     margin: "-7px 0px",
     fontSize: "25px",
   },
 }));
-interface PropsParams extends RouteComponentProps<{ id: string }> {}
-function CourseDetailChild(props: PropsParams) {
+// interface Props {
+//   arrContainCourseAndQuantity: Course[];
+//   allQuantity: 0;
+// }
+// interface PropsParams extends RouteComponentProps<{ id: string }> {}
+interface Props {
+  handleIncreaseCourse: (value: any) => void;
+  handleDecrease: (value: any) => void;
+  handleDeleteCourse: (value: any) => void;
+}
+function CourseDetailChild(props: any) {
   const classes = useStyles();
   const [isOpen, setOpen] = React.useState(false);
   const [newCourse, setNewCourse] = React.useState({
@@ -80,10 +91,24 @@ function CourseDetailChild(props: PropsParams) {
       tenDanhMucKhoaHoc: "string",
     },
   });
-  let id = props.match.params.id;
+  let { arrContainCourseAndQuantity, allQuantity } = props;
+  // let id = props.match.params.id;
+  let { id } = useParams();
+  console.log(arrContainCourseAndQuantity);
+
   const [valueForCart, setValueForCart] = React.useState(false);
   const handleCart = (value: any) => {
     setValueForCart(value);
+  };
+  // console.log(props.arrContainCourseAndQuantity);
+  const handleIncreaseCourse = (course: any) => {
+    props.increaseCourse(course);
+  };
+  const handleDecrease = (course: any) => {
+    props.decreaseCourse(course);
+  };
+  const handleDeleteCourse = (course: any) => {
+    props.deleteCourse(course);
   };
   useEffect(() => {
     console.log(id);
@@ -167,8 +192,9 @@ function CourseDetailChild(props: PropsParams) {
                     component="p"
                     className={classes.add}
                     onClick={() => {
-                      setOpen(!isOpen);
+                      setOpen(true);
                       setValueForCart(true);
+                      props.sendCourse(newCourse);
                     }}
                   >
                     Add To Cart
@@ -180,7 +206,15 @@ function CourseDetailChild(props: PropsParams) {
         </DivProductView>
       </Container>
 
-      {/* <Cart valueForCart={valueForCart} handleCart={handleCart} /> */}
+      <Cart
+        valueForCart={valueForCart}
+        handleCart={handleCart}
+        arrContainCourseAndQuantity={arrContainCourseAndQuantity}
+        allQuantity={allQuantity}
+        handleIncreaseCourse={handleIncreaseCourse}
+        handleDecrease={handleDecrease}
+        handleDeleteCourse={handleDeleteCourse}
+      />
     </React.Fragment>
   );
 }
@@ -193,5 +227,30 @@ function CourseDetailChild(props: PropsParams) {
 //   return {};
 // };
 
-const CourseDetail = withRouter(CourseDetailChild as any); //Note: It is a workaround not an actual solution
-export default CourseDetail;
+// const CourseDetail = withRouter(CourseDetailChild as any); //Note: It is a workaround not an actual solution
+// export default CourseDetail;
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
+    allQuantity: state.cardReducer.quantity,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    sendCourse: (course: any) => {
+      dispatch(action.actSendCourseToStore(course));
+    },
+    increaseCourse: (course: any) => {
+      dispatch(action.actIncreaseCourses(course));
+    },
+    decreaseCourse: (course: any) => {
+      dispatch(action.actDecreaseCourses(course));
+    },
+    deleteCourse: (course: any) => {
+      dispatch(action.actDeleteCourses(course));
+    },
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CourseDetailChild) as any
+);

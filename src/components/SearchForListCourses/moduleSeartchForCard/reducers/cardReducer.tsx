@@ -31,14 +31,25 @@ const initialState: CourseFromCard = {
 };
 
 const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
+  let index = 0;
   switch (action.type) {
     case ActionType.sendCourseToStore:
-      if (state.ArrContainCourseAndQuantity[0].Course.maKhoaHoc === null) {
+      if (state.ArrContainCourseAndQuantity.length < 1) {
+        let obj = {
+          Course: action.Course,
+          quantityForCourse: action.quantityForCourse,
+        };
+        obj.quantityForCourse++;
+        state.ArrContainCourseAndQuantity.push(obj);
+        state.quantity++;
+      } else if (
+        state.ArrContainCourseAndQuantity[0].Course.maKhoaHoc === null
+      ) {
         state.ArrContainCourseAndQuantity[0].Course = action.Course;
         state.ArrContainCourseAndQuantity[0].quantityForCourse++;
         state.quantity++;
       } else {
-        let index = state.ArrContainCourseAndQuantity.findIndex(
+        index = state.ArrContainCourseAndQuantity.findIndex(
           (ContainCourseAndQuantity: any) => {
             return (
               ContainCourseAndQuantity.Course.maKhoaHoc ===
@@ -62,6 +73,63 @@ const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
       }
 
       return { ...state };
+    case ActionType.increaseCourse:
+      index = state.ArrContainCourseAndQuantity.findIndex(
+        (ContainCourseAndQuantity: any) => {
+          return (
+            ContainCourseAndQuantity.Course.maKhoaHoc ===
+            action.Course.maKhoaHoc
+          );
+        }
+      );
+
+      if (index === -1) {
+        let obj = {
+          Course: action.Course,
+          quantityForCourse: action.quantityForCourse,
+        };
+        obj.quantityForCourse++;
+        state.ArrContainCourseAndQuantity.push(obj);
+        state.quantity++;
+      } else {
+        state.quantity++;
+        state.ArrContainCourseAndQuantity[index].quantityForCourse++;
+      }
+      return { ...state };
+    case ActionType.decreaseCourse:
+      index = state.ArrContainCourseAndQuantity.findIndex(
+        (ContainCourseAndQuantity: any) => {
+          return (
+            ContainCourseAndQuantity.Course.maKhoaHoc ===
+            action.Course.maKhoaHoc
+          );
+        }
+      );
+
+      if (state.ArrContainCourseAndQuantity[index].quantityForCourse > 1) {
+        state.quantity--;
+        state.ArrContainCourseAndQuantity[index].quantityForCourse--;
+      }
+      return { ...state };
+    case ActionType.deleteCourse:
+      index = state.ArrContainCourseAndQuantity.findIndex(
+        (ContainCourseAndQuantity: any) => {
+          return (
+            ContainCourseAndQuantity.Course.maKhoaHoc ===
+            action.Course.maKhoaHoc
+          );
+        }
+      );
+      let newQuantity = 0;
+      newQuantity =
+        state.quantity -
+        state.ArrContainCourseAndQuantity[index].quantityForCourse;
+
+      state.quantity = newQuantity;
+
+      state.ArrContainCourseAndQuantity.splice(index, 1);
+      return { ...state };
+
     default:
       break;
   }
