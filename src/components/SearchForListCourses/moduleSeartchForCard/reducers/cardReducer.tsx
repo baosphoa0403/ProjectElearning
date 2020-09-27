@@ -128,8 +128,8 @@ const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
       state.quantity = newQuantity;
 
       state.ArrContainCourseAndQuantity.splice(index, 1);
-      return { ...state };
 
+      return { ...state };
     default:
       break;
   }
