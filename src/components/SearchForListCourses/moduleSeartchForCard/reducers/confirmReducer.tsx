@@ -33,7 +33,8 @@ const initialState: CourseFromCard = {
 const comfirmReducer = (state: CourseFromCard = initialState, action: any) => {
   switch (action.type) {
     case ActionType.sendArrContainCourseAndQuantity:
-      console.log(action.value);
+      let newArrContainCourseAndQuantity = action.value;
+      state.ArrContainCourseAndQuantity = newArrContainCourseAndQuantity;
       return { ...state };
 
     default:

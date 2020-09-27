@@ -252,7 +252,7 @@ function Cart(props: Props) {
             sendArrContainCourseAndQuantity(arrContainCourseAndQuantity);
           }}
         >
-          <Link to="">
+          <Link to="/profile">
             <span>Checkout</span>
             <div className="total">$00.0</div>
           </Link>

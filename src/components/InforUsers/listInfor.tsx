@@ -9,7 +9,9 @@ import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import UserProfile from "./YourProfile/UserProfile"
+import UserProfile from "./YourProfile/UserProfile";
+import { connect } from "react-redux";
+
 import {
   H3Item1,
   SpanItem1,
@@ -25,6 +27,7 @@ import {
   Div,
 } from "./styled-inforusers";
 import ConfirmCourses from "./confirmCourses";
+import { rootState } from "../../redux/reducers/Reducers";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -44,7 +47,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3} style={{ paddingTop: "0" }}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -111,14 +114,31 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function VerticalTabs(props: any) {
+function VerticalTabs(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+  console.log(props.arrCourse);
+  console.log(props.userForConfirm);
 
+  const renderListCourseForConfirm = () => {
+    return props.arrCourse.map((ojectForCourseAndQuantity: any, index: any) => {
+      if (
+        ojectForCourseAndQuantity.Course.tenKhoaHoc !== null &&
+        ojectForCourseAndQuantity.Course.tenKhoaHoc !== undefined
+      ) {
+        return (
+          <ConfirmCourses
+            course={ojectForCourseAndQuantity.Course}
+            key={index}
+          />
+        );
+      }
+    });
+  };
   return (
     <React.Fragment>
       <Container fixed>
@@ -254,7 +274,7 @@ export default function VerticalTabs(props: any) {
                 <UserProfile />
               </TabPanel>
               <TabPanel value={value} index={2}>
-                <ConfirmCourses />
+                {renderListCourseForConfirm()}
               </TabPanel>
               <TabPanel value={value} index={3}>
                 Logout
@@ -266,5 +286,10 @@ export default function VerticalTabs(props: any) {
     </React.Fragment>
   );
 }
-
-
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrCourse: state.comfirmReducer.ArrContainCourseAndQuantity,
+    userForConfirm: state.SignInReducer.user,
+  };
+};
+export default connect(mapStateToProps, null)(VerticalTabs);
