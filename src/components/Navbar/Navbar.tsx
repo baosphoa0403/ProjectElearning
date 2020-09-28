@@ -97,6 +97,9 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
   const emitRoute = () => {
     props.history.push("/signIn");
   };
+  const signUpRoute = () => {
+    props.history.push("/signUp");
+  };
   console.log(user1);
 
   React.useEffect(() => {
@@ -157,6 +160,7 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
                   className={
                     themeNavbar ? classes.buttonDark : classes.buttonLight
                   }
+                  onClick={signUpRoute}
                 >
                   Sign up
                 </Button>
