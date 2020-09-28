@@ -11,9 +11,11 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      backgroundColor: "#00695c"
     },
     title: {
       flexGrow: 1,
@@ -21,14 +23,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 export default function NavbarAdmin() {
-    const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: "#00e676" }}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-           <AccountCircleIcon />
+            <AccountCircleIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Sang
@@ -39,7 +41,10 @@ export default function NavbarAdmin() {
           <Typography variant="h6" className={classes.title}>
             Dashboard Course
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" style={{
+            background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+            boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+          }}>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>
