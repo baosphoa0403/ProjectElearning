@@ -17,6 +17,7 @@
     "axios": "^0.20.0",
     "font-awesome": "^4.7.0",
     "material-table": "^1.69.0",
+    "moment": "^2.29.0",
     "react": "^16.13.1",
     "react-alice-carousel": "^1.19.3",
     "react-count-up": "^1.0.0",

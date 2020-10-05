@@ -11,7 +11,7 @@ export const loginAdmin = (data: any, history: any) => {
                 data
             })
            if (res.data.maLoaiNguoiDung === "GV") {
-               localStorage.setItem("hello", JSON.stringify(res.data))
+               localStorage.setItem("userAdmin", JSON.stringify(res.data))
                history.push("/admin/dashboard")
            }else{
                alert("bạn ko có quyền đăng nhập")
