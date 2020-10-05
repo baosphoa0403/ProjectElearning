@@ -7,7 +7,7 @@ export const funGetListCoureseAPI = () => {
     Axios({
       method: "get",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
         dispatch(funGetListCourese(res.data));

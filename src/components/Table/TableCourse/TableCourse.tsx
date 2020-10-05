@@ -94,7 +94,7 @@ export default function TableCourse() {
         Axios({
           method: "GET",
           url:
-            "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
         })
           .then((res: any) => {
             console.log(res.data);
@@ -111,7 +111,7 @@ export default function TableCourse() {
         Axios({
           method: "GET",
           url:
-          "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+          "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
         })
         .then((rs)=>{
           setDataStore(prevState => {
@@ -172,7 +172,7 @@ export default function TableCourse() {
         Axios({
           method: "POST",
           url:
-            "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
+            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
           // "http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim",
           // data: form_data,
           data: courseAdd,
@@ -198,7 +198,7 @@ export default function TableCourse() {
           const userAdmin = JSON.parse(localAdmin);
           Axios({
             method: "DELETE",
-            url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${course.maKhoaHoc}`,
+            url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${course.maKhoaHoc}`,
             data: course.maKhoaHoc,
             headers: {
               Authorization: `Bearer ${userAdmin.accessToken}`

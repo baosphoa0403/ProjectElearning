@@ -8,7 +8,7 @@ function SearchForCourse() {
     Axios({
       method: "GET",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
         console.log(res.data);

@@ -7,7 +7,7 @@ export const loginAdmin = (data: any, history: any) => {
         try {
             const res = await Axios({
                 method: "POST",
-                url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+                url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
                 data
             })
            if (res.data.maLoaiNguoiDung === "GV") {
