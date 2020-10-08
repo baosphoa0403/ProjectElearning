@@ -73,7 +73,7 @@ export default function UserProfile() {
     Axios({
       method: "PUT",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
       data: obj,
       headers: {
         Authorization: `Bearer ${detail?.accessToken}`
