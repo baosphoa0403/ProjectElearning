@@ -144,6 +144,7 @@ interface Props {
   handleDeleteCourse: (value: any) => void;
   arrContainCourseAndQuantity: Course[];
   allQuantity: 0;
+  sendArrContainCourseAndQuantity: (value: Course[]) => void;
 }
 
 function Cart(props: Props) {
@@ -155,6 +156,7 @@ function Cart(props: Props) {
     handleIncreaseCourse,
     handleDecrease,
     handleDeleteCourse,
+    sendArrContainCourseAndQuantity,
   } = props;
 
   return (
@@ -245,8 +247,12 @@ function Cart(props: Props) {
             // <h1>hello</h1>)
           })}
         </DivBodyNavigationCart>
-        <DivFooterNavigationCart>
-          <Link to="/home">
+        <DivFooterNavigationCart
+          onClick={() => {
+            sendArrContainCourseAndQuantity(arrContainCourseAndQuantity);
+          }}
+        >
+          <Link to="/profile">
             <span>Checkout</span>
             <div className="total">$00.0</div>
           </Link>

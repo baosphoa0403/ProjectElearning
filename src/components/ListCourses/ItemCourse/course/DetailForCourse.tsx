@@ -16,9 +16,10 @@ function Courses(props: any) {
     width: 14em !important;
     color: white;
     .course__img {
-      min-height: 100px;
-      max-width: 100%;
       border-radius: 0.5em;
+      width: 100%;
+
+      height: 100px;
     }
     &:hover {
       z-index: 1;
