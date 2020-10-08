@@ -14,7 +14,7 @@ export const actSignUpAPI = (data: Data, props: any) => {
     return (dispatch: any) => {
         Axios({
             method: "POST",
-            url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+            url: "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
             data: newData,
         })
             .then((res: any) => {
