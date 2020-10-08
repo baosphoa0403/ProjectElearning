@@ -6,13 +6,13 @@ export interface Test {
 
 export interface SignIn {
   user: {
-    hoTen: String,
-    accessToken: String,
-    email: String,
-    maLoaiNguoiDung: String,
-    maNhom: String,
-    soDT: String,
-    taiKhoan: String,
+    hoTen: String;
+    accessToken: String;
+    email: String;
+    maLoaiNguoiDung: String;
+    maNhom: String;
+    soDT: String;
+    taiKhoan: String;
   };
 }
 export interface Home {
@@ -34,4 +34,58 @@ export interface YourProfiles {
     maNhom: String,
     maLoaiNguoiDung: String,
   }
+}
+export interface CourseFromCard {
+  quantity: Number | any;
+  ArrContainCourseAndQuantity: [
+    {
+      Course: {
+        maKhoaHoc: any;
+        biDanh: any;
+        tenKhoaHoc: any;
+        moTa: any;
+        luotXem: any;
+        hinhAnh: any;
+        maNhom: any;
+        ngayTao: any;
+        soLuongHocVien: any;
+        nguoiTao: {
+          taiKhoan: any;
+          hoTen: any;
+          maLoaiNguoiDung: any;
+          tenLoaiNguoiDung: any;
+        };
+        danhMucKhoaHoc: {
+          maDanhMucKhoahoc: any;
+          tenDanhMucKhoaHoc: any;
+        };
+      };
+      quantityForCourse: 0;
+    }
+  ];
+}
+export interface Course {
+  Course: {
+    maKhoaHoc: any;
+    biDanh: any;
+    tenKhoaHoc: any;
+    moTa: any;
+    luotXem: any;
+    hinhAnh: any;
+    maNhom: any;
+    ngayTao: any;
+    soLuongHocVien: any;
+    nguoiTao: {
+      taiKhoan: any;
+      hoTen: any;
+      maLoaiNguoiDung: any;
+      tenLoaiNguoiDung: any;
+    };
+    danhMucKhoaHoc: {
+      maDanhMucKhoahoc: any;
+      tenDanhMucKhoaHoc: any;
+    };
+  };
+  quantityForCourse: 0;
+  type: any;
 }
