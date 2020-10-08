@@ -27,7 +27,7 @@ export default function TableUser() {
   }, []);
 
   const handleADDUser = (user: any) => {
-    let userLocal: any = localStorage.getItem("hello");
+    let userLocal: any = localStorage.getItem("userAdmin");
     if (userLocal) {
       var userAdmin = JSON.parse(userLocal);
 
@@ -64,7 +64,7 @@ export default function TableUser() {
   }
 
   const handleEDITUser = (user: any) => {
-    let userLocal: any = localStorage.getItem("hello");
+    let userLocal: any = localStorage.getItem("userAdmin");
     if (userLocal) {
       var userAdmin = JSON.parse(userLocal);
 
@@ -101,7 +101,7 @@ export default function TableUser() {
   }
 
   const handleDELETEUser = (user: any) => {
-    let userLocal: any = localStorage.getItem("hello");
+    let userLocal: any = localStorage.getItem("userAdmin");
     if (userLocal) {
       var userAdmin = JSON.parse(userLocal);
     }
@@ -130,11 +130,6 @@ export default function TableUser() {
         options={{
           pageSize: 10,
           pageSizeOptions: [10, 15, 20, 25],
-          headerStyle: {
-            // backgroundColor: "#212121",
-            // color: "#FFF",
-          },
-
           emptyRowsWhenPaging: false,
         }}
         columns={[

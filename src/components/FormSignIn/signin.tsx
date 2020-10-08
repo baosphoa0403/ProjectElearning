@@ -15,19 +15,23 @@ import {
 import { connect } from "react-redux";
 import * as action from "./Modules/Actions/Action";
 interface Inputs {
-   taiKhoan: string, 
-   matKhau: string,
-   errorInput: string
+  taiKhoan: string,
+  matKhau: string,
+  errorInput: string
 }
 
 
- function Login(props: any) {
+function Login(props: any) {
   const { register, handleSubmit, errors } = useForm<Inputs>({
     mode: "onBlur"
   });
-  
-  const onSubmit = (data: Inputs) =>{
+
+  const onSubmit = (data: Inputs) => {
     props.getListCourses(data, props.history)
+  }
+
+  const moveToSignUp = () => {
+    props.history.push("/signUp")
   }
   return (
     <BodyLogin>
@@ -39,16 +43,16 @@ interface Inputs {
                 <form id="login-form" className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <H2Login>USER LOGIN</H2Login>
                   <DivFormGroup>
-                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Don't Forget Your Username Should Be Cool!"})}
-                    style={{borderColor: errors.taiKhoan && "red"}}
+                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({ required: "Don't Forget Your Username Should Be Cool!" })}
+                      style={{ borderColor: errors.taiKhoan && "red" }}
                     />
-                     {errors.taiKhoan && <p style={{color: "red"}}>{errors.taiKhoan.message}</p>}
+                    {errors.taiKhoan && <p style={{ color: "red" }}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
-                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Don't Forget Your Password Should Be Cool!"})}
-                     style={{borderColor: errors.matKhau && "red"}}
+                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({ required: "Don't Forget Your Password Should Be Cool!" })}
+                      style={{ borderColor: errors.matKhau && "red" }}
                     />
-                    {errors.matKhau && <p style={{color: "red"}}>{errors.matKhau.message}</p>}
+                    {errors.matKhau && <p style={{ color: "red" }}>{errors.matKhau.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
                     <InputSubmitLogin
@@ -60,12 +64,8 @@ interface Inputs {
                 </form>
                 <ElementpLoginHere>
                   Don't have a account ?
-                                        <a
-                    href="https://colorlib.com/etc/regform/colorlib-regform-8/?fbclid=IwAR3sh3S6Rfd_czJxJLv9uGOox4tGVIPs8_T9yyF85Hwrl__IC0sW4QxEH24#"
-                    className="loginhere-link"
-                  >
-                    <ElementaSignUpHere> Create Account here</ElementaSignUpHere>
-                  </a>
+                  <ElementaSignUpHere style={{ cursor: "pointer" }} onClick={moveToSignUp}>
+                    Create Account here</ElementaSignUpHere>
                 </ElementpLoginHere>
               </DivLoginContent>
             </Container>
