@@ -56,12 +56,13 @@ const ActionDiv = styled.div`
 `;
 interface Props {
   course: any;
+  ComfirmCourse: (course: any) => void;
+  DeRegisterCourse: (course: any) => void;
 }
 export default function ConfirmCourses(props: Props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   let { course } = props;
-  console.log(course);
 
   const handleClick = () => {
     setOpen(!open);
@@ -72,10 +73,22 @@ export default function ConfirmCourses(props: Props) {
         <div className="desktop">
           <span>{course.tenKhoaHoc}</span>
           <ActionDiv>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                props.ComfirmCourse(course);
+              }}
+            >
               Confirm
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                props.DeRegisterCourse(course);
+              }}
+            >
               Deregister
             </Button>
           </ActionDiv>

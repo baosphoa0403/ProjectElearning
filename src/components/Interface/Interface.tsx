@@ -88,4 +88,5 @@ export interface Course {
   };
   quantityForCourse: 0;
   type: any;
+  codeCourse: any;
 }
