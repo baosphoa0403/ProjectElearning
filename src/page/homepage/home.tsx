@@ -39,7 +39,7 @@ function HomePage(props: any) {
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Navbar setBackground={setBackground}  props={props}/>
+        <Navbar setBackground={setBackground} props={props} />
         <Carousel />
         <CourseInfor />
         <IntroduceStep />

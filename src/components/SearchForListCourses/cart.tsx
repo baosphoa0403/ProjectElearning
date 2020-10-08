@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+import { Item, QuantityAdjustment, Img, Info } from "./styleComponent";
 import { Link } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+import Test from "../../images/images1.jpg";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { Course } from "../Interface/Interface";
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
@@ -130,30 +136,115 @@ const DivTotal = styled.div`
     margin: 0;
   }
 `;
+interface Props {
+  valueForCart: boolean;
+  handleCart: (value: any) => void;
+  handleIncreaseCourse: (value: any) => void;
+  handleDecrease: (value: any) => void;
+  handleDeleteCourse: (value: any) => void;
+  arrContainCourseAndQuantity: Course[];
+  allQuantity: 0;
+}
 
-function Cart() {
-  const [valueCart, setValueCart] = useState(false);
+function Cart(props: Props) {
+  let {
+    valueForCart,
+    arrContainCourseAndQuantity,
+    handleCart,
+    allQuantity,
+    handleIncreaseCourse,
+    handleDecrease,
+    handleDeleteCourse,
+  } = props;
 
   return (
     <React.Fragment>
-      <DivNavigationCart className={valueCart ? "show" : "hidden"}>
+      <DivNavigationCart className={valueForCart ? "show" : "hidden"}>
         <DivHeaderNavigationCart>
           <div className="item-header">
             <span>
               <img src="/icons/cart.png" alt="" />
             </span>
-            <span>(0)</span> Item
+            <span>({allQuantity})</span> Item
           </div>
           <div
             className="img-toogle"
             onClick={() => {
-              setValueCart(false);
+              handleCart(false);
             }}
           >
             <img src="/icons/x.png" alt="" />
           </div>
         </DivHeaderNavigationCart>
-        <DivBodyNavigationCart>No Products</DivBodyNavigationCart>
+        <DivBodyNavigationCart>
+          {arrContainCourseAndQuantity.map((item, index) => {
+            if (item.Course.maKhoaHoc !== null) {
+              return (
+                <Item key={index}>
+                  <QuantityAdjustment>
+                    <AddIcon
+                      onClick={() => {
+                        handleIncreaseCourse(item.Course);
+                      }}
+                    />
+                    <div style={{ margin: "0px 8px", fontWeight: "bold" }}>
+                      {item.quantityForCourse}
+                    </div>
+                    <RemoveIcon
+                      onClick={() => {
+                        handleDecrease(item.Course);
+                      }}
+                    />
+                  </QuantityAdjustment>
+                  <Img>
+                    <img
+                      src={item.Course.hinhAnh}
+                      style={{ width: "100%", height: "100%" }}
+                      alt=""
+                    />
+                  </Img>
+                  <Info>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        width: "140px",
+                        color: "#0d1136",
+                      }}
+                    >
+                      {item.Course.tenKhoaHoc}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        color: "#009e7f",
+                        margin: "5px 0px",
+                      }}
+                    >
+                      $96
+                    </div>
+                  </Info>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      color: "0d1136",
+                    }}
+                  >
+                    $96
+                  </div>
+                  <HighlightOffIcon
+                    style={{ color: "rgb(0, 158, 127)", fontSize: "30px" }}
+                    onClick={() => {
+                      handleDeleteCourse(item.Course);
+                    }}
+                  />
+                </Item>
+              );
+            }
+            // <h1>hello</h1>)
+          })}
+        </DivBodyNavigationCart>
         <DivFooterNavigationCart>
           <Link to="/home">
             <span>Checkout</span>
@@ -164,7 +255,7 @@ function Cart() {
 
       <DivToogle
         onClick={() => {
-          setValueCart(true);
+          handleCart(true);
         }}
       >
         <DivItem className="item">

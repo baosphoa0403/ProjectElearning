@@ -9,7 +9,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
-import { async } from "q";
 const useStyles = makeStyles(theme => ({
   datePicker: {
   width: 150
@@ -145,45 +144,18 @@ export default function TableCourse() {
           form_data.append(key, courseAdd[key]);
         }
         console.log(courseAdd);
-        
-        // let res = async () => {
-        //   let data1 = await Axios({
-        //     method: "POST",
-        //     url:
-        //       "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
-        //     // "http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim",
-        //     // data: form_data,
-        //     data: courseAdd,
-        //     headers: {
-        //       Authorization: `Bearer ${userAdmin.accessToken}`
-        //     }
-            
-        //   })
-        //   let data2 = await Axios({
-        //     method: "POST",
-        //     url: "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc",
-        //     data: data1
-        //   })
-        //   console.log(data1.data);
-        //   return data2.data
-        // }
-        // res()
        
         Axios({
           method: "POST",
           url:
-            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
-          // "http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim",
-          // data: form_data,
-          data: courseAdd,
+            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh",
+          data: form_data,
           headers: {
             Authorization: `Bearer ${userAdmin.accessToken}`
           }
-          
         }).then(rs => {
           console.log(rs.data);
-          
-          // setChange(!change)
+          setChange(!change)
           Swal.fire("Add Course success !", "Press OK exit!", "success");
         })
         .catch(error => {
@@ -216,6 +188,51 @@ export default function TableCourse() {
             Swal.fire("Delete Course fail !",  error.response.data, "error");
           });
      }
+
+     let handleEditMovie = (course: any) => {
+      // console.log(course);
+      let moment = require('moment');
+      var form_data = new FormData();
+      let ngayTao = moment(course.ngayTao).format("DD/MM/YYYY");
+      let maDanhMucKhoaHoc = course.maKhoaHoc.slice(0, course.maKhoaHoc.indexOf("_"));
+      const localAdmin: any = localStorage.getItem("userAdmin");
+      const userAdmin = JSON.parse(localAdmin);
+      let courseAdd = {
+        ...course,
+        maNhom: "GP01", 
+        danhGia: 0,
+        ngayTao: ngayTao,
+        biDanh: course.tenKhoaHoc,
+        luotXem: 0,
+        maDanhMucKhoaHoc: maDanhMucKhoaHoc,
+        taiKhoanNguoiTao: userAdmin.taiKhoan
+      }
+      for (const key in courseAdd) {
+        console.log(key, courseAdd[key]);
+        form_data.append(key, courseAdd[key]);
+      }
+      console.log(courseAdd);
+     
+      Axios({
+        method: "POST",
+        url:
+          "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload",
+        data: form_data,
+        headers: {
+          Authorization: `Bearer ${userAdmin.accessToken}`
+        }
+        
+      }).then(rs => {
+        console.log(rs.data);
+        setChange(!change)
+        Swal.fire("Add Course success !", "Press OK exit!", "success");
+      })
+      .catch(error => {
+        console.log(error.response);
+        
+        Swal.fire("Add Course fail !",  error.response.data, "error");
+      });
+   }
   
   return (
     <React.Fragment>
@@ -242,11 +259,15 @@ export default function TableCourse() {
           onRowUpdate: (newData, oldData: any) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataUpdate = {...dataStore};
-                const index = oldData.tableData.id;
-                // dataUpdate[index] = newData;
-                // setDataStore([...dataUpdate]);
-
+                if (oldData) {
+                  handleEditMovie(newData);
+                  setDataStore(prevState => {
+                    const data: any = [...prevState.data];
+                    const index = data.indexOf(oldData);
+                    data[index] = newData;
+                    return { ...prevState, data };
+                  });
+                }
                 resolve();
               }, 1000);
             }),
