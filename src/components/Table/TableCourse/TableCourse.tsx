@@ -140,10 +140,11 @@ export default function TableCourse() {
           taiKhoanNguoiTao: userAdmin.taiKhoan
         }
         for (const key in courseAdd) {
-          console.log(key, courseAdd[key]);
+          // console.log(key, courseAdd[key]);
           form_data.append(key, courseAdd[key]);
+          console.log(form_data);
         }
-        console.log(courseAdd);
+        console.log(form_data);
        
         Axios({
           method: "POST",
