@@ -269,7 +269,7 @@ function Cart(props: Props) {
           <span>item</span>
         </DivItem>
         <DivTotal className="total">
-          <p>$9999</p>
+          <p>{allQuantity}</p>
         </DivTotal>
       </DivToogle>
     </React.Fragment>
