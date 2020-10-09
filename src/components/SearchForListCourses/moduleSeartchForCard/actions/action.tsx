@@ -26,3 +26,9 @@ export const actDeleteCourses = (course: any) => {
     Course: course,
   };
 };
+export const actSendArrContainCourseAndQuantity = (value: any) => {
+  return {
+    type: ActionType.sendArrContainCourseAndQuantity,
+    value,
+  };
+};

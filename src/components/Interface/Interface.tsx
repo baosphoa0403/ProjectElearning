@@ -26,14 +26,14 @@ export interface DetailCourse {
 }
 export interface YourProfiles {
   dataUpdate: {
-    taiKhoan: string,
-    matKhau: String,
-    soDT: String,
-    email: String,
-    hoTen: String,
-    maNhom: String,
-    maLoaiNguoiDung: String,
-  }
+    taiKhoan: string;
+    matKhau: String;
+    soDT: String;
+    email: String;
+    hoTen: String;
+    maNhom: String;
+    maLoaiNguoiDung: String;
+  };
 }
 export interface CourseFromCard {
   quantity: Number | any;
@@ -88,4 +88,5 @@ export interface Course {
   };
   quantityForCourse: 0;
   type: any;
+  codeCourse: any;
 }

@@ -110,6 +110,9 @@ function CourseDetailChild(props: any) {
   const handleDeleteCourse = (course: any) => {
     props.deleteCourse(course);
   };
+  const sendArrContainCourseAndQuantity = (value: Course[]) => {
+    props.sendArrCourseToStore(value);
+  };
   useEffect(() => {
     console.log(id);
 
@@ -214,6 +217,7 @@ function CourseDetailChild(props: any) {
         handleIncreaseCourse={handleIncreaseCourse}
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
+        sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
       />
     </React.Fragment>
   );
@@ -248,6 +252,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     deleteCourse: (course: any) => {
       dispatch(action.actDeleteCourses(course));
+    },
+    sendArrCourseToStore: (value: Course[]) => {
+      dispatch(action.actSendArrContainCourseAndQuantity(value));
     },
   };
 };

@@ -89,6 +89,7 @@ export default function SearchForListCourse(props: any) {
     handleIncreaseCourse,
     handleDecrease,
     handleDeleteCourse,
+    sendArrContainCourseAndQuantity,
   } = props;
 
   const getListWebApp = () => {
@@ -341,6 +342,7 @@ export default function SearchForListCourse(props: any) {
         handleIncreaseCourse={handleIncreaseCourse}
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
+        sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
       />
     </React.Fragment>
   );
