@@ -135,7 +135,9 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
 
             >
               <li style={{ color: "black" }}>Home</li>
-              <li style={{ color: "black" }}>List Course</li>
+              <li style={{ color: "black",cursor:"pointer" }} onClick={()=> {
+                 props.history.push("/allcourse");
+              }}>List Course</li>
             </ul>
           </Box>
           <Switch

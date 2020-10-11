@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "-7px 0px",
     fontSize: "25px",
   },
+  backButton: {
+    zIndex: 99999,
+    cursor: "pointer",
+  },
 }));
 // interface Props {
 //   arrContainCourseAndQuantity: Course[];
@@ -129,7 +133,14 @@ function CourseDetailChild(props: any) {
   }, []);
   return (
     <React.Fragment>
-      <ButtonBack>
+      <ButtonBack
+        className={classes.backButton}
+        onClick={() => {
+          console.log(1);
+
+          props.history.push("/");
+        }}
+      >
         <ArrowBackIcon className={classes.icon} />
         <Typography component="span" variant="button">
           Back
@@ -186,7 +197,7 @@ function CourseDetailChild(props: any) {
                 read more
               </Typography>
               <Typography component="div" className={classes.price}>
-                $82
+                $10
               </Typography>
               <Typography component="div">
                 <ButtonCard>
