@@ -254,7 +254,7 @@ function Cart(props: Props) {
         >
           <Link to="/profile">
             <span>Checkout</span>
-            <div className="total">$00.0</div>
+            <div className="total">total</div>
           </Link>
         </DivFooterNavigationCart>
       </DivNavigationCart>
