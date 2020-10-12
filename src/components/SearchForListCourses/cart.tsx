@@ -254,7 +254,7 @@ function Cart(props: Props) {
         >
           <Link to="/profile">
             <span>Checkout</span>
-            <div className="total">$00.0</div>
+            <div className="total">total</div>
           </Link>
         </DivFooterNavigationCart>
       </DivNavigationCart>
@@ -269,7 +269,7 @@ function Cart(props: Props) {
           <span>item</span>
         </DivItem>
         <DivTotal className="total">
-          <p>$9999</p>
+          <p>{allQuantity}</p>
         </DivTotal>
       </DivToogle>
     </React.Fragment>

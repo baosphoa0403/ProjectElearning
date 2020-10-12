@@ -2,8 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import Container from "@material-ui/core/Container";
-import Courses from "./ItemCourse/course/DetailForCourse";
-
+// import Courses from "./ItemCourse/course/DetailForCourse";
+import NewCourses from "./ItemCourse/course/newDetailForCourse";
 function ListCourses(props: any) {
   const settings = {
     infinite: true,
@@ -50,9 +50,9 @@ function ListCourses(props: any) {
 
   const renderListCourses = () => {
     return listCourses.map((course: any, index: any) => {
-      console.log(course);
+    
 
-      return <Courses course={course} key={index} />;
+      return <NewCourses course={course} key={index} />;
     });
   };
   const Wrapper = styled.div`
