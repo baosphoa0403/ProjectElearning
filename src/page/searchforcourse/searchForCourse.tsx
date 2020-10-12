@@ -5,6 +5,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { rootState } from "../../redux/reducers/Reducers";
 import * as action from "../../components/SearchForListCourses/moduleSeartchForCard/actions/action";
+import { Course } from "../../components/Interface/Interface";
 function SearchForCourse(props: any) {
   const [listCourses, setListCourse] = React.useState([]);
 
@@ -33,6 +34,9 @@ function SearchForCourse(props: any) {
   const handleDeleteCourse = (course: any) => {
     props.deleteCourse(course);
   };
+  const sendArrContainCourseAndQuantity = (value: Course[]) => {
+    props.sendArrCourseToStore(value);
+  };
   return (
     <React.Fragment>
       <SearchForListCourse
@@ -42,6 +46,7 @@ function SearchForCourse(props: any) {
         handleIncreaseCourse={handleIncreaseCourse}
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
+        sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
       />
     </React.Fragment>
   );
@@ -62,6 +67,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     deleteCourse: (course: any) => {
       dispatch(action.actDeleteCourses(course));
+    },
+    sendArrCourseToStore: (value: Course[]) => {
+      dispatch(action.actSendArrContainCourseAndQuantity(value));
     },
   };
 };

@@ -15,7 +15,12 @@ function Courses(props: any) {
     position: relative !important;
     width: 14em !important;
     color: white;
+    .course__img {
+      border-radius: 0.5em;
+      width: 100%;
 
+      height: 100px;
+    }
     &:hover {
       z-index: 1;
 

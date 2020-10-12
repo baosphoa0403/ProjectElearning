@@ -9,7 +9,9 @@ import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import UserProfile from "./YourProfile/UserProfile"
+import UserProfile from "./YourProfile/UserProfile";
+import { connect } from "react-redux";
+import Swal from "sweetalert2";
 import {
   H3Item1,
   SpanItem1,
@@ -25,12 +27,24 @@ import {
   Div,
 } from "./styled-inforusers";
 import ConfirmCourses from "./confirmCourses";
+import { rootState } from "../../redux/reducers/Reducers";
+import Axios from "axios";
+import * as action from "./module/actions/action";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
   value: any;
 }
-
+// interface ifUser {
+//   accessToken: string
+// email: string
+// hoTen: string
+// maLoaiNguoiDung: string
+// maNhom: string
+// matKhau: string
+// soDT: string
+// taiKhoan: string
+// }
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -44,7 +58,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3} style={{ paddingTop: "0" }}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -111,14 +125,118 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function VerticalTabs(props: any) {
+function VerticalTabs(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const [User, setUser] = React.useState({
+    accessToken: "",
+    email: "",
+    hoTen: "",
+    maLoaiNguoiDung: "",
+    maNhom: "",
+    matKhau: "",
+    soDT: "",
+    taiKhoan: "",
+  });
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let userLocalS: any = localStorage.getItem("user");
+      const user = JSON.parse(userLocalS);
+      setUser(user);
+    }
+  }, []);
+
+  // const ComfirmCourse = (Course: any) => {
+  //   console.log(Course, User);
+  // };
+  const ComfirmCourse = (Course: any) => {
+    Swal.fire({
+      title: "Do you want to confirm for course",
+
+      showCancelButton: true,
+      confirmButtonText: `Yes`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let courseConfirm = {
+          maKhoaHoc: Course.maKhoaHoc,
+          taiKhoan: User.taiKhoan,
+        };
+        console.log(courseConfirm);
+
+        Axios({
+          method: "POST",
+          url:
+            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/DangKyKhoaHoc",
+          data: courseConfirm,
+          headers: {
+            Authorization: `Bearer ${User.accessToken}`,
+          },
+        })
+          .then(() => {
+            props.fucConfirmCourse(Course.maKhoaHoc);
+          })
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Confirm Success",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((err: any) => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: err.response.data,
+              showConfirmButton: false,
+              timer: 1500,
+            }).then(() => {
+              props.fucConfirmCourse(Course.maKhoaHoc);
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
+
+  const DeRegisterCourse = (Course: any) => {
+    Swal.fire({
+      title: "Do you want to delete for course",
+
+      showCancelButton: true,
+      confirmButtonText: `Yes`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        props.fucConfirmCourse(Course.maKhoaHoc);
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
+  const renderListCourseForConfirm = () => {
+    return props.arrCourse.map((ojectForCourseAndQuantity: any, index: any) => {
+      if (
+        ojectForCourseAndQuantity.Course.tenKhoaHoc !== null &&
+        ojectForCourseAndQuantity.Course.tenKhoaHoc !== undefined
+      ) {
+        return (
+          <ConfirmCourses
+            course={ojectForCourseAndQuantity.Course}
+            ComfirmCourse={ComfirmCourse}
+            DeRegisterCourse={DeRegisterCourse}
+            key={index}
+          />
+        );
+      }
+    });
+  };
   return (
     <React.Fragment>
       <Container fixed>
@@ -254,7 +372,7 @@ export default function VerticalTabs(props: any) {
                 <UserProfile />
               </TabPanel>
               <TabPanel value={value} index={2}>
-                <ConfirmCourses />
+                {renderListCourseForConfirm()}
               </TabPanel>
               <TabPanel value={value} index={3}>
                 Logout
@@ -266,5 +384,18 @@ export default function VerticalTabs(props: any) {
     </React.Fragment>
   );
 }
-
-
+const mapStateToProps = (state: rootState) => {
+  return {
+    arrCourse: state.cardReducer.ArrContainCourseAndQuantity,
+    userForConfirm: state.SignInReducer.user,
+    quantity: state.cardReducer.quantity,
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    fucConfirmCourse: (codeCourse: any) => {
+      dispatch(action.sendCourseConfirmed(codeCourse));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(VerticalTabs);
