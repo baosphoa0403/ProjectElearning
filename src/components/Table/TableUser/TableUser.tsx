@@ -13,7 +13,7 @@ export default function TableUser() {
     Axios({
       method: "GET",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP01",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP01",
     })
       .then((rs) => {
         console.log(rs.data);
@@ -43,7 +43,7 @@ export default function TableUser() {
       Axios({
         method: "POST",
         url:
-          "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
+          "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
         data: userADD,
         headers: {
           Authorization: `Bearer ${userAdmin.accessToken}`,
@@ -80,7 +80,7 @@ export default function TableUser() {
       Axios({
         method: "PUT",
         url:
-          "http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+          "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
         data: userEDIT,
         headers: {
           Authorization: `Bearer ${userAdmin.accessToken}`,
@@ -107,7 +107,7 @@ export default function TableUser() {
     }
     Axios({
       method: "DELETE",
-      url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user.taiKhoan}`,
+      url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user.taiKhoan}`,
       headers: {
         Authorization: `Bearer ${userAdmin.accessToken}`,
       },
