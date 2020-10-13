@@ -73,10 +73,7 @@ export default function TableCourse() {
                     }}
                   />
                 </MuiPickersUtilsProvider>
-                )
-
-                
-                
+                ) 
             },
             {
                 title: "Description",
@@ -142,10 +139,8 @@ export default function TableCourse() {
         for (const key in courseAdd) {
           // console.log(key, courseAdd[key]);
           form_data.append(key, courseAdd[key]);
-          console.log(form_data);
+          console.log(form_data.get(key));
         }
-        console.log(form_data);
-       
         Axios({
           method: "POST",
           url:
