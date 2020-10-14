@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -18,12 +18,11 @@ import Button from "@material-ui/core/Button";
 import Star from "./component-icons/star";
 import { connect } from "react-redux";
 import * as action from "./moduleSeartchForCard/actions/action";
-
+import { rootState } from "../../../src/redux/reducers/Reducers";
+import { green } from "@material-ui/core/colors"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "16em",
-
       position: "relative",
     },
     media: {
@@ -60,6 +59,9 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: "nowrap",
       textOverflow: "ellipsis",
     },
+    span: {
+      color: "white"
+    }
   })
 );
 const SpanAmination = styled.span`
@@ -138,17 +140,20 @@ const SpanAmination = styled.span`
     }
   }
 `;
-const DivStyleTolTal = styled.div`
+interface Props1 {
+  darkMode: boolean;
+}
+const DivStyleTolTal = styled.div<Props1>`
   span {
     font-size: 20px;
     font-weight: bold;
-    color: #3c3b37;
+    color: ${p => p.darkMode ? "white" : "black" };
   }
   .best-sell {
     text-decoration-line: line-through;
     font-size: 16px;
     padding: 5px;
-    color: #73726c;
+    color: ${p => p.darkMode ? "black" : "#009e7f" };
   }
 `;
 function RecipeReviewCard(props: any) {
@@ -168,7 +173,16 @@ function RecipeReviewCard(props: any) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  let {darkMode} = props;
+  const ColorButton = withStyles((theme) => ({
+    root: {
+      color: theme.palette.getContrastText(green['A400']),
+      backgroundColor: "#009e7f",
+      "&:hover": {
+        backgroundColor: "#009e7f"
+      }
+    }
+  }))(Button);
   return (
     <Card className={classes.root}>
       <SpanAmination></SpanAmination>
@@ -210,8 +224,8 @@ function RecipeReviewCard(props: any) {
           <Star />
         </div>
 
-        <DivStyleTolTal>
-          <span>$10</span>
+      <DivStyleTolTal darkMode={darkMode}>
+          <span >$10</span>
           <span className="best-sell">$199</span>
         </DivStyleTolTal>
       </CardContent>
@@ -226,7 +240,7 @@ function RecipeReviewCard(props: any) {
         >
           <ExpandMoreIcon />
         </IconButton>
-        <Button
+        <ColorButton
           variant="contained"
           color="secondary"
           className={classes.width100}
@@ -236,7 +250,7 @@ function RecipeReviewCard(props: any) {
           }}
         >
           Add To Cart
-        </Button>
+        </ColorButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
@@ -257,4 +271,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
   };
 };
-export default connect(null, mapDispatchToProps)(RecipeReviewCard);
+const mapStateToProps = (state: rootState) => {
+  return {
+    darkMode: state.reducerSwitch.darkMode
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeReviewCard);

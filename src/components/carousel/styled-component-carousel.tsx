@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+interface Props {
+  darkMode: boolean
+}
 export const DivSlider = styled.div`
   height: 100vh;
   width: 100%;
@@ -44,10 +46,10 @@ export const DivContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-export const DivContentIntroduce = styled.div`
+export const DivContentIntroduce = styled.div<Props>`
   text-align: center;
   font-size: 25px;
-  color: #212121;
+  color: ${p  => p.darkMode ? 'white' : 'black'};
   display: flex;
 
   align-items: center;

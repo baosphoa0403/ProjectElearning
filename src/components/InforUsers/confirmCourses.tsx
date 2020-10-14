@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
 const ConfirmCourseDiv = styled.div`
   .desktop {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
   }
   .mobile {
     display: none;
@@ -52,10 +54,15 @@ const ActionDiv = styled.div`
   justify-content: space-around;
   width: 15em;
 `;
-
-export default function ConfirmCourses() {
+interface Props {
+  course: any;
+  ComfirmCourse: (course: any) => void;
+  DeRegisterCourse: (course: any) => void;
+}
+export default function ConfirmCourses(props: Props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  let { course } = props;
 
   const handleClick = () => {
     setOpen(!open);
@@ -64,12 +71,24 @@ export default function ConfirmCourses() {
     <DivItem2>
       <ConfirmCourseDiv>
         <div className="desktop">
-          <span>Name</span>
+          <span>{course.tenKhoaHoc}</span>
           <ActionDiv>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                props.ComfirmCourse(course);
+              }}
+            >
               Confirm
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                props.DeRegisterCourse(course);
+              }}
+            >
               Deregister
             </Button>
           </ActionDiv>

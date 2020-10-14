@@ -23,6 +23,10 @@ import RecipeReviewCard from "./cardforlistcourse";
 
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import {darkTheme, lightTheme} from "../../theme/theme";
+import Navbar from "../Navbar/Navbar";
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
 
@@ -89,6 +93,7 @@ export default function SearchForListCourse(props: any) {
     handleIncreaseCourse,
     handleDecrease,
     handleDeleteCourse,
+    sendArrContainCourseAndQuantity,
   } = props;
 
   const getListWebApp = () => {
@@ -246,6 +251,8 @@ export default function SearchForListCourse(props: any) {
   };
   return (
     <React.Fragment>
+      <ThemeProvider theme={props.darkMode ? darkTheme : lightTheme}>
+       <CssBaseline />
       <Container>
         <div className="tittle-and-content">
           <h2>The world's largest selection of courses</h2>
@@ -254,7 +261,7 @@ export default function SearchForListCourse(props: any) {
             published every month
           </h3>
         </div>
-        <div className={classes.root}>
+        <div className={props.darkMode ? "" : classes.root}>
           <AppBar position="static" color="default">
             <Tabs
               value={value}
@@ -333,6 +340,7 @@ export default function SearchForListCourse(props: any) {
           </TabPanel>
         </div>
       </Container>
+      </ThemeProvider>
       <Cart
         valueForCart={valueForCart}
         handleCart={handleCart}
@@ -341,6 +349,7 @@ export default function SearchForListCourse(props: any) {
         handleIncreaseCourse={handleIncreaseCourse}
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
+        sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
       />
     </React.Fragment>
   );

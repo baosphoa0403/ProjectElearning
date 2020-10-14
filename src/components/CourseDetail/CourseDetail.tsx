@@ -16,19 +16,34 @@ import Axios from "axios";
 import { Course, CourseFromCard } from "../Interface/Interface";
 import * as action from "../SearchForListCourses/moduleSeartchForCard/actions/action";
 const useStyles = makeStyles((theme) => ({
-  h2: {
+  h2White: {
     fontSize: "21px",
     fontWeight: 700,
-    color: "#0d1136",
+    color: "white",
+  },
+  h2Black: {
+    fontSize: "21px",
+    fontWeight: 700,
+    color: "black",
   },
   p: {
     fontSize: "14px",
     color: "#77798c",
   },
-  content: {
+  contentBlack: {
     fontSize: "15px",
     fontWeight: 400,
-    color: "#777a8c",
+    color: "black",
+    lineHeight: "1.8",
+    height: "115px",
+    // do readMore and less
+    overflow: "hidden",
+    margin: "0",
+  },
+   contentWhite: {
+    fontSize: "15px",
+    fontWeight: 400,
+    color: "white",
     lineHeight: "1.8",
     height: "115px",
     // do readMore and less
@@ -56,18 +71,36 @@ const useStyles = makeStyles((theme) => ({
     margin: "-7px 0px",
     fontSize: "25px",
   },
+  backButton: {
+    zIndex: 99999,
+    cursor: "pointer",
+  },
 }));
 // interface Props {
 //   arrContainCourseAndQuantity: Course[];
 //   allQuantity: 0;
 // }
 // interface PropsParams extends RouteComponentProps<{ id: string }> {}
-interface Props {
+interface SamplePropsOne {
+ 
+  darkMode: boolean;
+ 
+}
+interface SamplePropsTwo{
   handleIncreaseCourse: (value: any) => void;
   handleDecrease: (value: any) => void;
   handleDeleteCourse: (value: any) => void;
+  arrContainCourseAndQuantity: any;
+  allQuantity: any;
+  deleteCourse: (value: any) => void
+  decreaseCourse: (value: any) => void
+  increaseCourse: (value: any) => void
+  sendArrCourseToStore: (value: any) => void
+  sendCourse:(value: any) => void
 }
-function CourseDetailChild(props: any) {
+type Props = SamplePropsOne & SamplePropsTwo;
+
+const CourseDetailChild: React.FC<Props> = props =>  {
   const classes = useStyles();
   const [isOpen, setOpen] = React.useState(false);
   const [newCourse, setNewCourse] = React.useState({
@@ -110,6 +143,9 @@ function CourseDetailChild(props: any) {
   const handleDeleteCourse = (course: any) => {
     props.deleteCourse(course);
   };
+  const sendArrContainCourseAndQuantity = (value: Course[]) => {
+    props.sendArrCourseToStore(value);
+  };
   useEffect(() => {
     console.log(id);
 
@@ -124,14 +160,9 @@ function CourseDetailChild(props: any) {
         console.log(err.request);
       });
   }, []);
+  let {darkMode} = props as SamplePropsOne;
   return (
     <React.Fragment>
-      <ButtonBack>
-        <ArrowBackIcon className={classes.icon} />
-        <Typography component="span" variant="button">
-          Back
-        </Typography>
-      </ButtonBack>
       <Container>
         <DivProductView>
           <Grid
@@ -151,7 +182,7 @@ function CourseDetailChild(props: any) {
               </Img>
             </Grid>
             <Grid lg={6} xl={6} md={6}>
-              <Typography variant="h5" component="h2" className={classes.h2}>
+              <Typography variant="h5" component="h2" className={darkMode ? classes.h2White : classes.h2Black }>
                 {newCourse.biDanh}
               </Typography>
               <Typography
@@ -164,7 +195,7 @@ function CourseDetailChild(props: any) {
               <Typography
                 variant="body1"
                 component="p"
-                className={classes.content}
+                className={darkMode ?  classes.contentWhite : classes.contentBlack}
               >
                 The direction and constancy of the will is what really matters,
                 and intellect and feeling are only important insofar as they
@@ -183,7 +214,7 @@ function CourseDetailChild(props: any) {
                 read more
               </Typography>
               <Typography component="div" className={classes.price}>
-                $82
+                $10
               </Typography>
               <Typography component="div">
                 <ButtonCard>
@@ -214,6 +245,7 @@ function CourseDetailChild(props: any) {
         handleIncreaseCourse={handleIncreaseCourse}
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
+        sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
       />
     </React.Fragment>
   );
@@ -233,6 +265,7 @@ const mapStateToProps = (state: rootState) => {
   return {
     arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
     allQuantity: state.cardReducer.quantity,
+    darkMode: state.reducerSwitch.darkMode
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -248,6 +281,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     deleteCourse: (course: any) => {
       dispatch(action.actDeleteCourses(course));
+    },
+    sendArrCourseToStore: (value: Course[]) => {
+      dispatch(action.actSendArrContainCourseAndQuantity(value));
     },
   };
 };

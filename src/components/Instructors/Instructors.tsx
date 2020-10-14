@@ -22,21 +22,24 @@ import img4 from "../../images/jane-doe.jpg";
 import img5 from "../../images/betty-milner.jpg";
 import img6 from "../../images/demo-instructor.jpg";
 import img7 from "../../images/namrata-parmar.jpg";
+import { connect } from "react-redux";
+import { rootState } from "../../redux/reducers/Reducers";
+import {Switch} from "../Interface/Interface"
 import {
   BodyInstructor,
   InstructorTop,
-  InstructorH3,
+  InstructorH3
 } from "./styled-Instructors";
 const useStyles = makeStyles({
   root: {
     maxHeight: 345,
     maxWidth: 300,
     textAlign: "center",
-    margin: "20px 5px",
+    margin: "20px 5px"
   },
   media: {
-    height: 200,
-  },
+    height: 200
+  }
 });
 // function NextArrow(props:any) {
 //   const { className, style, onClick } = props;
@@ -60,7 +63,7 @@ const useStyles = makeStyles({
 //   );
 // }
 
-export default function Instructors() {
+function Instructors(props: Switch) {
   const classes = useStyles();
   const settings = {
     dots: true,
@@ -68,15 +71,16 @@ export default function Instructors() {
     slidesToShow: 4,
     slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 2700,
+    autoplaySpeed: 2700
     // nextArrow: <NextArrow/>,
     // prevArrow: <PrevArrow />,
   };
+  let {darkMode} = props;
   return (
-    <BodyInstructor>
+    <BodyInstructor darkmode={darkMode}>
       <Container maxWidth="md">
         <InstructorTop>
-          <InstructorH3>Top Instructors</InstructorH3>
+          <InstructorH3 darkmode={darkMode}>Top Instructors</InstructorH3>
         </InstructorTop>
         <Slider {...settings}>
           <div>
@@ -343,3 +347,9 @@ export default function Instructors() {
     </BodyInstructor>
   );
 }
+const mapStateToProps = (state: rootState) => {
+  return {
+    darkMode: state.reducerSwitch.darkMode
+  };
+};
+export default connect(mapStateToProps, null)(Instructors);

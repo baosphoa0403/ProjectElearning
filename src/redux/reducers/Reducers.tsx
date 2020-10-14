@@ -5,6 +5,8 @@ import SignUpsReducer from "../../components/SignUp/modules/Reducers/Reducers";
 import reducerHome from "../../page/homepage/module/reducers/reducer";
 import detailCourseReducer from "../../page/detailcourses/module/reducer/Reducer";
 import cardReducer from "../../components/SearchForListCourses/moduleSeartchForCard/reducers/cardReducer";
+import comfirmReducer from "../../components/SearchForListCourses/moduleSeartchForCard/reducers/confirmReducer";
+import reducerSwitch from "../../components/Switch/modules/Reducers/Reducer";
 const rootReducer = combineReducers({
   testReducer,
   reducerHome,
@@ -12,6 +14,8 @@ const rootReducer = combineReducers({
   SignUpsReducer,
   detailCourseReducer,
   cardReducer,
+  comfirmReducer,
+  reducerSwitch
 });
 
 export type rootState = ReturnType<typeof rootReducer>;

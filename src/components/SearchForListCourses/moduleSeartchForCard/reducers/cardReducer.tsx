@@ -1,5 +1,6 @@
 import { Course, CourseFromCard } from "../../../Interface/Interface";
 import * as ActionType from "../contants/contants";
+import * as ActionTypeConfirmedCourse from "../../../InforUsers/module/constant/contants";
 const initialState: CourseFromCard = {
   quantity: 0,
   ArrContainCourseAndQuantity: [
@@ -128,8 +129,27 @@ const cardReducer = (state: CourseFromCard = initialState, action: Course) => {
       state.quantity = newQuantity;
 
       state.ArrContainCourseAndQuantity.splice(index, 1);
-      return { ...state };
 
+      return { ...state };
+    case ActionTypeConfirmedCourse.confirmCourse:
+      index = state.ArrContainCourseAndQuantity.findIndex(
+        (ContainCourseAndQuantity: any) => {
+          return (
+            ContainCourseAndQuantity.Course.maKhoaHoc === action.codeCourse
+          );
+        }
+      );
+      let newQuantityConfirm = 0;
+      newQuantityConfirm =
+        state.quantity -
+        state.ArrContainCourseAndQuantity[index].quantityForCourse;
+
+      state.quantity = newQuantityConfirm;
+
+      state.ArrContainCourseAndQuantity.splice(index, 1);
+
+      console.log(state.ArrContainCourseAndQuantity);
+      return { ...state };
     default:
       break;
   }

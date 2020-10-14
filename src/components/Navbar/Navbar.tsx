@@ -5,17 +5,22 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
-import Switch from "../Switch/Switch";
+import ButtonSwitch from "../Switch/Switch";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
 import InforUses from "../InforUsers/inforUses";
-const NameUser = styled.p`
+import Axios from "axios";
+interface Props1 {
+  darkMode: boolean
+}
+const NameUser = styled.p<Props1>`
   font-size: 28px;
   margin: auto 40px;
-  color: black;
+  color: ${p => p.darkMode ? "white" : "black"};
   // font-family: Arial, Helvetica, sans-serif !important;
+  cursor: pointer;
   &:hover {
-    color: #26a69a;
+    color: #009e7f;
   }
 `;
 const useStyles = makeStyles((theme: Theme) =>
@@ -34,12 +39,12 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "20px 20px"
     },
     backgroundDark: {
-      backgroundColor: "#212121",
+      backgroundColor: "#1c1e21",
       padding: "20px 20px"
     },
     buttonLight: {
       backgroundColor: "#009e7f",
-      color: "white",
+      color: "black",
       padding: "0 15px",
       height: "45px",
       fontWeight: "bold",
@@ -52,7 +57,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     buttonDark: {
       backgroundColor: "#009e7f",
-      color: "black",
+     
+      color: "white",
       padding: "0 15px",
       height: "45px",
       fontWeight: "bold",
@@ -78,21 +84,30 @@ const useStyles = makeStyles((theme: Theme) =>
         marginRight: "inherit!important",
 
       },
+    },
+    ulLight: {
+      color: "black",
+      "&:hover": {
+        color: "#009e7f"
+      }
+    },
+    ulBlack: {
+      color: "white",
+      "&:hover": {
+        color: "#009e7f"
+      }
     }
+
   })
 );
 interface Props {
-  setBackground: (value: boolean) => void;
+  darkMode: boolean
   props: any;
 }
 
-const Navbar: React.FC<Props> = ({ setBackground, props }) => {
+const Navbar: React.FC<Props> = ({ props }) => {
   const classes = useStyles();
-  const [themeNavbar, setThemeNavbar] = React.useState(false);
-  const setBackgroundNavbar = (value: boolean) => {
-    console.log(value);
-    setThemeNavbar(value);
-  };
+  const {darkMode} = props
   const [user1, setUser] = React.useState();
   const emitRoute = () => {
     props.history.push("/signIn");
@@ -100,7 +115,6 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
   const signUpRoute = () => {
     props.history.push("/signUp");
   };
-  console.log(user1);
 
   React.useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -108,18 +122,19 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
       let user: any = JSON.parse(userLocal);
       setUser(user);
     }
+    console.log("hihi");
+    
   }, []);
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
   };
-
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar
           className={
-            themeNavbar ? classes.backgroundDark : classes.backgroundLight
+            darkMode ? classes.backgroundDark : classes.backgroundLight
           }
         >
           <img src={Logo} alt="" />
@@ -134,21 +149,22 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
               }}
 
             >
-              <li style={{ color: "black" }}>Home</li>
-              <li style={{ color: "black" }}>List Course</li>
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }}>Home</li>
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} onClick={()=> {
+                 props.history.push("/allcourse");
+              }}>List Course</li>
             </ul>
           </Box>
-          <Switch
-            setBackground={setBackground}
-            setBackgroundNavbar={setBackgroundNavbar}
-          />
+          <ButtonSwitch/>
+           {/* setBackground={setBackground}
+            setBackgroundNavbar={setBackgroundNavbar} */}
 
           {!user1 ? (
             <span style={{ display: "flex" }}>
               <Box p={1}>
                 <Button
                   className={
-                    themeNavbar ? classes.buttonDark : classes.buttonLight
+                    darkMode ? classes.buttonDark : classes.buttonLight
                   }
                   onClick={emitRoute}
                 >
@@ -158,7 +174,7 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
               <Box p={1}>
                 <Button
                   className={
-                    themeNavbar ? classes.buttonDark : classes.buttonLight
+                    darkMode ? classes.buttonDark : classes.buttonLight
                   }
                   onClick={signUpRoute}
                 >
@@ -167,7 +183,7 @@ const Navbar: React.FC<Props> = ({ setBackground, props }) => {
               </Box>
             </span>
           ) : (
-              <NameUser style={{ display: "flex" }} className={classes.userNameResMoblie}>
+              <NameUser style={{ display: "flex" }} className={classes.userNameResMoblie} darkMode={darkMode}>
                 {user1?.hoTen} <InforUses logout={logout} />
               </NameUser>
             )}
