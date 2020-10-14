@@ -15,16 +15,11 @@ function Courses(props: any) {
     position: relative !important;
     width: 14em !important;
     color: white;
-<<<<<<< HEAD
     .course__img {
+      min-height: 100px;
+      max-width: 100%;
       border-radius: 0.5em;
-      width: 100%;
-
-      height: 100px;
     }
-=======
-
->>>>>>> 69b1ac88112264326407729e4c2ac22254cffe0b
     &:hover {
       z-index: 1;
 
@@ -59,63 +54,81 @@ function Courses(props: any) {
     }
   `;
 
-  const DivViews = styled.p`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `;
-
-  const DivBackInFor = styled.div`
-    opacity: 0;
-    position: absolute;
-    bottom: 5%;
-    right: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .colorStyle {
-      text-decoration: none !important;
+  const ElementP = styled.p`
+    &.views {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &.startandview {
+      font-size: 0.725rem;
+      text-align: center;
+      padding: 0.3rem;
     }
   `;
-  const DivCoursesInfor = styled.div`
-    columns: 2;
-    column-rule: 1px solid white;
-    display: flex;
-    align-items: center;
-    color: white;
+  const Div = styled.div`
+    &.contain-viewers-img {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &.back {
+      opacity: 0;
+      position: absolute;
+      bottom: 5%;
+      right: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .colorStyle {
+        text-decoration: none !important;
+      }
+    }
+    &.coursesInfor {
+      columns: 2;
+      column-rule: 1px solid white;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+    &.contain-img {
+      display: flex;
+      .contain__img
+      {
+        max-width: 100%;
+        width: 1.5em;
+          height: 1.5em;
+          border-radius: 50%;
+          border: 2px solid #0d1113; }
+          &:nth-of-type(1) {
+            transform: translate(50%);
+            z-index: 1; }
+         &:nth-of-type(2) {
+            transform: translate(25%);
+            z-index: 1; }
+      }
+    }
+    &.background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      transform: scale(0.2, 0.9);
+      transition: 250ms;
+      border-radius: 0.5em;
+      opacity: 0;
+    }
   `;
-  const PCoursesStartandViewers = styled.p`
-    font-size: 0.725rem;
-    text-align: center;
-    padding: 0.3rem;
-  `;
+
   const SpanCoursesInfor = styled.span`
     font-size: 1rem;
     display: block;
   `;
-  const DivContainIMG = styled.div`
-    display: flex;
-  `;
-  const ContainIMG = styled.img`
-  max-width: 100%;
-  width: 1.5em;
-    height: 1.5em;
-    border-radius: 50%;
-    border: 2px solid #0d1113; }
-    &:nth-of-type(1) {
-      transform: translate(50%);
-      z-index: 1; }
-   &:nth-of-type(2) {
-      transform: translate(25%);
-      z-index: 1; }
-  `;
-  const IMGCourse = styled.img`
-    min-height: 100px;
-    max-width: 100%;
-    border-radius: 0.5em;
-  `;
+
   const H3Name = styled.h3`
     white-space: nowrap;
     @keyframes gameName {
@@ -137,61 +150,45 @@ function Courses(props: any) {
       }
     }
   `;
-  const DivContaintViewersAndIMGs = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `;
-  const DivBackGroundForCourse = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    transform: scale(0.2, 0.9);
-    transition: 250ms;
-    border-radius: 0.5em;
-    opacity: 0;
-  `;
+
   return (
     <DivGame className="course">
       <div className="front">
-        <IMGCourse src={course.hinhAnh} alt="" />
+        <img src={course.hinhAnh} alt="" className="course__img" />
 
         <H3Name className="name-course">{course.tenKhoaHoc}</H3Name>
-        <DivContaintViewersAndIMGs className="contain-viewers-img">
-          <DivViews>
+        <Div className="contain-viewers-img">
+          <ElementP className="views">
             {course.luotXem}
             <VisibilityIcon />
-          </DivViews>
-          <DivContainIMG>
-            <ContainIMG src={img1} alt="" />
-            <ContainIMG src={img2} alt="" />
-            <ContainIMG src={img3} alt="" />
-          </DivContainIMG>
-        </DivContaintViewersAndIMGs>
+          </ElementP>
+          <Div className="contain-img">
+            <img src={img1} alt="" className="contain__img" />
+            <img src={img2} alt="" className="contain__img" />
+            <img src={img3} alt="" className="contain__img" />
+          </Div>
+        </Div>
       </div>
 
-      <DivBackInFor className="back">
-        <DivCoursesInfor>
-          <PCoursesStartandViewers>
+      <Div className="back">
+        <Div className="coursesInfor">
+          <ElementP className="startandview">
             {course.luotXem}
             <SpanCoursesInfor>Watching</SpanCoursesInfor>
-          </PCoursesStartandViewers>
-          <PCoursesStartandViewers>
+          </ElementP>
+          <ElementP className="startandview">
             {course.ngayTao}
             <SpanCoursesInfor>Opening</SpanCoursesInfor>
-          </PCoursesStartandViewers>
-        </DivCoursesInfor>
+          </ElementP>
+        </Div>
         <Button variant="contained" color="secondary">
           <Link to={`/detail/${course.maKhoaHoc}`} className="colorStyle">
             See Detail
           </Link>
         </Button>
-      </DivBackInFor>
+      </Div>
 
-      <DivBackGroundForCourse className="background"></DivBackGroundForCourse>
+      <Div className="background"></Div>
     </DivGame>
   );
 }

@@ -13,7 +13,7 @@ function SearchForCourse(props: any) {
     Axios({
       method: "GET",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
         setListCourse(res.data);

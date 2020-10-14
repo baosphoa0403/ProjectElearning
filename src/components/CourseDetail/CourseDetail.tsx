@@ -122,7 +122,7 @@ function CourseDetailChild(props: any) {
 
     Axios({
       method: "GET",
-      url: `http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`,
+      url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`,
     })
       .then((res: any) => {
         setNewCourse(res.data);
