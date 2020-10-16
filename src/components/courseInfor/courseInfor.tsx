@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
+// import { useSprings, animated } from 'react-spring'
+// import clamp from 'lodash-es/clamp'
+// import { useGesture } from 'react-use-gesture'
 import {
     H2Course,
     H4Course,
@@ -15,6 +18,14 @@ import {
     BodyChoosen,
     ChoosenFormItem,
 } from "./styled-courseInfor";
+
+const pages = [
+    'https://images.pexels.com/photos/62689/pexels-photo-62689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    'https://images.pexels.com/photos/296878/pexels-photo-296878.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    'https://images.pexels.com/photos/1509428/pexels-photo-1509428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    'https://images.pexels.com/photos/351265/pexels-photo-351265.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    'https://images.pexels.com/photos/924675/pexels-photo-924675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+]
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
@@ -42,11 +53,52 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function CourseInfor() {
     const classes = useStyles();
+    const index = useRef(0)
+    const [props, set] = useSprings(pages.length, i => ({ x: i * window.innerWidth, sc: 1, display: 'block' }))
+    const bind = useGesture(({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
+        if (down && distance > window.innerWidth / 2)
+            cancel((index.current = clamp(index.current + (xDir > 0 ? -1 : 1), 0, pages.length - 1)))
+        set(i => {
+            if (i < index.current - 1 || i > index.current + 1) return { display: 'none' }
+            const x = (i - index.current) * window.innerWidth + (down ? xDelta : 0)
+            const sc = down ? 1 - distance / window.innerWidth / 2 : 1
+            return { x, sc, display: 'block' }
+        })
+    })
     return (
         <div className={classes.root}>
             <Container fixed>
                 <Grid container >
-                    <Grid item xs={12} sm={7}>
+
+
+
+
+                </Grid>
+            </Container>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <Grid item xs={12} sm={7}>
                         <H2Course>WELCOME TO PICKBAZAR</H2Course>
                         <H4Course>PickBazar exploits the need to recruit programmers from the business and integrates projects with the latest technology into an active training approach for students. Our dynamic curriculum is always refined and optimized over time by our founding members - a team of seasoned software developers and technology directors.</H4Course>
                     </Grid>
@@ -80,9 +132,4 @@ export default function CourseInfor() {
                                 <SubChoosen>Submit </SubChoosen>
                             </ChoosenFormItem>
                         </BodyChoosen>
-                    </Grid>
-                </Grid>
-            </Container>
-        </div>
-    );
-}
+                    </Grid> */}
