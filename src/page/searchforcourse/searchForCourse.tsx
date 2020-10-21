@@ -13,7 +13,7 @@ function SearchForCourse(props: any) {
     Axios({
       method: "GET",
       url:
-        "http://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
     })
       .then((res: any) => {
         setListCourse(res.data);
@@ -47,6 +47,7 @@ function SearchForCourse(props: any) {
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
         sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
+        darkMode={props.darkMode}
       />
     </React.Fragment>
   );
@@ -55,6 +56,7 @@ const mapStateToProps = (state: rootState) => {
   return {
     arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
     allQuantity: state.cardReducer.quantity,
+    darkMode: state.reducerSwitch.darkMode
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

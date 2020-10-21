@@ -5,18 +5,15 @@ import Brightness3Icon from "@material-ui/icons/Brightness3";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import "../Switch/switch.css";
 import { connect } from "react-redux";
-interface Props {
-  setBackground: (value: boolean) => void;
-  setBackgroundNavbar: (value: boolean) => void;
-}
-
-function Switch(props: Props) {
-  const [darkMode, setDarkMode] = React.useState(false);
+import { rootState } from "../../redux/reducers/Reducers";
+import * as action from "./modules/Actions/Action";
+function ButtonSwitch(props: any) {
+  console.log(props.darkMode);
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
         margin: "-6px -6px",
-        color: darkMode ? "" : "#ff9800"
+        color: props.darkMode ? "" : "#ff9800"
       },
       switch: {
         [theme.breakpoints.between("xs", "sm")]: {
@@ -31,19 +28,30 @@ function Switch(props: Props) {
     <label>
       <Toggle
         className={classes.switch}
-        defaultChecked={darkMode}
+        defaultChecked={props.darkMode}
         icons={{
           checked: <Brightness3Icon className={classes.root} />,
           unchecked: <WbSunnyRoundedIcon className={classes.root} />
         }}
-        onChange={() => {
-          setDarkMode(!darkMode);
-          props.setBackground(!darkMode);
-          props.setBackgroundNavbar(!darkMode);
+        onChange={()=>{ 
+          props.emitDarkMode(!props.darkMode)
         }}
       />
     </label>
   );
 }
 // type ReduxType = ReturnType<typeof mapStateToProps>;
-export default connect(null, null)(Switch);
+const mapDispatchToProps = (dispatch: any) => {
+      return {
+         emitDarkMode: (value: any) => {           
+             dispatch(action.changeDarkMode(value))
+         }
+      }
+}
+const mapStateToProps = (state: rootState) => {
+     return {
+       darkMode: state.reducerSwitch.darkMode
+     }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonSwitch);
