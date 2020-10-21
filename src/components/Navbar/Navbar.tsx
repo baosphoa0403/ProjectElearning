@@ -149,7 +149,9 @@ const Navbar: React.FC<Props> = ({ props }) => {
               }}
 
             >
-              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }}>Home</li>
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} onClick={()=> {
+                 props.history.push("/");
+              }}>Home</li>
               <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} onClick={()=> {
                  props.history.push("/allcourse");
               }}>List Course</li>
