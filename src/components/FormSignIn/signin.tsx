@@ -39,13 +39,13 @@ interface Inputs {
                 <form id="login-form" className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <H2Login>USER LOGIN</H2Login>
                   <DivFormGroup>
-                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Don't Forget Your Username Should Be Cool!"})}
+                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Please enter your Account"})}
                     style={{borderColor: errors.taiKhoan && "red"}}
                     />
                      {errors.taiKhoan && <p style={{color: "red"}}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
-                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Don't Forget Your Password Should Be Cool!"})}
+                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Please enter your Password"})}
                      style={{borderColor: errors.matKhau && "red"}}
                     />
                     {errors.matKhau && <p style={{color: "red"}}>{errors.matKhau.message}</p>}

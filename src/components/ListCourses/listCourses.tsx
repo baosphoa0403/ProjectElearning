@@ -69,14 +69,14 @@ function ListCourses(props: any) {
 
     .slick-prev {
       left: -15px;
-      z-index: 99999;
+      z-index: 10;
       :before {
         font-size: 35px;
         color: #234;
       }
     }
     .slick-next {
-      z-index: 99999;
+      z-index: 10;
       border-radius: 50%;
       right: 0px;
 

@@ -12,6 +12,7 @@ export const BodyAchievement = styled.div`
     margin-bottom: 0px !important;
     padding-top: 124px !important;
     padding-bottom: 90px !important;
+    background-attachment: fixed;
 `;
 export const DivContentAchievement = styled.div`
     position: relative;
