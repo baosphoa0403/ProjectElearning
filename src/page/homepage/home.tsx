@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Carousel from "../../components/carousel/carousel";
 import CourseInfor from "../../components/courseInfor/courseInfor";
@@ -35,20 +35,38 @@ function HomePage(props: any) {
     props.getListCourses();
   }, []);
 
+
+  // const [offsetY, setOffset] = useState(0);
+  // const handleSrcoll = () => {
+  //   setOffset(window.pageYOffset);
+  // }
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleSrcoll);
+  //   return () => window.removeEventListener("scroll", handleSrcoll);
+  // }, []);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <Navbar setBackground={setBackground} props={props} />
-        <Carousel />
-        <CourseInfor />
-        <IntroduceStep />
-        <IntroduceTarget />
+        {/* <div style={{ transform: `translateY(-${offsetY * 0.5}px)` }}> */}
+          <Carousel />
+          <CourseInfor />
+          <IntroduceStep />
+          <IntroduceTarget />
+          <IntroduceCourse />
+          <Instructors />
+          <Achievements />
+          <Footer />
+        {/* </div> */}
+
+
+
+
         {/* <ListCourses listCourses={props.newListCourses} /> */}
-        <IntroduceCourse />
-        <Instructors />
-        <Achievements />
-        <Footer />
+
       </ThemeProvider>
     </React.Fragment>
   );
