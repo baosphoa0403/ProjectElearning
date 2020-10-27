@@ -14,6 +14,9 @@ import img1 from "../../images/wel1.jpeg";
 import img2 from "../../images/wel2.jpeg";
 import img3 from "../../images/wel3.jpeg";
 import img4 from "../../images/wel4.jpeg";
+import { Switch } from "../Interface/Interface"
+import { connect } from "react-redux";
+import { rootState } from "../../redux/reducers/Reducers";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function CourseInfor() {
+function CourseInfor(props: Switch) {
     const classes = useStyles();
     const settings = {
         dots: false,
@@ -36,14 +39,14 @@ export default function CourseInfor() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        // autoplaySpeed: 2700,
     };
+    let { darkMode } = props;
 
     return (
-        <BodyCourse >
+        <BodyCourse darkmode={darkMode}>
             <Container maxWidth="md">
                 <CourseInfoTop>
-                    <CourseH3>WELCOME TO PICKBAZAR</CourseH3>
+                    <CourseH3 darkmode={darkMode}>WELCOME TO PICKBAZAR</CourseH3>
                 </CourseInfoTop>
                 <Slider {...settings}>
                     <div>
@@ -95,6 +98,12 @@ export default function CourseInfor() {
         </BodyCourse>
     );
 }
+const mapStateToProps = (state: rootState) => {
+    return {
+        darkMode: state.reducerSwitch.darkMode
+    };
+};
+export default connect(mapStateToProps, null)(CourseInfor);
 
 
 

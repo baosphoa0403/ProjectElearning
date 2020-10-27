@@ -8,65 +8,35 @@ import IntroduceTarget from "../../components/IntroduceTarget/IntroduceTarget";
 import IntroduceCourse from "../../components/IntroduceCourse/IntroduceCourse";
 import Instructors from "../../components/Instructors/Instructors";
 import Achievements from "../../components/Achievements/Achievements";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import Footer from "../../components/Footer/footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 import { rootState } from "../../../src/redux/reducers/Reducers";
 import { useEffect } from "react";
 import * as action from "./module/actions/action";
-
-function HomePage(props: any) {
-  const [darkMode, setDarkMode] = React.useState(false);
-  const darkTheme = createMuiTheme({
-    palette: {
-      type: "dark",
-    },
-  });
-  const lightTheme = createMuiTheme({
-    palette: {
-      type: "light",
-    },
-  });
-  const setBackground = (value: boolean) => {
-    setDarkMode(value);
-  };
+import {darkTheme, lightTheme} from "../../theme/theme"
+import {Switch} from "../../components/Interface/Interface";
+function HomePage(props: any|Switch) {
   useEffect(() => {
     props.getListCourses();
   }, []);
 
 
-  // const [offsetY, setOffset] = useState(0);
-  // const handleSrcoll = () => {
-  //   setOffset(window.pageYOffset);
-  // }
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleSrcoll);
-  //   return () => window.removeEventListener("scroll", handleSrcoll);
-  // }, []);
-
   return (
     <React.Fragment>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <ThemeProvider theme={props.darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Navbar setBackground={setBackground} props={props} />
-        {/* <div style={{ transform: `translateY(-${offsetY * 0.5}px)` }}> */}
-          <Carousel />
-          <CourseInfor />
-          <IntroduceStep />
-          <IntroduceTarget />
-          <IntroduceCourse />
-          <Instructors />
-          <Achievements />
-          <Footer />
-        {/* </div> */}
-
-
-
-
-        {/* <ListCourses listCourses={props.newListCourses} /> */}
-
+        <Navbar darkMode={props.darkMode} props={props} />
+        <Carousel darkMode={props.darkMode} />
+        <CourseInfor darkMode={props.darkMode}/>
+        <IntroduceStep darkMode={props.darkMode}/>
+        <IntroduceTarget />
+        <ListCourses listCourses={props.newListCourses} />
+        <IntroduceCourse  />
+        <Instructors darkMode={props.darkMode}/>
+        <Achievements />
+        <Footer />
       </ThemeProvider>
     </React.Fragment>
   );
@@ -75,6 +45,7 @@ const mapStateToProps = (state: rootState) => {
   return {
     newListCourses: state.reducerHome.listCourses,
     user: state.SignInReducer.user,
+    darkMode: state.reducerSwitch.darkMode
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

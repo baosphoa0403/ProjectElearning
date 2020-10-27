@@ -3,7 +3,9 @@ export interface Test {
 }
 
 // export interface RootState {}
-
+export interface Switch {
+  darkMode: boolean
+}
 export interface SignIn {
   user: {
     hoTen: String;

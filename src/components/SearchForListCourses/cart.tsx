@@ -8,12 +8,14 @@ import Test from "../../images/images1.jpg";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { Course } from "../Interface/Interface";
+import { connect } from "react-redux";
+import { rootState } from "../../../src/redux/reducers/Reducers";
 const DivNavigationCart = styled.div`
   &.show {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 4;
+    z-index: 9999;
     width: 420px;
     height: 100vh;
     background-color: #fff;
@@ -145,6 +147,7 @@ interface Props {
   arrContainCourseAndQuantity: Course[];
   allQuantity: 0;
   sendArrContainCourseAndQuantity: (value: Course[]) => void;
+
 }
 
 function Cart(props: Props) {
@@ -269,11 +272,16 @@ function Cart(props: Props) {
           <span>item</span>
         </DivItem>
         <DivTotal className="total">
-          <p>{allQuantity}</p>
+          <p>{allQuantity} item</p>
         </DivTotal>
       </DivToogle>
     </React.Fragment>
   );
 }
+const mapStateToProps = (state: rootState) => {
+  return {
+    darkMode: state.reducerSwitch.darkMode
+  };
+};
 
-export default Cart;
+export default connect(mapStateToProps, null)(Cart);

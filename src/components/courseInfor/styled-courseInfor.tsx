@@ -1,5 +1,8 @@
 import styled from "styled-components";
-export const BodyCourse = styled.div`
+interface Props {
+  darkmode: boolean
+}
+export const BodyCourse = styled.div<Props>`
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -8,7 +11,7 @@ export const BodyCourse = styled.div`
   -ms-background-size: cover;
   background-position: center center;
   box-sizing: border-box;
-  background-color: #f2f6fb;
+  background-color: ${p  => p.darkmode ? '#303030' : '#f2f6fb'};
   padding-bottom: 55px;
 
   .slick-next {
@@ -31,11 +34,11 @@ export const CourseInfoTop = styled.div`
     padding: 0 15px;
     margin: 0 0 17px;
 `;
-export const CourseH3 = styled.h3`
+export const CourseH3 = styled.h3<Props>`
   font-size: 45px;
   line-height: 45px;
   margin-bottom: 20px;
-  color: #273044;
+  color: ${p  => p.darkmode ? 'white' : '#273044'};
   font-weight: 700;
   font-style: normal !important;
   font-family: Quicksand !important;

@@ -29,9 +29,8 @@ function Login(props: any) {
   const onSubmit = (data: Inputs) => {
     props.getListCourses(data, props.history)
   }
-
-  const moveToSignUp = () => {
-    props.history.push("/signUp")
+  const emitRoute = () => {
+   props.history.push("/signUp")
   }
   return (
     <BodyLogin>
@@ -43,14 +42,14 @@ function Login(props: any) {
                 <form id="login-form" className="login-form" onSubmit={handleSubmit(onSubmit)}>
                   <H2Login>USER LOGIN</H2Login>
                   <DivFormGroup>
-                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({ required: "Don't Forget Your Username Should Be Cool!" })}
-                      style={{ borderColor: errors.taiKhoan && "red" }}
+                    <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Please enter your Account"})}
+                    style={{borderColor: errors.taiKhoan && "red"}}
                     />
                     {errors.taiKhoan && <p style={{ color: "red" }}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
-                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({ required: "Don't Forget Your Password Should Be Cool!" })}
-                      style={{ borderColor: errors.matKhau && "red" }}
+                    <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Please enter your Password"})}
+                     style={{borderColor: errors.matKhau && "red"}}
                     />
                     {errors.matKhau && <p style={{ color: "red" }}>{errors.matKhau.message}</p>}
                   </DivFormGroup>
@@ -64,8 +63,12 @@ function Login(props: any) {
                 </form>
                 <ElementpLoginHere>
                   Don't have a account ?
-                  <ElementaSignUpHere style={{ cursor: "pointer" }} onClick={moveToSignUp}>
-                    Create Account here</ElementaSignUpHere>
+                                        <a
+                    onClick={()=>{emitRoute()}}
+                    className="loginhere-link"
+                  >
+                    <ElementaSignUpHere> Create Account here</ElementaSignUpHere>
+                  </a>
                 </ElementpLoginHere>
               </DivLoginContent>
             </Container>

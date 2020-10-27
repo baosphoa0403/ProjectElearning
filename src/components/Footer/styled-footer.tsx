@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const BodyFooter = styled.div`
-    background-color: #2c2e32;
+    background-color: #1c1e21;
     padding-top: 83px;
     padding-bottom: 0;
     padding: 63px 0 30px;
