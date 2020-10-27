@@ -6,8 +6,8 @@ export default function AdminPage() {
     return (
         <React.Fragment>
             <NavbarAdmin />
-             {/* <TableUser/> */}
-             <TableCourse />
+             <TableUser/>
+             {/* <TableCourse /> */}
         </React.Fragment>
     )
 }

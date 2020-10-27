@@ -1,88 +1,123 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
 import {
-    H2Course,
-    H4Course,
-    H4Form,
-    ChoosenForm,
-    H5Choosen,
-    SelectChoosenLevel,
-    SelectChoosenCate,
-    SelectChoosen,
-    SubChoosen,
-    BodyChoosen,
-    ChoosenFormItem,
+    CourseInfoTop, BodyCourse, CourseH3
 } from "./styled-courseInfor";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import img1 from "../../images/wel1.jpeg";
+import img2 from "../../images/wel2.jpeg";
+import img3 from "../../images/wel3.jpeg";
+import img4 from "../../images/wel4.jpeg";
+import { Switch } from "../Interface/Interface"
+import { connect } from "react-redux";
+import { rootState } from "../../redux/reducers/Reducers";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            flexGrow: 1,
+            maxHeight: "100%",
+            maxWidth: "100%",
+            textAlign: "center",
+            margin: "20px 5px",
         },
-        formCourse: {
-            backgroundColor: '#000000',
-            padding: '40px 30px 40px',
-            marginTop: '0em',
-
+        media: {
+            height: 400,
         },
-        formControl: {
-            margin: theme.spacing(1),
-            minWidth: 120,
-            color: '#fff',
-        },
-        optionBack: {
-            backgroundColor: '#2d3e50',
-            textAlign: 'left',
-            display: 'block',
-            outline: 'none'
-        }
     }),
 );
 
-export default function CourseInfor() {
+function CourseInfor(props: Switch) {
     const classes = useStyles();
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+    };
+    let { darkMode } = props;
+
     return (
-        <div className={classes.root}>
-            <Container fixed>
-                <Grid container >
-                    <Grid item xs={12} sm={7}>
-                        <H2Course>WELCOME TO PICKBAZAR</H2Course>
-                        <H4Course>PickBazar exploits the need to recruit programmers from the business and integrates projects with the latest technology into an active training approach for students. Our dynamic curriculum is always refined and optimized over time by our founding members - a team of seasoned software developers and technology directors.</H4Course>
-                    </Grid>
-                    <Grid item xs={12} sm={5} style={{ backgroundColor: 'black', paddingBottom: 30 }}>
-                        <H4Form>Search for a course</H4Form>
-                        <BodyChoosen>
-                            <ChoosenForm>
-                                <H5Choosen>Choose your level : </H5Choosen>
-                                <SelectChoosenLevel className={classes.formControl}>
-                                    <option className={classes.optionBack} label="Choose level" value="1" />
-                                    <option className={classes.optionBack}>Introductory</option>
-                                    <option className={classes.optionBack}>Intermediate</option>
-                                    <option className={classes.optionBack}>Profession</option>
-                                </SelectChoosenLevel>
-                            </ChoosenForm>
-                            <ChoosenFormItem>
-                                <H5Choosen>Category : </H5Choosen>
-                                <SelectChoosenCate className={classes.formControl}>
-                                    <option value="-1" label="Choose the category" className={classes.optionBack} />
-                                    <option value="-1" className={classes.optionBack}>Please choose your level</option>
-                                </SelectChoosenCate>
-                            </ChoosenFormItem>
-                            <ChoosenFormItem>
-                                <H5Choosen>Subjects : </H5Choosen>
-                                <SelectChoosen className={classes.formControl}>
-                                    <option value="-1" label="choose the subject" className={classes.optionBack} />
-                                    <option value="-1" className={classes.optionBack}>Please select level, category</option>
-                                </SelectChoosen>
-                            </ChoosenFormItem>
-                            <ChoosenFormItem>
-                                <SubChoosen>Submit </SubChoosen>
-                            </ChoosenFormItem>
-                        </BodyChoosen>
-                    </Grid>
-                </Grid>
+        <BodyCourse darkmode={darkMode}>
+            <Container maxWidth="md">
+                <CourseInfoTop>
+                    <CourseH3 darkmode={darkMode}>WELCOME TO PICKBAZAR</CourseH3>
+                </CourseInfoTop>
+                <Slider {...settings}>
+                    <div>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={img2}
+                                    title="Contemplative Reptile"
+                                />
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                    <div>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={img1}
+                                    title="Contemplative Reptile"
+                                />
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                    <div>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={img3}
+                                    title="Contemplative Reptile"
+                                />
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                    <div>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={img4}
+                                    title="Contemplative Reptile"
+                                />
+                            </CardActionArea>
+                        </Card>
+                    </div>
+                </Slider>
             </Container>
-        </div>
+        </BodyCourse>
     );
 }
+const mapStateToProps = (state: rootState) => {
+    return {
+        darkMode: state.reducerSwitch.darkMode
+    };
+};
+export default connect(mapStateToProps, null)(CourseInfor);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

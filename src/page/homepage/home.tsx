@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Carousel from "../../components/carousel/carousel";
 import CourseInfor from "../../components/courseInfor/courseInfor";
@@ -22,13 +22,14 @@ function HomePage(props: any|Switch) {
     props.getListCourses();
   }, []);
 
+
   return (
     <React.Fragment>
       <ThemeProvider theme={props.darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <Navbar darkMode={props.darkMode} props={props} />
         <Carousel darkMode={props.darkMode} />
-        <CourseInfor />
+        <CourseInfor darkMode={props.darkMode}/>
         <IntroduceStep darkMode={props.darkMode}/>
         <IntroduceTarget />
         <ListCourses listCourses={props.newListCourses} />

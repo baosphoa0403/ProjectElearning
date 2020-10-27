@@ -15,18 +15,18 @@ import {
 import { connect } from "react-redux";
 import * as action from "./Modules/Actions/Action";
 interface Inputs {
-   taiKhoan: string, 
-   matKhau: string,
-   errorInput: string
+  taiKhoan: string,
+  matKhau: string,
+  errorInput: string
 }
 
 
- function Login(props: any) {
+function Login(props: any) {
   const { register, handleSubmit, errors } = useForm<Inputs>({
     mode: "onBlur"
   });
-  
-  const onSubmit = (data: Inputs) =>{
+
+  const onSubmit = (data: Inputs) => {
     props.getListCourses(data, props.history)
   }
   const emitRoute = () => {
@@ -45,13 +45,13 @@ interface Inputs {
                     <InputFormLogin name="taiKhoan" type="text" placeholder="Account" ref={register({required: "Please enter your Account"})}
                     style={{borderColor: errors.taiKhoan && "red"}}
                     />
-                     {errors.taiKhoan && <p style={{color: "red"}}>{errors.taiKhoan.message}</p>}
+                    {errors.taiKhoan && <p style={{ color: "red" }}>{errors.taiKhoan.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
                     <InputFormLogin name="matKhau" type="password" placeholder="Password" ref={register({required: "Please enter your Password"})}
                      style={{borderColor: errors.matKhau && "red"}}
                     />
-                    {errors.matKhau && <p style={{color: "red"}}>{errors.matKhau.message}</p>}
+                    {errors.matKhau && <p style={{ color: "red" }}>{errors.matKhau.message}</p>}
                   </DivFormGroup>
                   <DivFormGroup>
                     <InputSubmitLogin

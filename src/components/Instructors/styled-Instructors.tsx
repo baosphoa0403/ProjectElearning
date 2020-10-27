@@ -18,6 +18,9 @@ export const BodyInstructor = styled.div<Props>`
     right: 0;
     display: none !important;
   }
+  .slick-prev {
+    display: none !important;
+  }
   @media only screen and (max-width: 750px) {
     opacity: 0;
   }

@@ -12,9 +12,9 @@ import InputLabel from "@material-ui/core/InputLabel";
 import UserProfile from "./YourProfile/UserProfile";
 import { connect } from "react-redux";
 import Swal from "sweetalert2";
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import {
-  H3Item1,
-  SpanItem1,
   DivItem2,
   DivCheckoutItem2,
   H3Item2,
@@ -25,6 +25,8 @@ import {
   LabelItem2,
   InputItem2,
   Div,
+  PaymentDiv,
+  CashLabel,
 } from "./styled-inforusers";
 import ConfirmCourses from "./confirmCourses";
 import { rootState } from "../../redux/reducers/Reducers";
@@ -362,6 +364,17 @@ function VerticalTabs(props: any) {
                   </form>
                   <DivCheckoutItem2 style={{ margin: "60px 0 30px" }}>
                     <H3Item2>Select Payment Option</H3Item2>
+                    <PaymentDiv>
+                      <CashLabel>
+                        <LocalAtmIcon style={{ overflow: "visible", fontSize: "60px", width: "1.25em" }} />
+                        <span style={{ fontWeight: 600, fontSize: "18px" }}>Cash</span>
+                      </CashLabel>
+                      <CashLabel>
+                        <CreditCardIcon style={{ overflow: "visible", fontSize: "60px", width: "1.25em" }} />
+                        <span style={{ fontWeight: 600, fontSize: "18px" }}>Card</span>
+                      </CashLabel>
+                    </PaymentDiv>
+
                   </DivCheckoutItem2>
                   <button className={classes.button2}>
                     Proceed to Checkout

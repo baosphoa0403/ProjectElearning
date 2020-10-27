@@ -126,3 +126,36 @@ export const buttonItem2 = styled.button`
   background-color: #f1f1f1 !important;
   border-color: #f1f1f1 !important;
 `;
+
+
+export const PaymentDiv = styled.div`
+  padding: 0!important;
+  margin-bottom: 1rem!important;
+  justify-content: space-between!important;
+  display: flex!important;
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+    margin-bottom: 1rem!important;
+  }
+`;
+
+export const CashLabel = styled.label`
+  background-color: #009e7f;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 80px;
+  border: 2px solid #009e7f;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: background-color .4s;
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+    margin-bottom: 1rem!important;
+  }
+`;

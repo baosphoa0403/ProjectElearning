@@ -57,9 +57,6 @@ export default function InforUses(props: any) {
         >
             <List>
                 <ListItem button style={{ display: 'grid' }} className={classes.user}>
-                    {/* <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left', }}><ItemInfor>+ Profile</ItemInfor></Link>
-                    <Link href="" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>+ Checkout</ItemInfor></Link>
-                    <Link href="" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>+ My Orders</ItemInfor></Link> */}
                     <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left', }}><ItemInfor>Your Profile</ItemInfor></Link>
                 </ListItem>
             </List>

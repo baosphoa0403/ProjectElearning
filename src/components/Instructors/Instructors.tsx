@@ -41,27 +41,7 @@ const useStyles = makeStyles({
     height: 200
   }
 });
-// function NextArrow(props:any) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "none",  }}
-//       onClick={onClick}
-//     />
-//   );
-// }
 
-// function PrevArrow(props:any) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "none", }}
-//       onClick={onClick}
-//     />
-//   );
-// }
 
 function Instructors(props: Switch) {
   const classes = useStyles();
@@ -72,8 +52,6 @@ function Instructors(props: Switch) {
     slidesToScroll: 2,
     autoplay: true,
     autoplaySpeed: 2700
-    // nextArrow: <NextArrow/>,
-    // prevArrow: <PrevArrow />,
   };
   let {darkMode} = props;
   return (
