@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from 'react';
 import "./App.css";
 import {routesAdmin} from "./routes/admin"
 import { routesHome } from "./routes/index";
 import { HomeTemplate } from "./templates/HomeTemplate";
 import {AdminTemplate} from "./templates/AdminTemplate"
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Loading from "./components/loading/loading";
 import Auth from "./page/admin/auth/auth";
 function App() {
   const showHomeLayout = (routesHome: any) => {
@@ -39,7 +40,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route>
-          {showHomeLayout(routesHome)}
+
+        <Suspense fallback={<Loading />}>
+        {showHomeLayout(routesHome)}
+        </Suspense>
           {showAdminLayout(routesAdmin)}
           <Route path="/admin" component={Auth} exact={true} />
         </Route>

@@ -252,7 +252,6 @@ export default function SearchForListCourse(props: any) {
   return (
     <React.Fragment>
       <ThemeProvider theme={props.darkMode ? darkTheme : lightTheme}>
-       <CssBaseline />
       <Container>
         <div className="tittle-and-content">
           <h2>The world's largest selection of courses</h2>

@@ -86,5 +86,6 @@ const mapDispatchToProps = (dispatch: any) => {
     },
   };
 };
+
 export default connect(null, mapDispatchToProps)(Login)
 

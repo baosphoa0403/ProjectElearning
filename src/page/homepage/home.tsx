@@ -54,4 +54,4 @@ const mapDispatchToProps = (dispatch: any) => {
     },
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage) as React.ComponentType;
