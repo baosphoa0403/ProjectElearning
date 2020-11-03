@@ -113,6 +113,8 @@ export default function TableCourse() {
           "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01",
         })
         .then((rs)=>{
+          console.log("oke");
+          
           setDataStore(prevState => {
               return { ...prevState, data: rs.data };
             });
@@ -121,54 +123,104 @@ export default function TableCourse() {
             console.log(err);
           });
       }, [change])
-    let handleAddCourse = (course: any) => {
+      
+      const uploadHinhAPIForAddCourse = (hinhAnh:any,nameCourse:any) =>
+      {
+        console.log(nameCourse);
+        
+         var frm = new FormData();
+         
+          frm.append('file',hinhAnh);
+          frm.append('tenKhoaHoc',nameCourse);
+          Axios({
+            method:"POST",
+            url:"https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc",
+            data:frm,
+          }).then((rs:any) => {
+            console.log(rs.data);
+            Swal.fire("Add Course success !", "Press OK exit!", "success").then(() => {
+              setChange(!change);
+            });
+            
+          }).catch((error:any) => {
+            console.log( error.response.data);
+            
+            Swal.fire("Add Course fail !",  error.response.data, "error");
+          })
+
+          
+          
+      }
+ 
+      let handleAddCourse = (course: any) => {
         // console.log(course);
         let moment = require('moment');
         var form_data = new FormData();
         let ngayTao = moment(course.ngayTao).format("DD/MM/YYYY");
-        let maDanhMucKhoaHoc = course.maKhoaHoc.slice(0, course.maKhoaHoc.indexOf("_"));
+     //   let maDanhMucKhoaHoc = course.maKhoaHoc.slice(0, course.maKhoaHoc.indexOf("_"));
         const localAdmin: any = localStorage.getItem("userAdmin");
         const userAdmin = JSON.parse(localAdmin);
+    //       "maKhoaHoc": "string",
+    // "biDanh": "string",
+    // "tenKhoaHoc": "string",
+    // "moTa": "string",
+    // "luotXem": 0,
+    // "danhGia": 0,
+    // "hinhAnh": "string",
+    // "maNhom": "string",
+    // "ngayTao": "string",
+    // "maDanhMucKhoaHoc": "string",
+    // "taiKhoanNguoiTao": "string"
+   
+    //    console.log(course);
+        
         let courseAdd = {
-          ...course,
+          maKhoaHoc:course.maKhoaHoc,
+          tenKhoaHoc:course.tenKhoaHoc,
+          hinhAnh:course.hinhAnh.name,
+          moTa:course.moTa,
           maNhom: "GP01", 
           danhGia: 0,
           ngayTao: ngayTao,
           biDanh: course.tenKhoaHoc,
           luotXem: 0,
-          maDanhMucKhoaHoc: maDanhMucKhoaHoc,
+          maDanhMucKhoaHoc: "BackEnd",
           taiKhoanNguoiTao: userAdmin.taiKhoan
         }
-        for (const key in courseAdd) {
-          // console.log(key, courseAdd[key]);
-          form_data.append(key, courseAdd[key]);
-          console.log(form_data);
-        }
-        console.log(form_data);
+        console.log(courseAdd);
+        
+        
+        //   form_data.append(key, courseAdd[key]);
+        
+      
+        
        
         Axios({
           method: "POST",
           url:
-            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh",
-          data: form_data,
+            "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/ThemKhoaHoc",
+          data: courseAdd,
           headers: {
             Authorization: `Bearer ${userAdmin.accessToken}`
           }
         }).then(rs => {
           console.log(rs.data);
-          setChange(!change)
-          Swal.fire("Add Course success !", "Press OK exit!", "success");
+          // setChange(!change)
+          uploadHinhAPIForAddCourse(course.hinhAnh,rs.data.tenKhoaHoc);
+         
         })
         .catch(error => {
           console.log(error.response);
+       //   console.log(error.response.data);
           
-          Swal.fire("Add Course fail !",  error.response.data, "error");
+         Swal.fire("Add Course fail !",  error.response.data, "error");
         });
      }
      let handleDeleteMovie = (course: any) => {
-          console.log(course);
+       
           const localAdmin: any = localStorage.getItem("userAdmin");
           const userAdmin = JSON.parse(localAdmin);
+          console.log("maKhoaHoc",course.maKhoaHoc,"token",userAdmin);
           Axios({
             method: "DELETE",
             url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${course.maKhoaHoc}`,
@@ -180,7 +232,7 @@ export default function TableCourse() {
           .then(rs => {
             console.log(rs.data);
             
-            // setChange(!change)
+            setChange(!change)
             Swal.fire("Delete Course success !", "Press OK exit!", "success");
           })
           .catch(error => {
@@ -193,40 +245,54 @@ export default function TableCourse() {
      let handleEditMovie = (course: any) => {
       // console.log(course);
       let moment = require('moment');
-      var form_data = new FormData();
+    //  var form_data = new FormData();
       let ngayTao = moment(course.ngayTao).format("DD/MM/YYYY");
-      let maDanhMucKhoaHoc = course.maKhoaHoc.slice(0, course.maKhoaHoc.indexOf("_"));
+    //  let maDanhMucKhoaHoc = course.maKhoaHoc.slice(0, course.maKhoaHoc.indexOf("_"));
       const localAdmin: any = localStorage.getItem("userAdmin");
       const userAdmin = JSON.parse(localAdmin);
       let courseAdd = {
-        ...course,
+        maKhoaHoc:course.maKhoaHoc,
+        tenKhoaHoc:course.tenKhoaHoc,
+        hinhAnh:course.hinhAnh.name,
+        moTa:course.moTa,
         maNhom: "GP01", 
         danhGia: 0,
         ngayTao: ngayTao,
         biDanh: course.tenKhoaHoc,
         luotXem: 0,
-        maDanhMucKhoaHoc: maDanhMucKhoaHoc,
+        maDanhMucKhoaHoc: "BackEnd",
         taiKhoanNguoiTao: userAdmin.taiKhoan
       }
-      for (const key in courseAdd) {
-        console.log(key, courseAdd[key]);
-        form_data.append(key, courseAdd[key]);
-      }
+      // let courseAdd = {
+      //   ...course,
+      //   maNhom: "GP01", 
+      //   danhGia: 0,
+      //   ngayTao: ngayTao,
+      //   biDanh: course.tenKhoaHoc,
+      //   luotXem: 0,
+      //   maDanhMucKhoaHoc: maDanhMucKhoaHoc,
+      //   taiKhoanNguoiTao: userAdmin.taiKhoan
+      // }
+      // for (const key in courseAdd) {
+      //   console.log(key, courseAdd[key]);
+      //   form_data.append(key, courseAdd[key]);
+      // }
       console.log(courseAdd);
      
       Axios({
-        method: "POST",
+        method: "PUT",
         url:
-          "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload",
-        data: form_data,
+          "https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",
+        data: courseAdd,
         headers: {
           Authorization: `Bearer ${userAdmin.accessToken}`
         }
         
       }).then(rs => {
         console.log(rs.data);
-        setChange(!change)
-        Swal.fire("Add Course success !", "Press OK exit!", "success");
+        uploadHinhAPIForAddCourse(course.hinhAnh,rs.data.tenKhoaHoc);
+        // setChange(!change)
+        // Swal.fire("Add Course success !", "Press OK exit!", "success");
       })
       .catch(error => {
         console.log(error.response);
@@ -247,13 +313,7 @@ export default function TableCourse() {
               setTimeout(() => {
                 resolve();
                 handleAddCourse(newData)
-                // setDataStore({...dataStore, newData});
-                setDataStore(prevState => {
-                  const data: any = [...prevState.data];
-                  data.push(newData);
-
-                  return { ...prevState, data };
-                });
+               
                 
               }, 1000);
             }),
@@ -262,12 +322,12 @@ export default function TableCourse() {
               setTimeout(() => {
                 if (oldData) {
                   handleEditMovie(newData);
-                  setDataStore(prevState => {
-                    const data: any = [...prevState.data];
-                    const index = data.indexOf(oldData);
-                    data[index] = newData;
-                    return { ...prevState, data };
-                  });
+                  // setDataStore(prevState => {
+                  //   const data: any = [...prevState.data];
+                  //   const index = data.indexOf(oldData);
+                  //   data[index] = newData;
+                  //   return { ...prevState, data };
+                  // });
                 }
                 resolve();
               }, 1000);
@@ -282,12 +342,12 @@ export default function TableCourse() {
                 
                 resolve();
                 handleDeleteMovie(oldData);
-                setDataStore(prevState => {
-                  const data = [...prevState.data];
-                  const index = data.findIndex(data => data === oldData);
-                  data.splice(index, 1);
-                  return { ...prevState, data };
-                });
+                // setDataStore(prevState => {
+                //   const data = [...prevState.data];
+                //   const index = data.findIndex(data => data === oldData);
+                //   data.splice(index, 1);
+                //   return { ...prevState, data };
+                // });
               }, 1000);
             })
         }}
