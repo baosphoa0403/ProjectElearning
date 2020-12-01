@@ -1,7 +1,7 @@
 import { Home } from "../../../../components/Interface/Interface";
 import * as ActionType from "../contants/contant";
 const initialState: Home = {
-  listCourses: [],
+  listCourses: []
 };
 
 const reducerHome = (state: Home = initialState, action: any) => {

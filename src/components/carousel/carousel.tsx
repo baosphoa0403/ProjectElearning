@@ -16,7 +16,11 @@ export const DivSliderMobile = styled.div`
     display: block;
   }
 `;
-function Carousel() {
+interface Props {
+  darkMode: boolean
+}
+function Carousel(props: Props) {
+  let {darkMode} = props;
   return (
     <DivSliderCarousel>
       <DivSliderMobile>123</DivSliderMobile>
@@ -27,7 +31,7 @@ function Carousel() {
               <DivContainer>
                 <DivContentSliderImage></DivContentSliderImage>
               </DivContainer>
-              <DivContentIntroduce>
+              <DivContentIntroduce darkMode={darkMode}>
                 The place to train professional programmers, Come With Us A
                 Place To Help You Become A Professional Programmer, Bring
                 patience and diligence to succeed

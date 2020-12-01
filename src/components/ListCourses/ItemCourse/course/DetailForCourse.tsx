@@ -17,8 +17,11 @@ function Courses(props: any) {
     color: white;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f671e7b194993178b1be98e8c898a7d4d9bcf362
+=======
+>>>>>>> 4d6e2a58bd0dec0f96db16be78518a317688306b
     .course__img {
       border-radius: 0.5em;
       width: 100%;
@@ -26,11 +29,14 @@ function Courses(props: any) {
       height: 100px;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 69b1ac88112264326407729e4c2ac22254cffe0b
 =======
 >>>>>>> f671e7b194993178b1be98e8c898a7d4d9bcf362
+=======
+>>>>>>> 4d6e2a58bd0dec0f96db16be78518a317688306b
     &:hover {
       z-index: 1;
 

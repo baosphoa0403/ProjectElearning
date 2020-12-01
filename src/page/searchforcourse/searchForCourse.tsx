@@ -47,6 +47,7 @@ function SearchForCourse(props: any) {
         handleDecrease={handleDecrease}
         handleDeleteCourse={handleDeleteCourse}
         sendArrContainCourseAndQuantity={sendArrContainCourseAndQuantity}
+        darkMode={props.darkMode}
       />
     </React.Fragment>
   );
@@ -55,6 +56,7 @@ const mapStateToProps = (state: rootState) => {
   return {
     arrContainCourseAndQuantity: state.cardReducer.ArrContainCourseAndQuantity,
     allQuantity: state.cardReducer.quantity,
+    darkMode: state.reducerSwitch.darkMode
   };
 };
 const mapDispatchToProps = (dispatch: any) => {

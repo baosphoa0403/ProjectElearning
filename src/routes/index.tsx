@@ -40,7 +40,7 @@ const routesHome = [
     path: "/profile",
     exact: false,
     component: VerticalTabs,
-  }
+  },
 
 ];
 export { routesHome };

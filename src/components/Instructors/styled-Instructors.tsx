@@ -1,5 +1,8 @@
 import styled from "styled-components";
-export const BodyInstructor = styled.div`
+interface Props {
+  darkmode: boolean
+}
+export const BodyInstructor = styled.div<Props>`
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -8,11 +11,14 @@ export const BodyInstructor = styled.div`
   -ms-background-size: cover;
   background-position: center center;
   box-sizing: border-box;
-  background-color: #f2f6fb;
+  background-color: ${p  => p.darkmode ? '#303030' : 'white'};
   padding-bottom: 55px;
 
   .slick-next {
     right: 0;
+    display: none !important;
+  }
+  .slick-prev {
     display: none !important;
   }
   @media only screen and (max-width: 750px) {
@@ -28,12 +34,12 @@ export const InstructorTop = styled.div`
   padding: 0 15px;
   margin: 0 0 17px;
 `;
-export const InstructorH3 = styled.h3`
+export const InstructorH3 = styled.h3<Props>`
   font-size: 45px;
   line-height: 45px;
   margin-bottom: 20px;
   margin-right: 60px;
-  color: #273044;
+  color: ${p  => p.darkmode ? 'white' : 'black'};
   font-weight: 700;
   font-style: normal !important;
   font-family: Quicksand !important;

@@ -42,12 +42,16 @@ const useStyles = makeStyles((theme: Theme) =>
     // },
   })
 );
-export default function IntroduceStep() {
+interface Props {
+  darkMode: boolean
+}
+export default function IntroduceStep(props: Props) {
   const classes = useStyles();
+  let {darkMode} = props;
   return (
     <React.Fragment>
       <Container fixed>
-        <Title>WHAT DO WE HAVE?</Title>
+        <Title darkMode={darkMode}>WHAT DO WE HAVE?</Title>
         <Div>
           <Grid
             container
