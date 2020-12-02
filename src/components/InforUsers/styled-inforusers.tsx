@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const ItemInfor = styled.span`
   text-decoration: none !important;
-  color: #0d1136;
+  color: #424242;
   font-weight: 600;
   letter-spacing: 2px;
   transition: color 0.3s;
