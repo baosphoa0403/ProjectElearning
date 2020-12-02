@@ -37,16 +37,7 @@ interface TabPanelProps {
   index: any;
   value: any;
 }
-// interface ifUser {
-//   accessToken: string
-// email: string
-// hoTen: string
-// maLoaiNguoiDung: string
-// maNhom: string
-// matKhau: string
-// soDT: string
-// taiKhoan: string
-// }
+
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -94,17 +85,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     textColor: "green",
   },
   item1: {
-    // padding: '30px 0',
+
     backgroundColor: "#fff",
     boxShadow: "0 6px 9px rgba(50,50,93,.06), 0 2px 5px rgba(0,0,0,.08)",
-    // overflow: 'scroll',
+
     width: 400,
   },
   item11: {
-    // padding: '30px 0',
     backgroundColor: "#fff",
     boxShadow: "0 6px 9px rgba(50,50,93,.06), 0 2px 5px rgba(0,0,0,.08)",
-    // overflow: 'scroll',
     width: 400,
     transition: "all .3s ease-in",
   },
@@ -130,6 +119,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 function VerticalTabs(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [user1, setUser1] = React.useState();
   const [User, setUser] = React.useState({
     accessToken: "",
     email: "",
@@ -144,17 +134,9 @@ function VerticalTabs(props: any) {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      let userLocalS: any = localStorage.getItem("user");
-      const user = JSON.parse(userLocalS);
-      setUser(user);
-    }
-  }, []);
 
-  // const ComfirmCourse = (Course: any) => {
-  //   console.log(Course, User);
-  // };
+
+ 
   const ComfirmCourse = (Course: any) => {
     Swal.fire({
       title: "Do you want to confirm for course",
@@ -239,6 +221,16 @@ function VerticalTabs(props: any) {
       }
     });
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let userLocalS: any = localStorage.getItem("user");
+      const user = JSON.parse(userLocalS);
+      setUser(user);
+    }
+  }, []);
+
+
   return (
     <React.Fragment>
       <Container fixed>
@@ -257,7 +249,7 @@ function VerticalTabs(props: any) {
                   <Tab label="Checkout" {...a11yProps(0)} />
                   <Tab label="Your Account Settings" {...a11yProps(1)} />
                   <Tab label="Confirm Courses" {...a11yProps(2)} />
-                  <Tab label="Logout" {...a11yProps(3)} />
+                  <Tab label="Back to home" {...a11yProps(3)} onClick={()=>{props.history.push("/")}} />
                 </Tabs>
               </Div>
             </Grid>
@@ -387,9 +379,7 @@ function VerticalTabs(props: any) {
               <TabPanel value={value} index={2}>
                 {renderListCourseForConfirm()}
               </TabPanel>
-              <TabPanel value={value} index={3}>
-                Logout
-              </TabPanel>
+
             </Grid>
           </Grid>
         </div>
