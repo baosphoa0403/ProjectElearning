@@ -107,7 +107,7 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ props }) => {
   const classes = useStyles();
-  const {darkMode} = props
+  const {darkMode} = props;
   const [user1, setUser] = React.useState();
   const emitRoute = () => {
     props.history.push("/signIn");
@@ -149,10 +149,12 @@ const Navbar: React.FC<Props> = ({ props }) => {
               }}
 
             >
-              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} onClick={()=> {
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} 
+              onClick={()=> {
                  props.history.push("/");
               }}>Home</li>
-              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} onClick={()=> {
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} 
+              onClick={()=> {
                  props.history.push("/allcourse");
               }}>List Course</li>
             </ul>

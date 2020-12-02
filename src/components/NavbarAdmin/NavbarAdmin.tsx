@@ -5,8 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -33,13 +34,17 @@ export default function NavbarAdmin(props: any) {
       }
       setDetail(user);
     }
-  },[]);
+  }, []);
 
-  // const logoutAdmin = () => {
-  //   localStorage.removeItem("userAdmin");
-  //   props.history.push("/");
+  let history = useHistory();
+  let logoutAdmin = () => {
+    setTimeout(() => {
+      history.replace("/")
+      localStorage.removeItem("userAdmin");
+    }, 1000)
+  }
 
-  // }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -51,16 +56,34 @@ export default function NavbarAdmin(props: any) {
             {detail?.hoTen}
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            Dashboard User
+
+            {/* Dashboard User */}
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/admin/dashboard"
+              exact
+            >
+              DashBoard USER
+          </NavLink>
+
           </Typography>
           <Typography variant="h6" className={classes.title}>
-            Dashboard Course
+
+            {/* Dashboard Course */}
+            <NavLink
+              style={{ textDecoration: "none" }}
+              to="/admin/dashboardCourse"
+              exact
+            >
+              DashBoard Course
+          </NavLink>
+
           </Typography>
           <Button color="inherit" style={{
             background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
             boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
           }}
-          // onClick={logoutAdmin}
+            onClick={logoutAdmin}
           >Logout</Button>
         </Toolbar>
       </AppBar>
