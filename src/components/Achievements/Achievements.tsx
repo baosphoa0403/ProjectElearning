@@ -28,7 +28,7 @@ export default function Achievements() {
             </H4Achi>
           </MiddeAchi>
           <Grid container>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <RatingAchiContent>
                 <IconItem>
                   <i
@@ -42,7 +42,7 @@ export default function Achievements() {
                 <HumanAchi>Foreign followers</HumanAchi>
               </RatingAchiContent>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <RatingAchiContent>
                 <IconItem>
                   <i
@@ -56,7 +56,7 @@ export default function Achievements() {
                 <HumanAchi>CLASSES COMPLETE</HumanAchi>
               </RatingAchiContent>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <RatingAchiContent>
                 <IconItem>
                   <i
@@ -71,7 +71,7 @@ export default function Achievements() {
                 <HumanAchi>STUDENTS ENROLLED</HumanAchi>
               </RatingAchiContent>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <RatingAchiContent>
                 <IconItem>
                   <i
