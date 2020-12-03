@@ -12,7 +12,7 @@ const DivSliderCarousel = styled.div``;
 export const DivSliderMobile = styled.div`
   display: none;
   @media only screen and (max-width: 767px) {
-    height: 100vh;
+    height: 15vh;
     display: block;
   }
 `;

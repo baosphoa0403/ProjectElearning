@@ -21,9 +21,12 @@ export const BodyInstructor = styled.div<Props>`
   .slick-prev {
     display: none !important;
   }
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 769px) {
     opacity: 0;
+    height: 20px;
+    // display: none;
   }
+ 
 `;
 export const InstructorTop = styled.div`
   display: flex;

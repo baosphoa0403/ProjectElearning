@@ -11,6 +11,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from 'react-router-dom';
+
 import {
     ItemInfor,
 } from "./styled-inforusers";
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
 type Anchor = 'right';
 
 export default function InforUses(props: any) {
+    const { darkMode } = props;
     const classes = useStyles();
     const [state, setState] = React.useState({
         right: false,
@@ -57,7 +59,8 @@ export default function InforUses(props: any) {
         >
             <List>
                 <ListItem button style={{ display: 'grid' }} className={classes.user}>
-                    <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left' }}><ItemInfor>Your Profile</ItemInfor></Link>
+                    <Link to="/profile" style={{ textDecoration: 'none', textAlign: 'left' }}>
+                        <ItemInfor darkMode={darkMode}>Your Profile</ItemInfor></Link>
                 </ListItem>
             </List>
             <Divider />
@@ -86,4 +89,8 @@ export default function InforUses(props: any) {
         </div>
     );
 }
+
+
+
+
 

@@ -1,7 +1,11 @@
 import styled from "styled-components";
-export const ItemInfor = styled.span`
+interface Props1 {
+  darkMode: boolean
+}
+export const ItemInfor = styled.span<Props1>`
   text-decoration: none !important;
-  color: #424242;
+  // color: #424242;
+  color: ${p => p.darkMode ? "white" : "black"};
   font-weight: 600;
   letter-spacing: 2px;
   transition: color 0.3s;

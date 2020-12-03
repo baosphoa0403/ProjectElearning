@@ -7,9 +7,7 @@ import Box from "@material-ui/core/Box";
 import Logo from "../../images/logo.png";
 import ButtonSwitch from "../Switch/Switch";
 import styled from "styled-components";
-import Typography from "@material-ui/core/Typography";
 import InforUses from "../InforUsers/inforUses";
-import Axios from "axios";
 interface Props1 {
   darkMode: boolean
 }
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     buttonDark: {
       backgroundColor: "#009e7f",
-     
+
       color: "white",
       padding: "0 15px",
       height: "45px",
@@ -107,7 +105,7 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ props }) => {
   const classes = useStyles();
-  const {darkMode} = props;
+  const { darkMode } = props;
   const [user1, setUser] = React.useState();
   const emitRoute = () => {
     props.history.push("/signIn");
@@ -123,7 +121,7 @@ const Navbar: React.FC<Props> = ({ props }) => {
       setUser(user);
     }
     console.log("hihi");
-    
+
   }, []);
   const logout = () => {
     localStorage.removeItem("user");
@@ -149,18 +147,18 @@ const Navbar: React.FC<Props> = ({ props }) => {
               }}
 
             >
-              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} 
-              onClick={()=> {
-                 props.history.push("/");
-              }}>Home</li>
-              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{cursor:"pointer" }} 
-              onClick={()=> {
-                 props.history.push("/allcourse");
-              }}>List Course</li>
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{ cursor: "pointer" }}
+                onClick={() => {
+                  props.history.push("/");
+                }}>Home</li>
+              <li className={darkMode ? classes.ulBlack : classes.ulLight} style={{ cursor: "pointer" }}
+                onClick={() => {
+                  props.history.push("/allcourse");
+                }}>List Course</li>
             </ul>
           </Box>
-          <ButtonSwitch/>
-           {/* setBackground={setBackground}
+          <ButtonSwitch />
+          {/* setBackground={setBackground}
             setBackgroundNavbar={setBackgroundNavbar} */}
 
           {!user1 ? (
@@ -187,8 +185,10 @@ const Navbar: React.FC<Props> = ({ props }) => {
               </Box>
             </span>
           ) : (
-              <NameUser style={{ display: "flex" }} className={classes.userNameResMoblie} darkMode={darkMode}>
-                {user1?.hoTen} <InforUses logout={logout} />
+              <NameUser style={{ display: "flex" }} className={classes.userNameResMoblie}
+                darkMode={darkMode}>
+                {user1?.hoTen}
+                <InforUses logout={logout} darkMode={props.darkMode} />
               </NameUser>
             )}
         </Toolbar>
